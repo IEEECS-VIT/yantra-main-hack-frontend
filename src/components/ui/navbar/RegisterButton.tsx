@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, MoveUpRightIcon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { useState } from "react";
 
 export default function RegisterButton() {
   const [isHovered, setIsHovered] = useState(false);
