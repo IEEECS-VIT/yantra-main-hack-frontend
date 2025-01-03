@@ -16,7 +16,7 @@ export async function Hero() {
       <div className="text-center">
         <section>
           <p className="font-extrabold text-xl">A SDG HACKATHON WITH AI</p>
-          <p className="font-light">Join us at VIT's biggest tech hackathon!</p>
+          <p className="font-light">Join us at VIT&apos;s biggest tech hackathon!</p>
         </section>
         <button></button>
         <p className="underline">Register Now!</p>

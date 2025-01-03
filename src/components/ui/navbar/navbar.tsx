@@ -25,7 +25,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 hidden lg:flex h-[100px] items-center justify-around border border-white overflow-hidden font-monument">
+      <nav className="fixed top-0 left-0 right-0 hidden lg:flex h-[100px] items-center justify-around border border-white overflow-hidden font-monument z-50">
         <div className="absolute inset-0 z-0 h-full">
           <div className="absolute inset-0 bg-gradient-to-r from-[#321335] via-[#8B6BE5] to-[#40295C]" />
 

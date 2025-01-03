@@ -6,10 +6,14 @@ export default function Text({
   text,
   animation,
   className,
+  textSize,
+  layerCount = 7,
 }: {
   text: string;
   animation: boolean;
   className?: string;
+  textSize?: string;
+  layerCount?: number;
 }) {
   const [offsets, setOffsets] = useState({ x: 10, y: 10 });
 
@@ -29,14 +33,14 @@ export default function Text({
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [animation]);
 
-  const layers = Array.from({ length: 7 }, (_, index) => {
+  const layers = Array.from({ length: layerCount }, (_, index) => {
     const intensity = 1 - index * 0.1;
     const transformOffset = (index + 1) * 0.5;
 
     return (
       <h1
         key={index}
-        className="absolute text-9xl text-transparent font-monument"
+        className={`absolute ${textSize ? textSize : "text-9xl"} text-transparent font-monument`}
         style={{
           WebkitTextStroke: `1px rgba(255, 255, 255, ${intensity})`,
           opacity: 0.5 * intensity,
@@ -57,7 +61,7 @@ export default function Text({
       {layers}
       {/* Render the main text */}
       <h1
-        className={`text-9xl font-extrabold text-white font-monument ${className}`}
+        className={`${textSize ? textSize : "text-9xl"} font-extrabold text-white font-monument ${className}`}
         style={{
           zIndex: 10, // Ensure it's on top of the layers
           position: "relative",
