@@ -12,6 +12,7 @@ export default {
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        buttonBg: "#E7643B",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
@@ -54,7 +55,7 @@ export default {
       },
       backgroundImage: {
         "custom-gradient":
-          "radial-gradient(circle, rgba(109,94,200,1) 0%, rgba(35,29,61,1) 100%)",
+          "radial-gradient(circle, rgba(74, 40, 148), rgba(30, 12, 54,1) 70%)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -63,6 +64,7 @@ export default {
       },
       fontFamily: {
         monument: "MonumentExtended, serif",
+        monumentBold: "MonumentExtendedBold, serif",
       },
     },
   },

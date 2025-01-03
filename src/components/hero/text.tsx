@@ -1,5 +1,4 @@
 "use client";
-// have also added the floating things here
 import React, { useEffect, useState } from "react";
 
 export default function Text({
@@ -15,7 +14,7 @@ export default function Text({
   textSize?: string;
   layerCount?: number;
 }) {
-  const [offsets, setOffsets] = useState({ x: 10, y: 10 });
+  const [offsets, setOffsets] = useState({ x: 8, y: 8 });
 
   useEffect(() => {
     if (!animation) {
@@ -35,19 +34,19 @@ export default function Text({
 
   const layers = Array.from({ length: layerCount }, (_, index) => {
     const intensity = 1 - index * 0.1;
-    const transformOffset = (index + 1) * 0.5;
+    const transformOffset = (index + 1) * 0.7;
 
     return (
       <h1
         key={index}
-        className={`absolute ${textSize ? textSize : "text-9xl"} text-transparent font-monument`}
+        className={`absolute ${textSize ? textSize : "text-9xl"} text-transparent font-monument tracking-wide`}
         style={{
           WebkitTextStroke: `1px rgba(255, 255, 255, ${intensity})`,
-          opacity: 0.5 * intensity,
+          opacity: 0.7 * intensity,
           transform: `translate(${offsets.x * transformOffset}px, ${
             offsets.y * transformOffset
           }px)`,
-          zIndex: 0, // Ensure it's rendered below the main text
+          zIndex: 0,
         }}
       >
         {text}
@@ -57,16 +56,14 @@ export default function Text({
 
   return (
     <div className="relative text-center">
-      {/* Render layers below the main text */}
       {layers}
-      {/* Render the main text */}
       <h1
-        className={`${textSize ? textSize : "text-9xl"} font-extrabold text-white font-monument ${className}`}
+        className={`${textSize ? textSize : "text-9xl"} font-extrabold text-white font-monument tracking-wide ${className}`}
         style={{
-          zIndex: 10, // Ensure it's on top of the layers
+          zIndex: 1,
           position: "relative",
-          opacity: 1, // Fully opaque
-          WebkitTextStroke: "none", // No stroke for solid text
+          opacity: 1,
+          WebkitTextStroke: "none",
         }}
       >
         {text}
