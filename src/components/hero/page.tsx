@@ -19,7 +19,7 @@ export async function Hero() {
         <section>
           <p className="font-monument text-5xl ">A SDG Hack With AI</p>
           <p className="text-xl">
-            Join us Feb 7-8 for VIT's best and biggest tech hackathon!
+            Join us Feb 7-8 for VIT&apos;s best and biggest tech hackathon!
           </p>
         </section>
         <button className="px-10 py-7 bg-gradient-to-l from-[#A240A5] to-[#322A55] border border-white rounded-sm  text-sm w-[500px] mt-6">
