@@ -1,11 +1,10 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import { Hero } from "@/components/hero/page";
 
 export default function Home() {
   return (
-    <main>
-      <MaxWidthWrapper>
-        <h1>IEEE-CS</h1>
-      </MaxWidthWrapper>
+    <main >
+      <Hero />
     </main>
   );
 }

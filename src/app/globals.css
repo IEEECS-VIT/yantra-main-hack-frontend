@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
+@font-face {
+  font-family: "MonumentExtended";
+  src: url("../../public/fonts/MonumentExtended-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @layer base {
@@ -70,3 +73,28 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* body {
+  position: relative;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(https://assets.website-files.com/60ce366263ce9aedb3f24381/60ce37acdee7a62931e4d312_5f4c42fb042bb560029152ba_noise-ani23.gif);
+  background-position: 0px 0px;
+  background-size: contain;
+  background-repeat: repeat;
+  opacity: 0.01 !important;
+  z-index: 999;
+} */
