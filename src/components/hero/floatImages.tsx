@@ -44,7 +44,7 @@ export default function FloatImages() {
         rotateX(${rotateX}deg)
         rotateY(${rotateY}deg)
       `,
-      top: `calc(65% + ${topOffset}px)`,
+      top: isLeft ? `calc(70% + ${topOffset}px)` : `calc(55% + ${topOffset}px)`,
       transition: "transform 0.5s ease-in-out, top 0.8s ease-out",
     };
   };
@@ -56,7 +56,7 @@ export default function FloatImages() {
         alt=""
         width={250}
         height={400}
-        className="absolute left-[0%] will-change-transform"
+        className="absolute left-[0%] will-change-transform lg:block hidden "
         style={getImageStyle(true)}
       />
       <Image
@@ -64,7 +64,7 @@ export default function FloatImages() {
         alt=""
         width={200}
         height={400}
-        className="absolute right-[0%] will-change-transform"
+        className="absolute right-[0%] will-change-transform lg:block hidden"
         style={getImageStyle(false)}
       />
     </>

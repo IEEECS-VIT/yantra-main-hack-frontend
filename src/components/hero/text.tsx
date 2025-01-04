@@ -39,7 +39,7 @@ export default function Text({
     return (
       <h1
         key={index}
-        className={`absolute ${textSize ? textSize : "text-9xl"} text-transparent font-monument tracking-wide`}
+        className={`absolute ${textSize ? textSize : "lg:text-9xl md:text-8xl text-6xl"} text-transparent font-monument tracking-wide`}
         style={{
           WebkitTextStroke: `1px rgba(255, 255, 255, ${intensity})`,
           opacity: 0.7 * intensity,
@@ -58,7 +58,7 @@ export default function Text({
     <div className="relative text-center">
       {layers}
       <h1
-        className={`${textSize ? textSize : "text-9xl"} font-extrabold text-white font-monument tracking-wide ${className}`}
+        className={`${textSize ? textSize : "lg:text-9xl md:text-8xl text-6xl"} font-extrabold text-white font-monument tracking-wide ${className}`}
         style={{
           zIndex: 1,
           position: "relative",
