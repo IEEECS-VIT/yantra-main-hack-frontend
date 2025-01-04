@@ -15,11 +15,28 @@ export default function Text({
   layerCount?: number;
 }) {
   const [offsets, setOffsets] = useState({ x: 8, y: 8 });
+  const [isAnimationEnabled, setIsAnimationEnabled] = useState(animation);
 
   useEffect(() => {
-    if (!animation) {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+
+    const handleMediaChange = (event: MediaQueryListEvent) => {
+      setIsAnimationEnabled(event.matches && animation);
+    };
+
+    // Set initial state based on screen size
+    setIsAnimationEnabled(mediaQuery.matches && animation);
+
+    // Add listener for changes in screen size
+    mediaQuery.addEventListener("change", handleMediaChange);
+    return () => mediaQuery.removeEventListener("change", handleMediaChange);
+  }, [animation]);
+
+  useEffect(() => {
+    if (!isAnimationEnabled) {
       return;
     }
+
     const handleMouseMove = (event: MouseEvent) => {
       const { clientX, clientY } = event;
       setOffsets({
@@ -30,7 +47,7 @@ export default function Text({
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [animation]);
+  }, [isAnimationEnabled]);
 
   const layers = Array.from({ length: layerCount }, (_, index) => {
     const intensity = 1 - index * 0.1;

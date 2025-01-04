@@ -5,14 +5,15 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
-import handleLogin from "@/lib/firebaselogin";
+import { useAuth } from "@/contexts/authContext";
 
-interface MobileNavbarProps {
+export default function MobileNavbar({
+  navItems,
+}: {
   navItems: { label: string; href: string }[];
-}
-
-export default function MobileNavbar({ navItems }: MobileNavbarProps) {
+}) {
   const [isOpen, setIsOpen] = useState(false);
+  const { isLoggedIn, login, logout } = useAuth(); // Use context to get login state
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-[#321335] via-[#8B6BE5] to-[#40295C] z-50 lg:hidden">
@@ -81,26 +82,43 @@ export default function MobileNavbar({ navItems }: MobileNavbarProps) {
                   {item.label}
                 </Link>
               ))}
-              <Link
-                href=""
-                className="text-white uppercase text-center block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
-                onClick={() => {
-                  handleLogin();
-                  setIsOpen(false);
-                }}
-              >
-                register
-              </Link>
-              <Link
-                href=""
-                className="text-white uppercase text-center block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
-                onClick={() => {
-                  handleLogin();
-                  setIsOpen(false);
-                }}
-              >
-                login
-              </Link>
+
+              {/* Conditionally render login/logout buttons */}
+              {!isLoggedIn ? (
+                <>
+                  <Link
+                    href=""
+                    className="text-white uppercase text-center block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
+                    onClick={() => {
+                      login(); // Trigger login on click
+                      setIsOpen(false);
+                    }}
+                  >
+                    login
+                  </Link>
+                  <Link
+                    href=""
+                    className="text-white uppercase text-center block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
+                    onClick={() => {
+                      login(); // Trigger login on click
+                      setIsOpen(false);
+                    }}
+                  >
+                    register
+                  </Link>
+                </>
+              ) : (
+                <Link
+                  href=""
+                  className="text-white uppercase text-center block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
+                  onClick={() => {
+                    logout(); // Trigger logout on click
+                    setIsOpen(false);
+                  }}
+                >
+                  logout
+                </Link>
+              )}
             </div>
           </motion.div>
         )}
