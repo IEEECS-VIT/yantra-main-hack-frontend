@@ -17,28 +17,43 @@ export default function MobileNavbar({ navItems }: MobileNavbarProps) {
     <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-[#321335] via-[#8B6BE5] to-[#40295C] z-50 lg:hidden">
       <div className="max-w-7xl mx-auto border-2 border-white">
         <div className="flex items-center justify-between h-20">
-          <Link
-            href="/"
-            className="h-full w-2/5 flex items-center justify-center border-r-2 p-2"
-          >
-            <Image
-              src="/vit_logo.png"
-              alt="VIT Vellore"
-              height={200}
-              width={200}
-              className="h-3/5 w-auto object-contain"
-            />
-          </Link>
-          <div className="lg:hidden h-full w-20">
+          <div className="flex items-center h-full">
+            <Link
+              href="https://vit.ac.in/"
+              className="h-full w-[30%] flex items-center justify-center border-r-2 p-2"
+            >
+              <Image
+                src="/logos/vit_40_years.svg"
+                alt="VIT Vellore"
+                height={200}
+                width={200}
+                className="h-3/5 w-auto object-contain"
+              />
+            </Link>
+            <Link
+              href="https://vit.ac.in/"
+              className="h-full w-fit flex items-center justify-center border-r-2 p-2"
+            >
+              <Image
+                src="/vit_logo.png"
+                alt="VIT Vellore"
+                height={200}
+                width={200}
+                className="h-2/5 w-auto"
+              />
+            </Link>
+          </div>
+
+          <div className="lg:hidden h-full w-12">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 text-white border-l-2 h-full w-full"
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? (
-                <X className="block size-10" aria-hidden="true" />
+                <X className="block size-8" aria-hidden="true" />
               ) : (
-                <Menu className="block size-10" aria-hidden="true" />
+                <Menu className="block size-8" aria-hidden="true" />
               )}
             </button>
           </div>

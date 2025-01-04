@@ -18,7 +18,7 @@ export default function Navbar() {
       href: "/#prizes",
     },
     {
-      label: "team",
+      label: "dashboard",
       href: "/dashboard",
     },
   ];
@@ -42,18 +42,32 @@ export default function Navbar() {
 
         {/* Content with higher z-index */}
         <div className="relative z-10 flex w-full items-center justify-around h-full">
-          <Link
-            href="https://vit.ac.in/"
-            className="border-l border-r border-white h-full w-60 px-8 py-2"
-          >
-            <Image
-              src="/vit_logo.png"
-              alt="VIT Vellore"
-              height={200}
-              width={200}
-              className="h-full w-full object-contain"
-            />
-          </Link>
+          <div className="flex items-center h-full">
+            <Link
+              href="https://vit.ac.in/"
+              className="border-l border-r border-white h-full w-36 px-8 py-2 flex items-center justify-center"
+            >
+              <Image
+                src="/logos/vit_40_years.svg"
+                alt="VIT Vellore"
+                height={200}
+                width={200}
+                className="h-12 w-auto object-contain"
+              />
+            </Link>
+            <Link
+              href="https://vit.ac.in/"
+              className="border-l border-r border-white h-full w-60 px-8 py-2"
+            >
+              <Image
+                src="/vit_logo.png"
+                alt="VIT Vellore"
+                height={200}
+                width={200}
+                className="h-full w-full object-contain"
+              />
+            </Link>
+          </div>
           <div className="flex items-center h-full">
             {NAV_ITEMS.map((item) => (
               <Link
