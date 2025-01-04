@@ -3,18 +3,20 @@ import Progressbar from "@/components/creation/Progressbar";
 import InputBox from "@/components/creation/InputBox";
 import { useState } from "react";
 import LayeredButton from "@/components/ui/orangeButton";
+import { createProfile } from "@/actions/createProfile";
 
-export default function Stage1({ setStage }) {
+export default function Stage1({ setStage }: { setStage: any }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [regNo, setRegNo] = useState("");
   const [roomNo, setRoomNo] = useState("");
-  const [achievements, setAchievements] = useState("");
+  const [gender, setGender] = useState("");
   const [hostelType, setHostelType] = useState("");
   const [hostelBlock, setHostelBlock] = useState("");
   const [selectedBranch, setSelectedBranch] = useState("");
   const [selectedSchool, setSelectedSchool] = useState("");
-  const [isAgreed, setIsAgreed] = useState(false); // State for checkbox
+  const [isAgreed, setIsAgreed] = useState(false);
+  const [error, setError] = useState("");
 
   const mhBlocks = Array.from(
     { length: 20 },
@@ -50,6 +52,65 @@ export default function Stage1({ setStage }) {
     "School of Management",
   ];
 
+  const validateRegNo = (value: string) =>
+    /^[0-9]{2}[A-Z]{3}[0-9]{4}$/.test(value);
+
+  async function handleSubmit() {
+    // Validate phone number
+    const validatePhone = (value: string) => /^[0-9]{10}$/.test(value);
+
+    if (
+      !name ||
+      !phone ||
+      !regNo ||
+      (hostelType !== "DS" && (!roomNo || !hostelBlock)) ||
+      !gender ||
+      !selectedBranch ||
+      !selectedSchool ||
+      !isAgreed
+    ) {
+      setError("Please fill out all fields correctly and agree to the terms.");
+      return;
+    }
+
+    if (!validateRegNo(regNo)) {
+      setError("Invalid registration number format. Use 12ABC1234.");
+      return;
+    }
+
+    if (!validatePhone(phone)) {
+      setError("Invalid phone number format. It must be exactly 10 digits.");
+      return;
+    }
+
+    setError(""); // Clear any existing error
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("phoneNo", phone);
+    formData.append("regNo", regNo);
+    formData.append("roomNo", roomNo);
+    formData.append("gender", gender);
+    formData.append("hostelType", hostelType);
+    formData.append("hostelBlock", hostelBlock);
+    formData.append("branch", selectedBranch);
+    formData.append("school", selectedSchool);
+
+    const response = await createProfile(formData);
+    console.log(response);
+  }
+
+  const handleRegNoChange = (value: string) => {
+    setRegNo(value.toUpperCase());
+  };
+
+  const handleHostelTypeChange = (value: string) => {
+    setHostelType(value);
+    if (value === "DS") {
+      setRoomNo("");
+      setHostelBlock("");
+    }
+  };
+
   return (
     <div className="mt-10 px-6 ">
       <Heading text="CREATE YOUR ACCOUNT" />
@@ -60,11 +121,15 @@ export default function Stage1({ setStage }) {
       <div className="w-full max-w-4xl mx-auto p-6 space-y-4 md:space-y-2">
         <div className="grid grid-cols-1 md:grid-cols-2  gap-4 md:gap-16">
           <InputBox placeholder="Name" value={name} onChange={setName} />
-          <InputBox placeholder="Reg Num" value={phone} onChange={setPhone} />
+          <InputBox placeholder="Phone Num" value={phone} onChange={setPhone} />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16">
-          <InputBox placeholder="Phone Num" value={regNo} onChange={setRegNo} />
+          <InputBox
+            placeholder="Reg Num"
+            value={regNo}
+            onChange={handleRegNoChange}
+          />
           <InputBox
             placeholder="Room Num"
             value={roomNo}
@@ -77,10 +142,7 @@ export default function Stage1({ setStage }) {
             <select
               className="bg-opacity-30 bg-white w-full p-6 border text-center text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
               value={hostelType}
-              onChange={(e) => {
-                setHostelType(e.target.value);
-                setHostelBlock("");
-              }}
+              onChange={(e) => handleHostelTypeChange(e.target.value)}
             >
               <option value="" className="text-gray-400">
                 Hostel Type
@@ -91,7 +153,7 @@ export default function Stage1({ setStage }) {
               <option value="LH" className="text-main-orange">
                 Ladies Hostel
               </option>
-              <option value="LH" className="text-main-orange">
+              <option value="DS" className="text-main-orange">
                 Day Scholar
               </option>
             </select>
@@ -99,10 +161,10 @@ export default function Stage1({ setStage }) {
 
           <div className="relative w-full max-w-md">
             <select
-              className="bg-opacity-30 bg-white w-full p-6 border text-center text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+              className={`bg-opacity-30 bg-white w-full p-6 border text-center text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent ${!hostelType || hostelType === "DS" ? "cursor-not-allowed" : ""}`}
               value={hostelBlock}
               onChange={(e) => setHostelBlock(e.target.value)}
-              disabled={!hostelType}
+              disabled={!hostelType || hostelType === "DS"}
             >
               <option value="" className="text-gray-400">
                 Hostel Block
@@ -164,14 +226,22 @@ export default function Stage1({ setStage }) {
           </div>
         </div>
 
-        <div className="relative w-full">
-          <textarea
-            className="bg-opacity-30 bg-white w-full p-4 border text-center text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent resize-none"
-            rows={2}
-            placeholder="Past Achievements"
-            value={achievements}
-            onChange={(e) => setAchievements(e.target.value)}
-          />
+        <div className="relative w-full flex items-center justify-center">
+          <select
+            className="bg-opacity-30 bg-white md:w-[50%] w-full p-6 border text-center text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+          >
+            <option value="" className="text-gray-400">
+              Gender
+            </option>
+            <option value="male" className="text-main-orange">
+              male
+            </option>
+            <option value="female" className="text-main-orange">
+              female
+            </option>
+          </select>
         </div>
 
         <div className="flex justify-center items-center space-x-2">
@@ -186,15 +256,15 @@ export default function Stage1({ setStage }) {
             I agree to follow the Yantra Code of Conduct
           </label>
         </div>
+        {error && <p className="text-red-500 text-center">{error}</p>}
+
         <div className="flex justify-center mt-16 md:mt-10">
           <div className="flex justify-center items-center space-x-2 w-[60vw] md:w-[15vw]">
             <LayeredButton
               text="SUBMIT"
               enabled={isAgreed}
               className={!isAgreed ? "opacity-50 cursor-not-allowed" : ""}
-              handleClick={() => {
-                console.log("okok");
-              }}
+              handleClick={handleSubmit}
             />
           </div>
         </div>

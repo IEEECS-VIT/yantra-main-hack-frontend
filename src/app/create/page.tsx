@@ -1,19 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Stage1 from "./stage1";
-import Stage3 from "./stage3";
 import Stage2 from "./stage2";
+import Stage3 from "./stage3";
 import Stage4 from "./stage4";
 
 export default function Create() {
-  const [stage, setStage] = useState(1); // 1-4
+  const searchParams = useSearchParams();
+  const givenStage = Number(searchParams.get("currStage")); // Safely parse Givenstage from URL
+  const getDefaultStage = () =>
+    givenStage >= 1 && givenStage <= 4 ? givenStage : 1;
+
+  const [stage, setStage] = useState(getDefaultStage);
+  const [teamSize, setTeamSize] = useState(3);
+
+  useEffect(() => {
+    console.log(`Current Stage: ${stage}`);
+  }, [stage]);
 
   return (
     <main className="flex flex-col items-center min-h-screen bg-custom-gradient">
       {stage === 1 && <Stage1 setStage={setStage} />}
-      {stage === 2 && <Stage2 setStage={setStage} />}
-      {stage === 3 && <Stage3 setStage={setStage} />}
+      {stage === 2 && <Stage2 setStage={setStage} setTeamSizes={setTeamSize} />}
+      {stage === 3 && <Stage3 setStage={setStage} teamSize={teamSize} />}
       {stage === 4 && <Stage4 setStage={setStage} />}
     </main>
   );

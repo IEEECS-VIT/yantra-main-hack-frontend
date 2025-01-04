@@ -1,20 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Heading from "@/components/creation/Heading";
 import Progressbar from "@/components/creation/Progressbar";
 import LayeredButton from "@/components/ui/orangeButton";
 import InputBox from "@/components/creation/InputBox";
 
-export default function Stage3({ setStage, teamSize = 4 }) {
-  const [memberNums, setmemberNums] = useState(
+export default function Stage3({
+  setStage,
+  teamSize = 4,
+}: {
+  setStage: any;
+  teamSize: number;
+}) {
+  const [memberNums, setMemberNums] = useState(
     Array.from({ length: teamSize }, (_, index) => ({
       [index + 1]: "",
     })).reduce((acc, curr) => ({ ...acc, ...curr }), {})
   );
 
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const memberNumPattern = /^[0-9]{2}[A-Z]{3}[0-9]{4}$/;
+
+  useEffect(() => {
+    const allValid = Object.values(memberNums).every((value) =>
+      memberNumPattern.test(value)
+    );
+    setIsFormValid(allValid);
+  }, [memberNums]);
+
   const handleNameChange = (position: number) => (value: string) => {
-    setmemberNums((prev) => ({
+    setMemberNums((prev) => ({
       ...prev,
-      [position]: value || "", // Ensure value is never undefined
+      [position]: value.toUpperCase(),
     }));
   };
 
@@ -23,7 +40,6 @@ export default function Stage3({ setStage, teamSize = 4 }) {
       <Heading text="CREATE YOUR TEAM" />
       <Progressbar currentStep={3} />
       <h1 className="text-white text-2xl text-center">
-        {" "}
         Team size {teamSize} selected
       </h1>
 
@@ -52,7 +68,17 @@ export default function Stage3({ setStage, teamSize = 4 }) {
       {/* Continue Button */}
       <div className="flex justify-center mt-16 md:mt-10">
         <div className="flex justify-center items-center space-x-2 w-[60vw] md:w-[15vw]">
-          <LayeredButton text="SUBMIT" />
+          <LayeredButton
+            text="SUBMIT"
+            enabled={isFormValid}
+            handleClick={() => {
+              if (isFormValid) {
+                console.log("Member Numbers:", memberNums);
+              } else {
+                console.log("Form is not valid");
+              }
+            }}
+          />
         </div>
       </div>
     </div>
