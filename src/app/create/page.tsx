@@ -7,7 +7,7 @@ import Stage2 from "./stage2";
 import Stage4 from "./stage4";
 
 export default function Create() {
-  const [stage, setStage] = useState(4); // 1-4
+  const [stage, setStage] = useState(1); // 1-4
 
   return (
     <main className="flex flex-col items-center min-h-screen bg-custom-gradient">

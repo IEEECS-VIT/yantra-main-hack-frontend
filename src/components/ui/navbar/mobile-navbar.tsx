@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useAuth } from "@/contexts/authContext";
+import handleLogin from "@/lib/firebaselogin";
+import { fetchWithAuth, handleApiResponse } from "@/lib/base";
 
 export default function MobileNavbar({
   navItems,
@@ -14,6 +16,22 @@ export default function MobileNavbar({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const { isLoggedIn, login, logout } = useAuth(); // Use context to get login state
+
+  async function handleClick() {
+    if (!isLoggedIn) {
+      const token = await handleLogin();
+      if (token) login(token);
+      const response = await fetchWithAuth("/login", { method: "GET" });
+      const res = await handleApiResponse(response);
+      if (res.status === 401) {
+        logout();
+      } else if (res.status === 404) {
+        window.location.href = "/create";
+      } else {
+        window.location.href = "/dashboard";
+      }
+    }
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-[#321335] via-[#8B6BE5] to-[#40295C] z-50 lg:hidden">
@@ -90,7 +108,7 @@ export default function MobileNavbar({
                     href=""
                     className="text-white uppercase text-center block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
                     onClick={() => {
-                      login(); // Trigger login on click
+                      handleClick(); // Trigger login on click
                       setIsOpen(false);
                     }}
                   >
@@ -100,7 +118,8 @@ export default function MobileNavbar({
                     href=""
                     className="text-white uppercase text-center block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
                     onClick={() => {
-                      login(); // Trigger login on click
+                      handleClick(); // Trigger login on click
+
                       setIsOpen(false);
                     }}
                   >

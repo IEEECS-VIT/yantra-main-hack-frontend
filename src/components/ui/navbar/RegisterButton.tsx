@@ -4,16 +4,35 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import handleLogin from "@/lib/firebaselogin";
+import { useAuth } from "@/contexts/authContext";
+import { fetchWithAuth, handleApiResponse } from "@/lib/base";
 
 export default function RegisterButton() {
   const [isHovered, setIsHovered] = useState(false);
+  const { isLoggedIn, login, logout } = useAuth();
+
+  async function handleClick() {
+    if (!isLoggedIn) {
+      const token = await handleLogin();
+      if (token) login(token);
+      const response = await fetchWithAuth("/login", { method: "GET" });
+      const res = await handleApiResponse(response);
+      if (res.status === 401) {
+        logout();
+      } else if (res.status === 404) {
+        window.location.href = "/create";
+      } else {
+        window.location.href = "/dashboard";
+      }
+    }
+  }
 
   return (
     <motion.button
       className="relative overflow-hidden h-full w-full uppercase text-white bg-transparent border-b border-white flex items-center justify-center gap-2"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      onClick={handleLogin}
+      onClick={handleClick}
     >
       <motion.span
         className="relative z-10 flex items-center gap-2"
