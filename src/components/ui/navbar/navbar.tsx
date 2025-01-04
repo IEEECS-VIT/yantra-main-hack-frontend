@@ -1,29 +1,20 @@
+// components/Navbar.tsx
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import RegisterButton from "./RegisterButton";
 import MobileNavbar from "./mobile-navbar";
-import handleLogin from "@/lib/firebaselogin";
+import { useAuth } from "@/contexts/authContext";
 
 export default function Navbar() {
+  const { isLoggedIn, login, logout } = useAuth();
+  
   const NAV_ITEMS = [
-    {
-      label: "home",
-      href: "/",
-    },
-    {
-      label: "timeline",
-      href: "/#timeline",
-    },
-    {
-      label: "prizes",
-      href: "/#prizes",
-    },
-    {
-      label: "dashboard",
-      href: "/dashboard",
-    },
+    { label: "home", href: "/" },
+    { label: "timeline", href: "/#timeline" },
+    { label: "prizes", href: "/#prizes" },
+    { label: "dashboard", href: "/dashboard" },
   ];
 
   return (
@@ -82,10 +73,10 @@ export default function Navbar() {
             <div className="h-full min-w-fit w-40 border text-white flex flex-col items-center justify-center">
               <RegisterButton />
               <div
-                className="w-full text-center flex items-center justify-center h-full uppercase"
-                onClick={() => handleLogin()}
+                className="w-full text-center flex items-center justify-center h-full uppercase hover:cursor-pointer"
+                onClick={isLoggedIn ? logout : login}
               >
-                login
+                {isLoggedIn ? "logout" : "login"}
               </div>
             </div>
           </div>

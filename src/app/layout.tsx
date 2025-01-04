@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Provider from "@/lib/providers";
+import { AuthProvider } from "@/contexts/authContext";
 
 export const metadata: Metadata = {
   title: "Yantra Hack",
@@ -15,10 +16,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-monument overflow-x-hidden">
-        <Provider>
-          <div>{children}</div>
-          <div className="noise" />
-        </Provider>
+        <AuthProvider>
+          <Provider>
+            <div>{children}</div>
+            <div className="noise" />
+          </Provider>
+        </AuthProvider>
       </body>
     </html>
   );

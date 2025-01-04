@@ -16,7 +16,6 @@ const handleLogin = async () => {
     const idToken = await result.user.getIdToken();
     const user = result.user;
 
-    // Store the token in cookies
     Cookies.set("authToken", idToken, { expires: 7 }); // Expires in 7 days
   } catch (error: any) {
     const errorCode = error.code;
