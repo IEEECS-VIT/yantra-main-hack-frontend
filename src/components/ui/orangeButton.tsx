@@ -43,7 +43,7 @@ export default function LayeredButton({
 
   return (
     <div
-      className={`relative  px-6 py-3 bg-buttonBg text-white rounded-full cursor-pointer flex gap-4 ${className} md:w-[500px] w-[300px]`}
+      className={`relative  px-6 py-3 bg-buttonBg text-white rounded-full cursor-pointer flex gap-4 ${className} md:w-[500px] w-[300px] justify-center`}
 
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -51,7 +51,7 @@ export default function LayeredButton({
     >
       {layers}
       {/* Button content */}
-      <span className={`${textSize} tracking-wider relative md:text-lg text-[0.65rem]`}>{text}</span>
+      <span className={`${textSize} tracking-wider relative md:text-lg `}>{text}</span>
       <Image src="./buttonArrow.svg" width={40} height={20} alt="" />
     </div>
   );

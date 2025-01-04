@@ -3,6 +3,8 @@ import TeamMemberCard from "./TeamMemberCard";
 import Text from "@/components/hero/text";
 import { MoveUpRightIcon } from "lucide-react";
 import Navbar from "@/components/ui/navbar/navbar";
+import ProtectedRoute from "@/components/protectedRoutes";
+import DashboardSkeleton from "./dashboardSkeleton";
 
 const TEAM_DETAILS = [
   {
@@ -39,7 +41,7 @@ const TEAM_DETAILS = [
 
 export default function DashboardPage() {
   return (
-    <>
+    <ProtectedRoute skeletonComponent={<DashboardSkeleton />}>
       <Navbar />
 
       <main className="relative min-h-screen pt-20">
@@ -48,12 +50,12 @@ export default function DashboardPage() {
           <div className="absolute inset-0 bg-custom-gradient" />
           <div
             className="absolute inset-0 mix-blend-overlay opacity-25"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-              backgroundRepeat: "repeat",
-              width: "100%",
-              height: "100%",
-            }}
+            // style={{
+            //   backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            //   backgroundRepeat: "repeat",
+            //   width: "100%",
+            //   height: "100%",
+            // }}
           />
         </div>
 
@@ -103,6 +105,6 @@ export default function DashboardPage() {
           </MaxWidthWrapper>
         </div>
       </main>
-    </>
+    </ProtectedRoute>
   );
 }

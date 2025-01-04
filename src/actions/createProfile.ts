@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast";
 import { fetchWithAuth, handleApiResponse } from "@/lib/base";
 
 export async function createProfile(formData: FormData) {
@@ -13,12 +14,17 @@ export async function createProfile(formData: FormData) {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to create profile");
+      const errorData = await response.json();
+      const errorMessage = errorData.message || "Failed to create profile";
+
+      toast.error(errorMessage);
+      throw new Error(errorMessage);
     }
 
+    toast.success("Profile created successfully");
     return handleApiResponse(response);
   } catch (e) {
-    console.error("Error creating profile:", e);
+    toast.error(e instanceof Error ? e.message : "An unknown error occurred");
     return {
       data: null,
       errors: e instanceof Error ? e.message : "Unknown error occurred",

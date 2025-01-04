@@ -73,3 +73,30 @@ export async function handleApiResponse<T>(
 
   return { data, status: response.status };
 }
+
+
+export async function checkAuthToken(authToken?: string): Promise<boolean> {
+  if (!authToken) {
+    return false;
+  }
+
+  try {
+    const response = await fetchWithAuth("/login", { method: "GET" });
+    if (response.ok) {
+      return true;
+    }
+    // Handle specific response status codes
+    if (response.status === 401) {
+      console.log("Token expired. Redirecting to signin.");
+      return false;
+    } else if (response.status === 404) {
+      console.log("Token invalid or user not found.");
+      return false;
+    }
+  } catch (error) {
+    console.error("Error validating token:", error);
+    return false;
+  }
+
+  return false;
+}

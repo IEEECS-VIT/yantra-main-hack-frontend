@@ -27,8 +27,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   async function login(token: string) {
     // Set the authToken cookie with an expiration of 7 days
     Cookies.set("authToken", token, { expires: 7, path: "/" });
-    console.log("Logged in with token:", token);
-
     setIsLoggedIn(true);
   }
 

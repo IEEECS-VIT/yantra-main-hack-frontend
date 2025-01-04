@@ -7,13 +7,13 @@ export default function About() {
       heading: "WHAT IS YANTRA?",
       title: "WELCOME TO VIT’S BIGGEST AI HACKATHON",
       content:
-        "Yantra Hack is an annual hackathon organized by Vellore Institute of Technology (VIT) in Vellore, India. The event is part of a series of technical and cultural activities aimed at fostering innovation and collaboration among students.",
+        "Yantra Hack brings together participants from various disciplines to work on real-world challenges, encouraging creative problem-solving and teamwork. The event also provides a platform for networking, learning, and showcasing technical skills, helping students gain exposure to industry trends and cutting-edge technologies.",
     },
     {
       heading: "WHAT IS SDG?",
       title: "GLOBAL BLUEPRINT FOR SUSTAINABILTY",
       content:
-        "Sustainable Development Goals (SDGs) are a global blueprint for peace and prosperity for people and the planet. Let's collaborate to create solutions that address pressing global challenges and drive meaningful change.",
+        "The Sustainable Development Goals (SDGs), adopted by all United Nations Member States in 2015, represent a global framework to tackle the most pressing challenges facing our world. They aim to achieve peace and prosperity for people and the planet, while also fostering equality, sustainability, and resilience. The SDGs encompass a broad range of issues and emphasize interconnectedness across economic, social, and environmental dimensions.",
     },
   ];
 
