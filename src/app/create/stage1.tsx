@@ -2,6 +2,7 @@ import Heading from "@/components/creation/Heading";
 import Progressbar from "@/components/creation/Progressbar";
 import InputBox from "@/components/creation/InputBox";
 import { useState } from "react";
+import LayeredButton from "@/components/ui/orangeButton";
 
 export default function Stage1({ setStage }) {
   const [name, setName] = useState("");
@@ -13,6 +14,7 @@ export default function Stage1({ setStage }) {
   const [hostelBlock, setHostelBlock] = useState("");
   const [selectedBranch, setSelectedBranch] = useState("");
   const [selectedSchool, setSelectedSchool] = useState("");
+  const [isAgreed, setIsAgreed] = useState(false); // State for checkbox
 
   const mhBlocks = Array.from(
     { length: 20 },
@@ -49,7 +51,7 @@ export default function Stage1({ setStage }) {
   ];
 
   return (
-    <div className="my-10 px-6">
+    <div className="mt-10 px-6 ">
       <Heading text="CREATE YOUR ACCOUNT" />
       <Progressbar currentStep={1} />
       <h1 className="text-center text-white">
@@ -165,7 +167,7 @@ export default function Stage1({ setStage }) {
         <div className="relative w-full">
           <textarea
             className="bg-opacity-30 bg-white w-full p-4 border text-center text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent resize-none"
-            rows={4}
+            rows={2}
             placeholder="Past Achievements"
             value={achievements}
             onChange={(e) => setAchievements(e.target.value)}
@@ -177,10 +179,24 @@ export default function Stage1({ setStage }) {
             type="checkbox"
             id="agreement"
             className="w-4 h-4 rounded border-white/20"
+            checked={isAgreed}
+            onChange={(e) => setIsAgreed(e.target.checked)}
           />
           <label htmlFor="agreement" className="text-white ">
             I agree to follow the Yantra Code of Conduct
           </label>
+        </div>
+        <div className="flex justify-center mt-16 md:mt-10">
+          <div className="flex justify-center items-center space-x-2 w-[60vw] md:w-[15vw]">
+            <LayeredButton
+              text="SUBMIT"
+              enabled={isAgreed}
+              className={!isAgreed ? "opacity-50 cursor-not-allowed" : ""}
+              handleClick={() => {
+                console.log("okok");
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
