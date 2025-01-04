@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "@/lib/firebase/config";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import Cookies from "js-cookie";
 
 const handleLogin = async () => {
   const app = initializeApp(firebaseConfig);
@@ -13,9 +14,11 @@ const handleLogin = async () => {
   try {
     const result = await signInWithPopup(auth, provider);
     const idToken = await result.user.getIdToken();
-    console.log(idToken);
     const user = result.user;
-  } catch (error) {
+
+    // Store the token in cookies
+    Cookies.set("authToken", idToken, { expires: 7 }); // Expires in 7 days
+  } catch (error: any) {
     const errorCode = error.code;
     const errorMessage = error.message;
     const email = error.customData?.email;
