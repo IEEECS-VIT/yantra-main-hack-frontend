@@ -9,11 +9,15 @@ export default function LayeredButton({
   className = "",
   textSize = "text-lg",
   layerCount = 4, // Number of layers for the border effect
+  handleClick,
+  enabled = true,
 }: {
   text: string;
   className?: string;
   textSize?: string;
   layerCount?: number;
+  handleClick?: () => void;
+  enabled?: boolean;
 }) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -43,6 +47,7 @@ export default function LayeredButton({
       className={`relative  px-6 py-3 bg-buttonBg text-white rounded-full cursor-pointer flex gap-4 ${className} md:w-[500px] w-[350px]`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={() => enabled && handleClick && handleClick()}
     >
       {layers}
       {/* Button content */}
