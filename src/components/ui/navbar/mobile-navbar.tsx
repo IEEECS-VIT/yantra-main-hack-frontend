@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import handleLogin from "@/lib/firebaselogin";
 
 interface MobileNavbarProps {
   navItems: { label: string; href: string }[];
@@ -83,14 +84,20 @@ export default function MobileNavbar({ navItems }: MobileNavbarProps) {
               <Link
                 href=""
                 className="text-white uppercase text-center block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  handleLogin();
+                  setIsOpen(false);
+                }}
               >
                 register
               </Link>
               <Link
                 href=""
                 className="text-white uppercase text-center block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  handleLogin();
+                  setIsOpen(false);
+                }}
               >
                 login
               </Link>
