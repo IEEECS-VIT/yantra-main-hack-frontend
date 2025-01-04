@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main>
+    <main className="pt-20">
       <Hero />
       <Navbar />
       <div className="w-screen h-fit ">

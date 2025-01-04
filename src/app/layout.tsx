@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-monument overflow-x-hidden">
         <Provider>
-          <div className="pt-20">{children}</div>
+          <div>{children}</div>
           <div className="noise" />
         </Provider>
       </body>
