@@ -4,8 +4,28 @@ import Image from "next/image";
 import Text from "./text";
 import FloatImages from "./floatImages";
 import Button from "../ui/orangeButton";
+import handleLogin from "@/lib/firebaselogin";
+import { useAuth } from "@/contexts/authContext";
+import { fetchWithAuth, handleApiResponse } from "@/lib/base";
 
-export async function Hero() {
+export function Hero() {
+  const { isLoggedIn, login, logout } = useAuth();
+
+  async function handleClick() {
+    if (!isLoggedIn) {
+      const token = await handleLogin();
+      if (token) login(token);
+      const response = await fetchWithAuth("/login", { method: "GET" });
+      const res = await handleApiResponse(response);
+      if (res.status === 401) {
+        logout();
+      } else if (res.status === 404) {
+        window.location.href = "/create";
+      } else {
+        window.location.href = "/dashboard";
+      }
+    }
+  }
   return (
     <div className="flex flex-col items-center justify-between h-[110vh] bg-custom-gradient z-0 pt-[60px] text-white pb-6 overflow-hidden">
       <div className="flex flex-col items-center gap-4">
@@ -27,7 +47,10 @@ export async function Hero() {
             Join us Feb 7-8 for VIT&apos;s best and biggest tech hackathon!
           </p>
         </section>
-        <button className="px-10 py-7 bg-gradient-to-l from-[#A240A5] to-[#322A55] border border-white rounded-sm  text-sm md:w-[500px] w-[350px] mt-6">
+        <button
+          className="px-10 py-7 bg-gradient-to-l from-[#A240A5] to-[#322A55] border border-white rounded-sm  text-sm md:w-[500px] w-[350px] mt-6"
+          onClick={handleClick}
+        >
           Create Account to Begin
         </button>
         <p className="underline">Register Now!</p>
