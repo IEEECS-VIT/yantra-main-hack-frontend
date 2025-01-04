@@ -49,19 +49,19 @@ export default function Stage1({ setStage }) {
   ];
 
   return (
-    <div className="my-10 md:my-20">
+    <div className="my-10 px-6">
       <Heading text="CREATE YOUR ACCOUNT" />
-      <Progressbar currentStep={2} />
+      <Progressbar currentStep={1} />
       <h1 className="text-center text-white">
         *All the fields are mandatory to be filled
       </h1>
-      <div className="w-full max-w-4xl mx-auto p-6 space-y-2">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+      <div className="w-full max-w-4xl mx-auto p-6 space-y-4 md:space-y-2">
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-4 md:gap-16">
           <InputBox placeholder="Name" value={name} onChange={setName} />
           <InputBox placeholder="Reg Num" value={phone} onChange={setPhone} />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16">
           <InputBox placeholder="Phone Num" value={regNo} onChange={setRegNo} />
           <InputBox
             placeholder="Room Num"
@@ -70,7 +70,7 @@ export default function Stage1({ setStage }) {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16">
           <div className="relative w-full max-w-md">
             <select
               className="bg-opacity-30 bg-white w-full p-6 border text-center text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
@@ -118,7 +118,7 @@ export default function Stage1({ setStage }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16">
           <div className="relative w-full max-w-md">
             <select
               className="bg-opacity-30 bg-white w-full p-6 border text-center text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
