@@ -1,12 +1,12 @@
 import { Hero } from "@/components/hero/page";
 import Navbar from "@/components/ui/navbar/navbar";
 import Image from "next/image";
-import Timeline from "@/components/Timeline";
+import Timeline from "@/components/hero/Timeline";
 import About from "@/components/About";
 
 export default function Home() {
   return (
-    <main className="pt-20">
+    <main className="">
       <Hero />
       <Navbar />
       <div className="w-screen h-fit ">
@@ -18,8 +18,8 @@ export default function Home() {
           className="w-full"
         />
       </div>
-      <About/>
-      <Timeline/>
+      <About />
+      <Timeline />
     </main>
   );
 }

@@ -24,9 +24,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, []); // Only run this once on mount
 
-  async function login() {
+  async function login(token: string) {
     // Set the authToken cookie with an expiration of 7 days
-    await handleLogin();
+    Cookies.set("authToken", token, { expires: 7, path: "/" });
+    console.log("Logged in with token:", token);
+
     setIsLoggedIn(true);
   }
 

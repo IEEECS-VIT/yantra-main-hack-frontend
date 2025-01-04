@@ -2,12 +2,11 @@ import Image from "next/image";
 import Text from "./text";
 import FloatImages from "./floatImages";
 import Button from "../ui/orangeButton";
-import { motion } from "framer-motion";
 import ArrowComponent from "./arrow";
 
 export async function Hero() {
   return (
-    <div className="flex flex-col items-center justify-around sm:h-[110vh] h-screen bg-custom-gradient z-0 pt-[60px] text-white pb-6 overflow-hidden">
+    <div className="flex flex-col items-center justify-around sm:h-[120vh] h-[110vh] bg-custom-gradient z-0 pt-[110px] text-white pb-6 overflow-hidden">
       <div className="flex flex-col items-center gap-4">
         <Image
           src={"./logos/yantra.svg"}

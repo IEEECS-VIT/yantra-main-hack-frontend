@@ -1,7 +1,6 @@
 import React from "react";
-import Progressbar from "./creation/VerticalProgressBar";
-import Image from "next/image";
-import timelineImg from "@/../../public/timelineImg.svg";
+import Progressbar from "../creation/VerticalProgressBar";
+import RotatingImage from "./starThingy";
 
 const timelineDataLeft = [
   { heading: "REGISTER", date: "DATE" },
@@ -47,12 +46,7 @@ export default function Timeline() {
           <Progressbar timeline={timelineDataRight} />
         </div>
       </div>
-      <Image
-        alt="img"
-        src={timelineImg}
-        width={80}
-        className="absolute w-14 md:w-20 top-[50vh] md:top-[60vh] left-1 md:left-[2rem]"
-      />
+      <RotatingImage />
     </div>
   );
 }

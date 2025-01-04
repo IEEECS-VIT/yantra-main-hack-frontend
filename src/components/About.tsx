@@ -1,4 +1,5 @@
-import OrangeButton from '@/components/ui/orangeButton';
+import OrangeButton from "@/components/ui/orangeButton";
+import { CircularText } from "./hero/circularText";
 
 export default function About() {
   const aboutData = [
@@ -58,13 +59,21 @@ export default function About() {
                   <h2 className=" text-lg md:text-2xl mb-8 max-w-[20rem] md:max-w-[50rem]">
                     {timelineItem.title}
                   </h2>
-                  <p className="text-sm md:text-xl mb-6 md:mb-12 max-w-[20rem] md:max-w-[60rem] ">{timelineItem.content}</p>
-                  {index === 0 && <OrangeButton text="Explore Rules and FAQ" className='mb-8' />}
+                  <p className="text-sm md:text-xl mb-6 md:mb-12 max-w-[20rem] md:max-w-[60rem] ">
+                    {timelineItem.content}
+                  </p>
+                  {index === 0 && (
+                    <OrangeButton
+                      text="Explore Rules and FAQ"
+                      className="mb-8"
+                    />
+                  )}
                 </div>
               </div>
             </div>
           ))}
         </div>
+        <CircularText />
       </div>
     </section>
   );
