@@ -17,7 +17,7 @@ export default function About() {
   ];
 
   return (
-    <section className="p-0 md:p-16 bg-[#FFF8F8] min-h-screen flex">
+    <section className="p-0 md:p-16 bg-[#FFF8F8] min-h-screen flex justify-center pt-8">
       <div className="flex flex-col p-6 md:p-8">
         <div className="relative flex flex-col items-start h-[100%] ">
           {aboutData.map((timelineItem, index) => (

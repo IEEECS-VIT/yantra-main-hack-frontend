@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface Timeline {
   heading: string;
@@ -9,16 +9,14 @@ interface VerticalProgressbarProps {
   timeline: Timeline[];
 }
 
-const VerticalProgressbar: React.FC<VerticalProgressbarProps> = ({ timeline }) => {
+const VerticalProgressbar: React.FC<VerticalProgressbarProps> = ({
+  timeline,
+}) => {
   return (
     <div className="flex flex-col px-0 py-8 md:p-2">
       <div className="relative flex flex-col items-start h-[100%]">
         {timeline.map((timelineItem, index) => (
-          <div
-            key={index}
-            className="relative flex items-start last:mb-0"
-          >
-            
+          <div key={index} className="relative flex items-start last:mb-0">
             <div className="flex flex-col items-center">
               <div
                 className={`md:w-16 md:h-16 h-8 w-8 rounded-full border bg-transparent
@@ -29,7 +27,7 @@ const VerticalProgressbar: React.FC<VerticalProgressbarProps> = ({ timeline }) =
               </div>
 
               {index < timeline.length - 1 ? (
-                <div className="w-[2px] h-48 md:h-96 bg-main-orange" />
+                <div className="w-[2px] h-40 md:h-96 bg-main-orange" />
               ) : (
                 <div className="w-[2px] h-8 md:h-12 bg-main-orange" />
               )}
@@ -40,18 +38,21 @@ const VerticalProgressbar: React.FC<VerticalProgressbarProps> = ({ timeline }) =
                 {timelineItem.heading.split(" ").length === 1 ? (
                   <span className="text-black">{timelineItem.heading}</span>
                 ) : (
-                  timelineItem.heading.split(" ").map((word, index, arr) => (
+                  timelineItem.heading.split(" ").map((word, index, arr) =>
                     index === arr.length - 1 ? (
-                      <span key={index} className="text-orange-500 block">{word}</span>
+                      <span key={index} className="text-orange-500 block">
+                        {word}
+                      </span>
                     ) : (
                       <span key={index}>{word} </span>
                     )
-                  ))
+                  )
                 )}
               </h3>
-              <p className="text-gray-600 text-sm md:text-lg">{timelineItem.date}</p>
+              <p className="text-gray-600 text-sm md:text-lg">
+                {timelineItem.date}
+              </p>
             </div>
-
           </div>
         ))}
       </div>
