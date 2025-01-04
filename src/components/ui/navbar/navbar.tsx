@@ -6,15 +6,45 @@ import Link from "next/link";
 import RegisterButton from "./RegisterButton";
 import MobileNavbar from "./mobile-navbar";
 import { useAuth } from "@/contexts/authContext";
+import handleLogin from "@/lib/firebaselogin";
+import { fetchWithAuth, handleApiResponse } from "@/lib/base";
+import { useEffect } from "react";
 
 export default function Navbar() {
   const { isLoggedIn, login, logout } = useAuth();
-  
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchWithAuth("/login", { method: "GET" }).then(async (response) => {
+        const res = await handleApiResponse(response);
+        if (res.status === 401) {
+          logout();
+        }
+      });
+    }
+  }, []);
+
+  async function handleClick() {
+    if (!isLoggedIn) {
+      const token = await handleLogin();
+      if (token) login(token);
+      const response = await fetchWithAuth("/login", { method: "GET" });
+      const res = await handleApiResponse(response);
+      if (res.status === 401) {
+        logout();
+      } else if (res.status === 404) {
+        window.location.href = "/create";
+      } else {
+        window.location.href = "/dashboard";
+      }
+    }
+  }
+
   const NAV_ITEMS = [
     { label: "home", href: "/" },
     { label: "timeline", href: "/#timeline" },
     { label: "prizes", href: "/#prizes" },
-    { label: "dashboard", href: "/dashboard" },
+    ...(isLoggedIn ? [{ label: "dashboard", href: "/dashboard" }] : []),
   ];
 
   return (
@@ -71,10 +101,10 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="h-full min-w-fit w-40 border text-white flex flex-col items-center justify-center">
-              <RegisterButton />
+              {!isLoggedIn && <RegisterButton />}
               <div
                 className="w-full text-center flex items-center justify-center h-full uppercase hover:cursor-pointer"
-                onClick={isLoggedIn ? logout : login}
+                onClick={isLoggedIn ? logout : handleClick}
               >
                 {isLoggedIn ? "logout" : "login"}
               </div>

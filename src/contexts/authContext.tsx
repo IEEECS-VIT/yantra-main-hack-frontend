@@ -1,4 +1,3 @@
-// context/AuthContext.tsx
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
@@ -6,7 +5,7 @@ import Cookies from "js-cookie";
 
 interface AuthContextProps {
   isLoggedIn: boolean;
-  login: () => void;
+  login: (token: string) => void;
   logout: () => void;
 }
 
@@ -15,24 +14,17 @@ const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Read the authToken from the cookie on initial load to persist the state
   useEffect(() => {
     const authToken = Cookies.get("authToken");
-    if (authToken) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-  }, []); // Only run this once on mount
+    setIsLoggedIn(!!authToken);
+  }, []);
 
-  const login = () => {
-    // Set the authToken cookie with an expiration of 7 days
-    Cookies.set("authToken", "your-auth-token", { expires: 7, path: "/" });
+  const login = (token: string) => {
+    Cookies.set("authToken", token, { expires: 7, path: "/" });
     setIsLoggedIn(true);
   };
 
   const logout = () => {
-    // Remove the authToken cookie
     Cookies.remove("authToken", { path: "/" });
     setIsLoggedIn(false);
   };

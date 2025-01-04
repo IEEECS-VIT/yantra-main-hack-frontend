@@ -1,7 +1,6 @@
 import { Hero } from "@/components/hero/page";
 import Navbar from "@/components/ui/navbar/navbar";
 import Image from "next/image";
-import { AuthProvider } from "@/contexts/authContext";
 
 export default function Home() {
   return (
