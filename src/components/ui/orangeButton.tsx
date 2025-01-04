@@ -8,7 +8,7 @@ export default function LayeredButton({
   text,
   className = "",
   textSize = "text-lg",
-  layerCount = 4, // Number of layers for the border effect
+  layerCount = 4,
   handleClick,
   enabled = true,
 }: {
@@ -20,7 +20,6 @@ export default function LayeredButton({
   enabled?: boolean;
 }) {
   const [isHovered, setIsHovered] = useState(false);
-
   const layers = Array.from({ length: layerCount }, (_, index) => {
     const offset = (index + 1) * 3; // Spacing between each layer
 
@@ -44,14 +43,16 @@ export default function LayeredButton({
 
   return (
     <div
-      className={`relative  px-6 py-3 bg-buttonBg text-white rounded-full cursor-pointer flex gap-4 ${className} md:w-[500px] w-[350px]`}
+      className={`relative   px-6 py-3 bg-buttonBg text-white rounded-full  flex gap-4 max-w-[450px] w-fit ${className} ${!enabled ? "cursor-not-allowed" : "cursor-pointer"} `}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => enabled && handleClick && handleClick()}
     >
       {layers}
       {/* Button content */}
-      <span className={`${textSize} tracking-wider relative `}>{text}</span>
+      <span className={`${textSize} tracking-wider relative text-nowrap`}>
+        {text}
+      </span>
       <Image src="./buttonArrow.svg" width={40} height={20} alt="" />
     </div>
   );
