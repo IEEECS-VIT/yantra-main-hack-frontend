@@ -22,13 +22,17 @@ export default function Stage3({ setStage, teamSize = 4 }) {
     <div className="my-10 px-6">
       <Heading text="CREATE YOUR TEAM" />
       <Progressbar currentStep={3} />
+      <h1 className="text-white text-2xl text-center">
+        {" "}
+        Team size {teamSize} selected
+      </h1>
 
       <ol className="relative border-s border-white mt-10">
         {Array.from({ length: teamSize }, (_, i) => i + 1).map(
           (position, index) => (
             <li
               key={position}
-              className={`mb-10 ms-6 ${index === teamSize - 1 ? "border-0" : ""}`}
+              className={`mb-8 ms-6 ${index === teamSize - 1 ? "border-0" : ""}`}
             >
               <span className="absolute flex items-center justify-center w-6 h-6 bg-main-orange rounded-full -start-3 ">
                 <span className="text-white text-sm font-bold">{position}</span>
