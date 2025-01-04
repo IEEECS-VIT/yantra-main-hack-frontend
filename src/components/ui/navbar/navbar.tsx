@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import RegisterButton from "./RegisterButton";
@@ -28,7 +30,6 @@ export default function Navbar() {
       <nav className="fixed top-0 left-0 right-0 hidden lg:flex h-[100px] items-center justify-around border border-white overflow-hidden font-monument z-50">
         <div className="absolute inset-0 z-0 h-full">
           <div className="absolute inset-0 bg-gradient-to-r from-[#321335] via-[#8B6BE5] to-[#40295C]" />
-
           <div
             className="absolute inset-0 mix-blend-overlay opacity-50 h-full"
             style={{
@@ -40,7 +41,6 @@ export default function Navbar() {
           />
         </div>
 
-        {/* Content with higher z-index */}
         <div className="relative z-10 flex w-full items-center justify-around h-full">
           <div className="flex items-center h-full">
             <Link

@@ -5,6 +5,9 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from "@/lib/firebase/config";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 interface MobileNavbarProps {
   navItems: { label: string; href: string }[];
@@ -12,6 +15,30 @@ interface MobileNavbarProps {
 
 export default function MobileNavbar({ navItems }: MobileNavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleLogin = async () => {
+    const app = initializeApp(firebaseConfig);
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({
+      hd: "vitstudent.ac.in",
+      prompt: "select_account",
+    });
+    const auth = getAuth();
+
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+      // Handle successful login
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.customData?.email;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // Handle errors
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-[#321335] via-[#8B6BE5] to-[#40295C] z-50 lg:hidden">
@@ -83,14 +110,20 @@ export default function MobileNavbar({ navItems }: MobileNavbarProps) {
               <Link
                 href=""
                 className="text-white uppercase text-center block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  handleLogin();
+                  setIsOpen(false);
+                }}
               >
                 register
               </Link>
               <Link
                 href=""
                 className="text-white uppercase text-center block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  handleLogin();
+                  setIsOpen(false);
+                }}
               >
                 login
               </Link>
