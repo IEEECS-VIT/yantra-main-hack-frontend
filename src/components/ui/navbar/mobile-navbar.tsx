@@ -24,19 +24,16 @@ export default function MobileNavbar({ navItems }: MobileNavbarProps) {
       prompt: "select_account",
     });
     const auth = getAuth();
-
     try {
       const result = await signInWithPopup(auth, provider);
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
+      const idToken = await result.user.getIdToken();
+      console.log(idToken);
       const user = result.user;
-      // Handle successful login
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
       const email = error.customData?.email;
       const credential = GoogleAuthProvider.credentialFromError(error);
-      // Handle errors
     }
   };
 
