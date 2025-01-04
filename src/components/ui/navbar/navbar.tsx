@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import RegisterButton from "./RegisterButton";
 import MobileNavbar from "./mobile-navbar";
+import handleLogin from "@/lib/firebaselogin";
 
 export default function Navbar() {
   const NAV_ITEMS = [
@@ -80,12 +81,12 @@ export default function Navbar() {
             ))}
             <div className="h-full min-w-fit w-40 border text-white flex flex-col items-center justify-center">
               <RegisterButton />
-              <Link
+              <div
                 className="w-full text-center flex items-center justify-center h-full uppercase"
-                href=""
+                onClick={() => handleLogin()}
               >
                 login
-              </Link>
+              </div>
             </div>
           </div>
         </div>

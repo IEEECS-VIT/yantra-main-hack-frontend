@@ -5,9 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
-import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "@/lib/firebase/config";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import handleLogin from "@/lib/firebaselogin";
 
 interface MobileNavbarProps {
   navItems: { label: string; href: string }[];
@@ -15,27 +13,6 @@ interface MobileNavbarProps {
 
 export default function MobileNavbar({ navItems }: MobileNavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleLogin = async () => {
-    const app = initializeApp(firebaseConfig);
-    const provider = new GoogleAuthProvider();
-    provider.setCustomParameters({
-      hd: "vitstudent.ac.in",
-      prompt: "select_account",
-    });
-    const auth = getAuth();
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const idToken = await result.user.getIdToken();
-      console.log(idToken);
-      const user = result.user;
-    } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.customData?.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
-    }
-  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-[#321335] via-[#8B6BE5] to-[#40295C] z-50 lg:hidden">
