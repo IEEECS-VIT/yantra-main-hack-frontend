@@ -13,7 +13,7 @@ export default function TeamMemberCard({
   role,
 }: TeamMemberCardProps) {
   return (
-    <div className="bg-white w-56 h-64 backdrop-blur-md bg-opacity-20 relative flex items-center flex-col justify-center">
+    <div className="bg-white w-56 h-64 backdrop-blur-md bg-opacity-20 relative flex items-center flex-col justify-center border border-white">
       <div className="absolute right-3 top-0 bg-white size-8 flex items-center justify-center -translate-y-1/4    ">
         {idx}
       </div>
