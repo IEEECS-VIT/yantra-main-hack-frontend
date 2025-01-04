@@ -1,6 +1,8 @@
 import { Hero } from "@/components/hero/page";
 import Navbar from "@/components/ui/navbar/navbar";
 import Image from "next/image";
+import Timeline from "@/components/Timeline";
+import About from "@/components/About";
 
 export default function Home() {
   return (
@@ -16,6 +18,8 @@ export default function Home() {
           className="w-full"
         />
       </div>
+      <About/>
+      <Timeline/>
     </main>
   );
 }

@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import handleLogin from "@/lib/firebaselogin";
 
 interface AuthContextProps {
   isLoggedIn: boolean;
@@ -16,13 +17,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const authToken = Cookies.get("authToken");
-    setIsLoggedIn(!!authToken);
-  }, []);
+    if (authToken) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []); // Only run this once on mount
 
-  const login = (token: string) => {
-    Cookies.set("authToken", token, { expires: 7, path: "/" });
+  async function login() {
+    // Set the authToken cookie with an expiration of 7 days
+    await handleLogin();
     setIsLoggedIn(true);
-  };
+  }
 
   const logout = () => {
     Cookies.remove("authToken", { path: "/" });

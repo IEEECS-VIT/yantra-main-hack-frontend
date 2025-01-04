@@ -1,12 +1,15 @@
-"use client";
-
 import Image from "next/image";
 import Text from "./text";
 import FloatImages from "./floatImages";
 import Button from "../ui/orangeButton";
+<<<<<<< HEAD
 import handleLogin from "@/lib/firebaselogin";
 import { useAuth } from "@/contexts/authContext";
 import { fetchWithAuth, handleApiResponse } from "@/lib/base";
+=======
+import { motion } from "framer-motion";
+import ArrowComponent from "./arrow";
+>>>>>>> 2d533f44e81cb065e401b951dc8c9d7712738378
 
 export function Hero() {
   const { isLoggedIn, login, logout } = useAuth();
@@ -27,7 +30,7 @@ export function Hero() {
     }
   }
   return (
-    <div className="flex flex-col items-center justify-between h-[110vh] bg-custom-gradient z-0 pt-[60px] text-white pb-6 overflow-hidden">
+    <div className="flex flex-col items-center justify-around sm:h-[110vh] h-screen bg-custom-gradient z-0 pt-[60px] text-white pb-6 overflow-hidden">
       <div className="flex flex-col items-center gap-4">
         <Image
           src={"./logos/yantra.svg"}
@@ -55,8 +58,14 @@ export function Hero() {
         </button>
         <p className="underline">Register Now!</p>
       </div>
-      <Button text="Previous year highlights!" />
+
       <FloatImages />
+
+      <ArrowComponent />
+
+      <div className="absolute left-[2%] top-[110vh]">
+        <Button text="Previous year highlights!" className="md:flex hidden" />
+      </div>
     </div>
   );
 }

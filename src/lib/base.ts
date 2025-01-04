@@ -1,3 +1,5 @@
+"use client";
+
 import Cookies from "js-cookie";
 
 export type ApiResponse<T> = {
@@ -11,11 +13,19 @@ export async function fetchWithAuth(
   options: RequestInit = {},
   fileUpload: boolean = false
 ): Promise<Response> {
-  const authToken = Cookies.get("authToken");
+  // Conditionally retrieve cookies depending on the environment
+  const isBrowser = typeof window !== "undefined";
+  const authToken = isBrowser ? Cookies.get("authToken") : undefined;
+
+  // Log cookies only in the browser environment
+  if (isBrowser) {
+    console.log("Browser cookies:", document.cookie);
+  }
+
   const headers = new Headers(options.headers);
 
   if (!authToken) {
-    alert("You need to be logged in to perform this action");
+    console.log("You need to be logged in to perform this action");
   }
 
   if (authToken) {
