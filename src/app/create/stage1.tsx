@@ -4,9 +4,11 @@ import InputBox from "@/components/creation/InputBox";
 import { useState } from "react";
 import LayeredButton from "@/components/ui/orangeButton";
 import { createProfile } from "@/actions/createProfile";
+import { useRouter } from "next/navigation";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function Stage1({ setStage }: { setStage: unknown }) {
+export default function Stage1() {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [regNo, setRegNo] = useState("");
@@ -116,11 +118,11 @@ export default function Stage1({ setStage }: { setStage: unknown }) {
     formData.append("branch", selectedBranch);
     formData.append("school", selectedSchool);
 
-    const response = await createProfile(formData);
+    const response = await createProfile(formData, router);
     // if (response.status === 200) {
     //   setStage(2);
     // }
-    console.log(response);
+    // console.log(response);
   }
 
   const handleRegNoChange = (value: string) => {
