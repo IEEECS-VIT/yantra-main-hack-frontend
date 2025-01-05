@@ -1,11 +1,45 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Provider from "@/lib/providers";
+import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/contexts/authContext";
 
 export const metadata: Metadata = {
   title: "Yantra Hack",
   description: "VIT Central Hack",
+};
+
+const toastOptions = {
+  className: "font-monument border border-black text-lg sm:text-xl opacity-50",
+  duration: 3000,
+  style: {
+    background: "#fff",
+    color: "#E7643B",
+    padding: "12px",
+    borderRadius: "8px",
+    maxWidth: "90%", // Ensure it doesn't exceed screen width on smaller devices
+    fontSize: "1rem", // Base size for text
+  },
+  success: {
+    duration: 3000,
+    theme: {
+      primary: "#fff",
+      secondary: "#E7643B",
+    },
+    style: {
+      fontSize: "0.875rem", // Slightly smaller font for smaller devices
+    },
+  },
+  error: {
+    duration: 3000,
+    theme: {
+      primary: "#fff",
+      secondary: "#E7643B",
+    },
+    style: {
+      fontSize: "0.875rem", // Matches success style
+    },
+  },
 };
 
 export default function RootLayout({
@@ -22,6 +56,7 @@ export default function RootLayout({
             <div className="noise" />
           </Provider>
         </AuthProvider>
+        <Toaster position="top-right" toastOptions={toastOptions} />
       </body>
     </html>
   );
