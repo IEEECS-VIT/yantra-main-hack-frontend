@@ -11,6 +11,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import FileUpload from "./FileUpload";
 import { submitFile } from "./actions";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 
 const tracksList = [
   {

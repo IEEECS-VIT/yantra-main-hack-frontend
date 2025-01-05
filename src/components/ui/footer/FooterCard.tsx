@@ -107,7 +107,7 @@ const FooterCard = () => {
                   href="/"
                   className="block hover:text-blue-200 transition-colors"
                 >
-                  director.sw@vit.ac.in
+                  yantra.sw@vit.ac.in
                 </Link>
                 <p>MB-102</p>
               </div>
