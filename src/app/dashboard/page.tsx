@@ -3,9 +3,9 @@ import Text from "@/components/hero/text";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProtectedRoute from "@/components/protectedRoutes";
 import Navbar from "@/components/ui/navbar/navbar";
-import { Loader2, MoveUpRightIcon } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { getTeamDetails } from "./actions";
+import { getTeamDetails, TeamResponseData } from "./actions";
 import LeaveTeamDialog from "./LeaveTeamDialog";
 import TaskSubmmisionDialog from "./TaskSubmmisionDialog";
 import TeamMemberCard from "./TeamMemberCard";
@@ -16,12 +16,17 @@ export default function DashboardPage() {
   const [showLeaveTeamAlert, setShowLeaveTeamAlert] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+<<<<<<< HEAD
   const [teamDetails, setTeamDetails] = useState<any>(null);
   const router = useRouter();
+=======
+  const [teamDetails, setTeamDetails] = useState<TeamResponseData | null>(null);
+>>>>>>> 46c3c04bd47b9f5843d502f3f6e38e0af3f82784
 
   useEffect(() => {
     const fetchTeamDetails = async () => {
       setLoading(true);
+<<<<<<< HEAD
       try {
         const { data, errors } = await getTeamDetails();
 
@@ -47,11 +52,23 @@ export default function DashboardPage() {
         setError(err instanceof Error ? err.message : "An error occurred");
       } finally {
         setLoading(false);
+=======
+      const response = await getTeamDetails();
+      console.log(response.data);
+      if (response.success && response.data) {
+        setTeamDetails(response.data);
+      } else {
+        setError(response.errors || "An unknown error occurred.");
+>>>>>>> 46c3c04bd47b9f5843d502f3f6e38e0af3f82784
       }
     };
 
     fetchTeamDetails();
+<<<<<<< HEAD
   }, [router]);
+=======
+  }, []);
+>>>>>>> 46c3c04bd47b9f5843d502f3f6e38e0af3f82784
 
   return (
     <>
@@ -85,11 +102,6 @@ export default function DashboardPage() {
                   your team mates
                 </p>
               </div>
-              {error && (
-                <div className="flex flex-col justify-center items-center h-96">
-                  <h1 className="text-center text-white text-xl">{error}</h1>
-                </div>
-              )}
               {loading && (
                 <div className="flex justify-center items-center h-96">
                   <Loader2 className="size-8 animate-spin text-white mr-2" />
@@ -98,6 +110,7 @@ export default function DashboardPage() {
                   </h1>
                 </div>
               )}
+<<<<<<< HEAD
               {teamDetails && (
                 <>
                   <div className="flex justify-center md:justify-end">
@@ -137,6 +150,29 @@ export default function DashboardPage() {
                     </button>
                   </div>
                 </>
+=======
+              {teamDetails &&
+              teamDetails.members &&
+              teamDetails.members.length > 0 ? (
+                <div className="flex gap-8 flex-wrap justify-center py-8">
+                  {teamDetails.members.map((member, idx) => (
+                    <TeamMemberCard
+                      key={idx}
+                      name={member.name}
+                      idx={idx + 1}
+                      role={member.isLeader ? "Leader" : "Member"}
+                      registrationNumber={member.regNo}
+                      branch={member.branch}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="flex justify-center items-center h-96 text-center">
+                  <h1 className="text-white text-lg">
+                    No team members found. Create or join a team.
+                  </h1>
+                </div>
+>>>>>>> 46c3c04bd47b9f5843d502f3f6e38e0af3f82784
               )}
             </MaxWidthWrapper>
           </div>

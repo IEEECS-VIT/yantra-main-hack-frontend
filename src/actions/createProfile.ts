@@ -1,7 +1,11 @@
 import { toast } from "react-hot-toast";
 import { fetchWithAuth, handleApiResponse } from "@/lib/base";
+import { useRouter } from "next/navigation";
 
-export async function createProfile(formData: FormData) {
+export async function createProfile(
+  formData: FormData,
+  router: ReturnType<typeof useRouter>
+) {
   try {
     const rawObject: Record<string, unknown> = {};
     formData.forEach((value, key) => {
@@ -22,6 +26,7 @@ export async function createProfile(formData: FormData) {
     }
 
     toast.success("Profile created successfully");
+    router.push("/dashboard"); // Use router to navigate
     return handleApiResponse(response);
   } catch (e) {
     toast.error(e instanceof Error ? e.message : "An unknown error occurred");

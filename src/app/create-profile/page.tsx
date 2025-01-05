@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 import Stage1 from "./stage1";
 import Stage2 from "../create-team/stage2";
 import Stage3 from "./stage3";

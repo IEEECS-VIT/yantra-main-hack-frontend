@@ -19,7 +19,7 @@ export async function fetchWithAuth(
 
   // Log cookies only in the browser environment
   if (isBrowser) {
-    console.log("Browser cookies:", document.cookie);
+    // console.log("Browser cookies:", document.cookie);
   }
 
   const headers = new Headers(options.headers);
@@ -74,15 +74,17 @@ export async function handleApiResponse<T>(
   return { data, status: response.status };
 }
 
-export async function checkAuthToken(authToken?: string): Promise<number> {
+export async function checkAuthToken(
+  authToken?: string
+): Promise<number | boolean> {
   if (!authToken) {
-    return 1;
+    return true;
   }
 
   try {
     const response = await fetchWithAuth("/login", { method: "GET" });
     if (response.ok) {
-      return 0;
+      return false;
     }
     // Handle specific response status codes
     if (response.status === 401) {

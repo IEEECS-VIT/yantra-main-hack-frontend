@@ -4,9 +4,15 @@ import InputBox from "@/components/creation/InputBox";
 import { useState } from "react";
 import LayeredButton from "@/components/ui/orangeButton";
 import { createProfile } from "@/actions/createProfile";
+import { useRouter } from "next/navigation";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+<<<<<<< HEAD:src/app/create-profile/stage1.tsx
 export default function Stage1({ setStage }: { setStage: any }) {
+=======
+export default function Stage1() {
+  const router = useRouter();
+>>>>>>> 46c3c04bd47b9f5843d502f3f6e38e0af3f82784:src/app/create/stage1.tsx
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [regNo, setRegNo] = useState("");
@@ -116,11 +122,19 @@ export default function Stage1({ setStage }: { setStage: any }) {
     formData.append("branch", selectedBranch);
     formData.append("school", selectedSchool);
 
+<<<<<<< HEAD:src/app/create-profile/stage1.tsx
     const response = await createProfile(formData);
     if (response.status === 200) {
       window.location.href = "/";
     }
     console.log(response);
+=======
+    const response = await createProfile(formData, router);
+    // if (response.status === 200) {
+    //   setStage(2);
+    // }
+    // console.log(response);
+>>>>>>> 46c3c04bd47b9f5843d502f3f6e38e0af3f82784:src/app/create/stage1.tsx
   }
 
   const handleRegNoChange = (value: string) => {
