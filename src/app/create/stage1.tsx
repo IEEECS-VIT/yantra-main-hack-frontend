@@ -5,7 +5,8 @@ import { useState } from "react";
 import LayeredButton from "@/components/ui/orangeButton";
 import { createProfile } from "@/actions/createProfile";
 
-export default function Stage1({ setStage }: { setStage: any }) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function Stage1({ setStage }: { setStage: unknown }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [regNo, setRegNo] = useState("");
@@ -49,7 +50,7 @@ export default function Stage1({ setStage }: { setStage: any }) {
     "B.Sc. in Hospitality and Hotel Administration",
     "B.Sc. (Hons.) Agriculture",
     "B.Sc. Multimedia & Animation",
-    "B.Sc. Visual Communication"
+    "B.Sc. Visual Communication",
   ];
 
   const schools = [
@@ -69,7 +70,7 @@ export default function Stage1({ setStage }: { setStage: any }) {
     "VIT Business School (VIT BS)",
     "VIT School of Design (V-SIGN)",
     "VIT School of Media, Arts and Technology (V-SMART)",
-    "School of Architecture (V-SPARC)"
+    "School of Architecture (V-SPARC)",
   ];
 
   const validateRegNo = (value: string) =>
@@ -116,6 +117,9 @@ export default function Stage1({ setStage }: { setStage: any }) {
     formData.append("school", selectedSchool);
 
     const response = await createProfile(formData);
+    // if (response.status === 200) {
+    //   setStage(2);
+    // }
     console.log(response);
   }
 
@@ -168,7 +172,7 @@ export default function Stage1({ setStage }: { setStage: any }) {
                 Hostel Type
               </option>
               <option value="MH" className="text-main-orange">
-                Men's Hostel
+                Mens Hostel
               </option>
               <option value="LH" className="text-main-orange">
                 Ladies Hostel

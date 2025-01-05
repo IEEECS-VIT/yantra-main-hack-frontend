@@ -22,7 +22,7 @@ export default function Navbar() {
         }
       });
     }
-  }, []);
+  });
 
   async function handleClick() {
     if (!isLoggedIn) {

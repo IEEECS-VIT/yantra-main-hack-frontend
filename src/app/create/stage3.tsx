@@ -5,9 +5,11 @@ import LayeredButton from "@/components/ui/orangeButton";
 import InputBox from "@/components/creation/InputBox";
 
 export default function Stage3({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setStage,
   teamSize = 4,
 }: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setStage: any;
   teamSize: number;
 }) {

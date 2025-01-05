@@ -43,6 +43,7 @@ export default function About() {
 const TimelineItem = ({
   data,
   index,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   isLast,
 }: {
   data: { heading: string; title: string; content: string };

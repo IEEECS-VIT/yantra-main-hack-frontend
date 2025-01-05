@@ -24,6 +24,7 @@ export default function LeaveTeamDialog({
   const [loading, setLoading] = useState(false);
   const handleLeaveTeam = async () => {
     setLoading(true);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { status, errors } = await leaveTeam();
     if (status == 200) {
       setLoading(false);

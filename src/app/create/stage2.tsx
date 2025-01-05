@@ -3,7 +3,7 @@ import Heading from "@/components/creation/Heading";
 import Progressbar from "@/components/creation/Progressbar";
 import LayeredButton from "@/components/ui/orangeButton";
 import InputBox from "@/components/creation/InputBox";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 export default function Stage2({
   setStage,

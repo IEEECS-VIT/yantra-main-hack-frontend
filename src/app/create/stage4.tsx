@@ -3,7 +3,12 @@ import Heading from "@/components/creation/Heading";
 import Progressbar from "@/components/creation/Progressbar";
 import LayeredButton from "@/components/ui/orangeButton";
 
-export default function Stage4({ setStage, teamSize = 4 }) {
+type Stage4Props = {
+  setStage: (stage: number) => void; // Explicitly define the type for 'setStage'
+  teamSize?: number; // Optional property for 'teamSize'
+};
+
+export default function Stage4({ setStage, teamSize = 4 }: Stage4Props) {
   const [teamName, setTeamName] = useState("");
 
   return (

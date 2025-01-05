@@ -2,7 +2,6 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import handleLogin from "@/lib/firebaselogin";
 
 interface AuthContextProps {
   isLoggedIn: boolean;

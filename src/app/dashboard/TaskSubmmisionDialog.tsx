@@ -35,6 +35,7 @@ export default function TaskSubmmisionDialog({
   setOpen,
 }: TaskSubmmisionDialogProps) {
   const [searchQuery, setSearchQuery] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedTrack, setSelectedTrack] = useState<any>(null);
   const [files, setFiles] = useState<File[] | null>(null);
   const showSubmitButton = files && files.length > 0 && selectedTrack;

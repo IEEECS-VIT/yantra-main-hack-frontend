@@ -3,7 +3,7 @@ import { fetchWithAuth, handleApiResponse } from "@/lib/base";
 
 export async function createProfile(formData: FormData) {
   try {
-    const rawObject: Record<string, any> = {};
+    const rawObject: Record<string, unknown> = {};
     formData.forEach((value, key) => {
       rawObject[key] = value;
     });

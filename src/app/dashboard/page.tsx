@@ -13,8 +13,8 @@ import TeamMemberCard from "./TeamMemberCard";
 export default function DashboardPage() {
   const [showDialog, setShowDialog] = useState(false);
   const [showLeaveTeamAlert, setShowLeaveTeamAlert] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<any>(null);
+  const [loading, setLoading] = useState(true); // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [error, setError] = useState<any>(null); // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [teamDetails, setTeamDetails] = useState<any>(null);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function DashboardPage() {
       const { data, errors, status } = await getTeamDetails();
       console.log(data, errors, status);
       if (status === 200) {
-        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         setTeamDetails(data.data.members);
       } else {
         setError(errors);
@@ -100,7 +100,7 @@ export default function DashboardPage() {
                   </div>
 
                   <div className="flex gap-8 flex-wrap justify-center py-8">
-                    {teamDetails.map((member: any, idx: number) => (
+                    {teamDetails.map((member: unknown, idx: number) => (
                       <TeamMemberCard
                         key={idx}
                         name={member.name}

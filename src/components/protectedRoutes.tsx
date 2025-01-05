@@ -55,11 +55,11 @@ export default function ProtectedRoute({
       const isValidToken = await checkAuthToken(authToken);
 
       // If token is valid and trying to access a public route, redirect to dashboard
-      if (isValidToken) {
+      if (isValidToken === 0) {
         if (isPublicRoute) {
           setTimeout(() => router.push("/dashboard"), 1000); // Redirect to dashboard if logged in
         }
-      } else {
+      } else if (isValidToken === 1) {
         toast.promise(
           new Promise<void>((_, reject) =>
             reject("Session expired, please sign in again")
@@ -70,6 +70,8 @@ export default function ProtectedRoute({
           }
         );
         setTimeout(() => router.push("/"), 1000); // Redirect to login page on session expiry
+      } else {
+        //let them be on route
       }
 
       // Mark loading as done after auth check
