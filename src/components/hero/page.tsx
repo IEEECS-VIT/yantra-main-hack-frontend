@@ -17,10 +17,10 @@ export async function Hero() {
         />
         <Text text="Yantra Hack" animation={true} />
       </div>
-      <div className="text-center flex gap-6 flex-col items-center mb-4">
+      <div className="text-center flex gap-6 flex-col items-center m-4">
         <section>
           <p className="font-monument md:text-5xl text-3xl">
-            A SDG Hack With AI
+            An AI For SDG Hack.
           </p>
           <p className="md:text-xl text-sm">
             Join us Feb 7-8 for VIT&apos;s best and biggest tech hackathon!

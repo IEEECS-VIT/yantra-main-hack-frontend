@@ -42,8 +42,8 @@ export default function Navbar() {
 
   const NAV_ITEMS = [
     { label: "home", href: "/" },
+    { label: "about", href: "/#about" },
     { label: "timeline", href: "/#timeline" },
-    { label: "prizes", href: "/#prizes" },
     ...(isLoggedIn ? [{ label: "dashboard", href: "/dashboard" }] : []),
   ];
 

@@ -21,7 +21,10 @@ const mobileTimelineData = [
 
 export default function Timeline() {
   return (
-    <div className="min-h-screen p-4 bg-[#FFF8F8] relative flex flex-col items-center md:pt-[100px] pt-0">
+    <div
+      className="min-h-screen p-4 bg-[#FFF8F8] relative flex flex-col items-center md:pt-[100px] pt-0"
+      id="timeline"
+    >
       <div className="relative w-full flex items-center  mb-12">
         {/* Foreground outlined text */}
         <h1

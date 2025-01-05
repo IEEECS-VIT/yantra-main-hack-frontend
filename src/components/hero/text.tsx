@@ -16,21 +16,26 @@ export default function Text({
 }) {
   const [offsets, setOffsets] = useState({ x: 8, y: 8 });
   const [isAnimationEnabled, setIsAnimationEnabled] = useState(animation);
+  const [currentLayerCount, setCurrentLayerCount] = useState(layerCount);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
 
     const handleMediaChange = (event: MediaQueryListEvent) => {
-      setIsAnimationEnabled(event.matches && animation);
+      const isLargeScreen = event.matches;
+      setIsAnimationEnabled(isLargeScreen && animation);
+      setCurrentLayerCount(isLargeScreen ? layerCount : 3);
     };
 
     // Set initial state based on screen size
-    setIsAnimationEnabled(mediaQuery.matches && animation);
+    const isLargeScreen = mediaQuery.matches;
+    setIsAnimationEnabled(isLargeScreen && animation);
+    setCurrentLayerCount(isLargeScreen ? layerCount : 3);
 
     // Add listener for changes in screen size
     mediaQuery.addEventListener("change", handleMediaChange);
     return () => mediaQuery.removeEventListener("change", handleMediaChange);
-  }, [animation]);
+  }, [animation, layerCount]);
 
   useEffect(() => {
     if (!isAnimationEnabled) {
@@ -49,14 +54,16 @@ export default function Text({
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [isAnimationEnabled]);
 
-  const layers = Array.from({ length: layerCount }, (_, index) => {
+  const layers = Array.from({ length: currentLayerCount }, (_, index) => {
     const intensity = 1 - index * 0.1;
     const transformOffset = (index + 1) * 0.7;
 
     return (
       <h1
         key={index}
-        className={`absolute ${textSize ? textSize : "lg:text-9xl md:text-8xl text-6xl"} text-transparent font-monument tracking-wide`}
+        className={`absolute ${
+          textSize ? textSize : "lg:text-9xl md:text-8xl text-6xl"
+        } text-transparent font-monument tracking-wide`}
         style={{
           WebkitTextStroke: `1px rgba(255, 255, 255, ${intensity})`,
           opacity: 0.7 * intensity,
@@ -75,7 +82,9 @@ export default function Text({
     <div className="relative text-center">
       {layers}
       <h1
-        className={`${textSize ? textSize : "lg:text-9xl md:text-8xl text-6xl"} font-extrabold text-white font-monument tracking-wide ${className}`}
+        className={`${
+          textSize ? textSize : "lg:text-9xl md:text-8xl text-6xl"
+        } font-extrabold text-white font-monument tracking-wide ${className}`}
         style={{
           zIndex: 1,
           position: "relative",

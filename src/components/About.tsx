@@ -104,7 +104,11 @@ const TimelineItem = ({
   };
 
   return (
-    <div ref={itemRef} className="relative flex items-start last:mb-0">
+    <div
+      ref={itemRef}
+      className="relative flex items-start last:mb-0"
+      id="about"
+    >
       <div className="flex flex-col items-center h-full">
         <motion.div
           initial="hidden"
