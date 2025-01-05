@@ -6,7 +6,7 @@ import LayeredButton from "@/components/ui/orangeButton";
 import { createProfile } from "@/actions/createProfile";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function Stage1({ setStage }: { setStage: unknown }) {
+export default function Stage1({ setStage }: { setStage: any }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [regNo, setRegNo] = useState("");
@@ -117,9 +117,9 @@ export default function Stage1({ setStage }: { setStage: unknown }) {
     formData.append("school", selectedSchool);
 
     const response = await createProfile(formData);
-    // if (response.status === 200) {
-    //   setStage(2);
-    // }
+    if (response.status === 200) {
+      window.location.href = "/";
+    }
     console.log(response);
   }
 

@@ -9,29 +9,50 @@ import { getTeamDetails } from "./actions";
 import LeaveTeamDialog from "./LeaveTeamDialog";
 import TaskSubmmisionDialog from "./TaskSubmmisionDialog";
 import TeamMemberCard from "./TeamMemberCard";
+import { useRouter } from "next/navigation";
 
 export default function DashboardPage() {
   const [showDialog, setShowDialog] = useState(false);
   const [showLeaveTeamAlert, setShowLeaveTeamAlert] = useState(false);
-  const [loading, setLoading] = useState(true); // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [error, setError] = useState<any>(null); // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [teamDetails, setTeamDetails] = useState<any>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchTeamDetails = async () => {
       setLoading(true);
-      const { data, errors, status } = await getTeamDetails();
-      console.log(data, errors, status);
-      if (status === 200) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        setTeamDetails(data.data.members);
-      } else {
-        setError(errors);
+      try {
+        const { data, errors } = await getTeamDetails();
+
+        // Check if data exists and has the m (status) property
+        if (!data || !data.m) {
+          setError(errors || "Failed to fetch team details");
+          return;
+        }
+
+        // Handle different status codes
+        if (data.m === 200 && data.data?.members) {
+          setTeamDetails(data.data.members);
+        } else if (data.m === 404) {
+          // User not in team
+          router.push("/create?currStage=2");
+        } else if (data.m === 401) {
+          // User not found/unauthorized
+          router.push("/");
+        } else {
+          setError(errors || "An unexpected error occurred");
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "An error occurred");
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
+
     fetchTeamDetails();
-  }, []);
+  }, [router]);
+
   return (
     <>
       <ProtectedRoute>
@@ -45,15 +66,7 @@ export default function DashboardPage() {
           {/* Background gradient and noise overlay */}
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-custom-gradient" />
-            <div
-              className="absolute inset-0 mix-blend-overlay opacity-25"
-              // style={{
-              //   backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-              //   backgroundRepeat: "repeat",
-              //   width: "100%",
-              //   height: "100%",
-              // }}
-            />
+            <div className="absolute inset-0 mix-blend-overlay opacity-25" />
           </div>
 
           {/* Content */}
@@ -100,7 +113,7 @@ export default function DashboardPage() {
                   </div>
 
                   <div className="flex gap-8 flex-wrap justify-center py-8">
-                    {teamDetails.map((member: unknown, idx: number) => (
+                    {teamDetails.map((member: any, idx: number) => (
                       <TeamMemberCard
                         key={idx}
                         name={member.name}
