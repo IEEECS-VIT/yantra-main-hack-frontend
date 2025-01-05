@@ -1,33 +1,49 @@
+"use client";
+
 import { useState } from "react";
 import Heading from "@/components/creation/Heading";
 import Progressbar from "@/components/creation/Progressbar";
 import LayeredButton from "@/components/ui/orangeButton";
 import InputBox from "@/components/creation/InputBox";
-// import { redirect } from "next/navigation";
 
-export default function Stage2({
-  setStage,
-  setTeamSizes,
-}: {
-  setStage: any;
-  setTeamSizes: any;
-}) {
+export default function Stage2() {
   const [teamSize, setTeamSize] = useState(3);
-  const [teamCode, setTeamCode] = useState("");
+  const [teamName, setTeamName] = useState("");
+  const [currentStep, setCurrentStep] = useState(2);
 
   return (
-    <div className="my-10 px-6">
-      <Heading text="CREATE YOUR TEAM" />
-      <Progressbar currentStep={2} />
+    <div className="min-h-screen flex flex-col py-16 px-6">
+      {/* Header Section - consistent top spacing */}
+      <div className="mb-16">
+        <Heading text="CREATE YOUR TEAM" />
+        <div className="mt-8">
+          <Progressbar currentStep={currentStep} />
+        </div>
+      </div>
 
-      {/* Team Size Section */}
-      <div className="mt-4">
-        <h2 className="text-white text-2xl md:text-3xl text-center font-extended mb-12">
+      {/* Team Name Section - equal spacing */}
+      <div className="mb-8">
+        <h2 className="text-white text-2xl md:text-3xl text-center font-extended mb-8">
+          Name your team
+        </h2>
+        <div className="w-full max-w-5xl mx-auto px-4">
+          <input
+            className="bg-opacity-30 bg-white w-full p-4 border text-center md:text-4xl text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+            placeholder="Team Name"
+            value={teamName}
+            onChange={(e) => setTeamName(e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* Team Size Section - equal spacing */}
+      <div className="mb-16">
+        <h2 className="text-white text-2xl md:text-3xl text-center font-extended mb-8">
           Enter your team size
         </h2>
 
         {/* Team Size Selector */}
-        <div className="w-full max-w-xl mx-auto mb-8 my-2">
+        <div className="w-full max-w-xl mx-auto my-8 md:my-10 md:mb-8">
           <div className="relative">
             {/* Progress Bar Container */}
             <div className="relative h-1">
@@ -84,41 +100,14 @@ export default function Stage2({
         </div>
 
         {/* Confirm Button */}
-        <div className="flex justify-center mt-10">
-          <div className="flex justify-center items-center space-x-2 w-[60vw] md:w-[15vw]">
+        <div className="flex justify-center">
+          <div className="flex justify-center items-center space-x-10 mt-10 w-[60vw] md:w-[15vw]">
             <LayeredButton
               text="CONFIRM"
               handleClick={() => {
-                setTeamSizes(teamSize);
-                setStage(3);
+                setCurrentStep(3);
+                setTeamSize(teamSize);
               }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Horizontal Rule */}
-      <hr className="border-white mt-16 mb-10" />
-
-      {/* Already Have a Team Section */}
-      <div className="mt-10">
-        <h2 className="text-white text-2xl md:text-3xl text-center font-extended mb-12">
-          Already have a team?
-        </h2>
-
-        <div className="max-w-md mx-auto">
-          <InputBox
-            placeholder="Team Code"
-            value={teamCode}
-            onChange={setTeamCode}
-          />
-        </div>
-        <div className="flex justify-center mt-10">
-          <div className="flex justify-center items-center space-x-2 w-[60vw] md:w-[15vw]">
-            <LayeredButton
-              text="SUBMIT"
-              enabled={teamCode.length > 0}
-              className={`${teamCode.length < 1 ? "opacity-50" : "opacity-100"}`}
             />
           </div>
         </div>

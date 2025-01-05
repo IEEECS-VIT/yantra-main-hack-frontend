@@ -7,7 +7,7 @@ import { createProfile } from "@/actions/createProfile";
 import { useRouter } from "next/navigation";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function Stage1() {
+export default function Stage1({ setStage }: { setStage: any }) {
   const router = useRouter();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
