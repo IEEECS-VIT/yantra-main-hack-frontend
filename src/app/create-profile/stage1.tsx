@@ -122,7 +122,7 @@ export default function Stage1({ setStage }: { setStage: any }) {
     if (response.status === 200) {
       router.push("/dashboard");
     } else {
-      setError(response.message);
+      setError(response.errors || "Failed to create profile");
       // reset all fields
       setName("");
       setPhone("");
