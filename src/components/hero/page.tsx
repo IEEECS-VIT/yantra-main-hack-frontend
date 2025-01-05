@@ -3,7 +3,6 @@ import Text from "./text";
 import FloatImages from "./floatImages";
 import Button from "../ui/orangeButton";
 import ArrowComponent from "./arrow";
-import { Main } from "next/document";
 import MainButton from "./mainbutton";
 
 export async function Hero() {
