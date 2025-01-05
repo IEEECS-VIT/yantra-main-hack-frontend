@@ -34,10 +34,10 @@ export async function Hero() {
       <FloatImages />
 
       <ArrowComponent />
-
+      {/* 
       <div className="absolute left-[2%] top-[110vh]">
         <Button text="Previous year highlights!" className="md:flex hidden" />
-      </div>
+      </div> */}
     </div>
   );
 }
