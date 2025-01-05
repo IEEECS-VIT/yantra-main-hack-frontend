@@ -50,36 +50,36 @@ export default function TaskSubmmisionDialog({
       track.track.toLowerCase().includes(searchQuery.toLowerCase()) ||
       track.code.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
   const handleSubmit = async () => {
-    if (!files || files.length === 0) {
-      toast.error("No file selected");
-      return;
-    }
-
-    setLoading(true);
-    const formData = new FormData();
-    const file = files[0];
-    if (!file) {
-      toast.error("Please select a PDF file to upload");
-      return;
-    }
-
-    // Ensure the selected file is a PDF
-    if (file.type !== "application/pdf") {
-      toast.error("Only PDF files are allowed");
-      return;
-    }
-    formData.append("document", file);
     try {
-      const { errors, status } = await submitFile(formData);
-      if (status !== 200) {
-        toast.error("Error submitting the file");
-      } else {
-        toast.success("File submitted successfully");
-        setOpen(false);
+      setLoading(true);
+      if (!files || files.length === 0) {
+        toast.error("Please select a file");
+        return;
       }
+      const formData = new FormData();
+      formData.append("document", files[0]);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/task-submit`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${Cookies.get("authToken")}`,
+          },
+          body: formData,
+          // Don't set Content-Type header - browser will set it automatically with boundary
+        }
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      toast.success("File uploaded successfully");
+      setOpen(false);
     } catch (error) {
-      toast.error("Error submitting the file");
+      console.error("Upload error:", error);
+      toast.error("Error uploading file");
     } finally {
       setLoading(false);
     }

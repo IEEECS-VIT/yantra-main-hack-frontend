@@ -1,10 +1,10 @@
 "use client";
 
 import {
-    FileInput,
-    FileUploader,
-    FileUploaderContent,
-    FileUploaderItem,
+  FileInput,
+  FileUploader,
+  FileUploaderContent,
+  FileUploaderItem,
 } from "@/components/ui/file-upload";
 import { Paperclip } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
@@ -16,7 +16,7 @@ interface FileUploadProps {
 const FileUpload = ({ files, setFiles }: FileUploadProps) => {
   const dropZoneConfig = {
     maxFiles: 1,
-    maxSize: 1024 * 1024 * 3, // 3MB
+    maxSize: 1024 * 1024 * 4, // 4MB
     multiple: false,
     accept: {
       "application/pdf": [".pdf"],
@@ -41,7 +41,11 @@ const FileUpload = ({ files, setFiles }: FileUploadProps) => {
         {files &&
           files.length > 0 &&
           files.map((file, i) => (
-            <FileUploaderItem key={i} index={i} className="overflow-x-auto no-scrollbar">
+            <FileUploaderItem
+              key={i}
+              index={i}
+              className="overflow-x-auto no-scrollbar"
+            >
               <Paperclip className="h-4 w-4 stroke-current" />
               <span>{file.name}</span>
             </FileUploaderItem>
@@ -76,8 +80,8 @@ const FileSvgDraw = () => {
         &nbsp; or drag and drop
       </p>
       <p className="text-xs text-slate-300">Only PDF files are accepted</p>
-      <p className="text-xs text-slate-300">
-        (File size should be less than 2MB)
+      <p className="text-xs text-buttonBg">
+        (File size should be less than 4MB)
       </p>
     </>
   );
