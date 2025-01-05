@@ -19,7 +19,7 @@ export default function ProtectedRoute({
 }: ProtectedRouteProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); // Still need loading state to control initial behavior
 
   useEffect(() => {
     const validateAuth = async () => {
@@ -35,6 +35,7 @@ export default function ProtectedRoute({
         pathname.startsWith(route)
       );
 
+      // If there's no token and trying to access a private route
       if (!authToken) {
         if (isPrivateRoute) {
           toast.promise(
@@ -46,20 +47,17 @@ export default function ProtectedRoute({
               error: "Please log in to access this page",
             }
           );
-          setTimeout(() => router.push("/"), 1000);
-        } else {
-          setLoading(false); // Set loading to false for public routes
+          setTimeout(() => router.push("/"), 1000); // Redirect to login page
         }
         return;
       }
 
       const isValidToken = await checkAuthToken(authToken);
 
+      // If token is valid and trying to access a public route, redirect to dashboard
       if (isValidToken) {
-        if (isPrivateRoute) {
-          setLoading(false); // Stop loading for valid private routes
-        } else {
-          setTimeout(() => router.push("/dashboard"), 1000); // Redirect public to dashboard if logged in
+        if (isPublicRoute) {
+          setTimeout(() => router.push("/dashboard"), 1000); // Redirect to dashboard if logged in
         }
       } else {
         toast.promise(
@@ -73,24 +71,19 @@ export default function ProtectedRoute({
         );
         setTimeout(() => router.push("/"), 1000); // Redirect to login page on session expiry
       }
+
+      // Mark loading as done after auth check
+      setLoading(false);
     };
 
     validateAuth();
   }, [pathname, router]);
 
-  // If still loading, show skeleton or fallback loader
-  if (loading) {
-    return <>{skeletonComponent || <FallbackLoader />}</>;
+  // If skeletonComponent is provided, show it while loading
+  if (loading && skeletonComponent) {
+    return <>{skeletonComponent}</>;
   }
 
+  // Render the protected content once loading is complete and authentication is validated
   return <>{children}</>;
-}
-
-// Fallback loader component
-function FallbackLoader() {
-  return (
-    <div className="flex justify-center items-center h-screen">
-      <p>Loading...</p>
-    </div>
-  );
 }
