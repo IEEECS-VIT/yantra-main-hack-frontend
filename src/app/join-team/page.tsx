@@ -25,23 +25,29 @@ export default function JoinTeam() {
             {/* Use currentStep state */}
           </div>
         </div>
-        <div className="mt-10">
-          <div className="max-w-md mx-auto">
-            <InputBox
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <h2 className="text-white text-2xl md:text-3xl text-center font-extended mb-8">
+            Enter Team Code
+          </h2>
+          <div className="w-full max-w-5xl mx-auto px-4">
+            <input
+              className="bg-opacity-30 bg-white w-full p-4 border text-center md:text-4xl text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
               placeholder="Team Code"
               value={teamCode}
-              onChange={setTeamCode}
+              onChange={(e) => setTeamCode(e.target.value)}
             />
           </div>
-          <div className="flex justify-center mt-36">
-            <div className="flex justify-center items-center space-x-2 w-[60vw] md:w-[15vw]">
-              <LayeredButton
-                text="SUBMIT"
-                enabled={teamCode.length > 0}
-                handleClick={handleSubmit} // Add onClick handler
-                className={`${teamCode.length < 1 ? "opacity-50" : "opacity-100"}`}
-              />
-            </div>
+        </div>
+        <div className="flex justify-center mt-16 fixed bottom-36 left-1/2 transform -translate-x-1/2">
+          <div className="flex justify-center items-center w-[50vw] md:w-[15vw]">
+            <LayeredButton
+              text="SUBMIT"
+              enabled={teamCode.length > 0}
+              handleClick={handleSubmit}
+              className={`w-full ${
+                teamCode.length < 1 ? "opacity-50" : "opacity-100"
+              }`}
+            />
           </div>
         </div>
       </div>
