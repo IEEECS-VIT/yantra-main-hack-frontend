@@ -4,6 +4,7 @@ import { useRef } from "react";
 import OrangeButton from "@/components/ui/orangeButton";
 import { CircularText } from "./hero/circularText";
 import { motion, useInView } from "framer-motion";
+import RotatingImage from "./hero/starThingy";
 
 export default function About() {
   const aboutData = [
@@ -104,67 +105,74 @@ const TimelineItem = ({
   };
 
   return (
-    <div
-      ref={itemRef}
-      className="relative flex items-start last:mb-0"
-      id="about"
-    >
-      <div className="flex flex-col items-center h-full">
-        <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={circleVariants}
-          className="md:w-16 md:h-16 h-8 w-8 rounded-full border bg-transparent
+    <>
+      <div
+        ref={itemRef}
+        className="relative flex items-start last:mb-0"
+        id="about"
+      >
+        <div className="flex flex-col items-center h-full">
+          <motion.div
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={circleVariants}
+            className="md:w-16 md:h-16 h-8 w-8 rounded-full border bg-transparent
           flex items-center justify-center
           border-main-orange"
-        >
+          >
+            <motion.div
+              variants={circleVariants}
+              className="md:w-8 md:h-8 h-4 w-4 rounded-full bg-main-orange"
+            />
+          </motion.div>
+
           <motion.div
-            variants={circleVariants}
-            className="md:w-8 md:h-8 h-4 w-4 rounded-full bg-main-orange"
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={lineVariants}
+            className="w-[2px] h-[calc(100%-0.5rem)] md:h-[calc(100%-4rem)] bg-main-orange origin-top"
           />
-        </motion.div>
+        </div>
 
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          variants={lineVariants}
-          className="w-[2px] h-[calc(100%-0.5rem)] md:h-[calc(100%-4rem)] bg-main-orange origin-top"
-        />
+          variants={contentVariants}
+          className="ml-4 flex md:flex-row flex-col justify-between w-full mb-4 md:mb-16"
+        >
+          <h3 className="text-black font-semibold text-2xl md:text-3xl md:min-w-[15vw]">
+            {data.heading.split(" ").length === 1 ? (
+              <span className="text-black">{data.heading}</span>
+            ) : (
+              data.heading.split(" ").map((word, idx, arr) =>
+                idx === arr.length - 1 ? (
+                  <span key={idx} className="text-orange-500 block">
+                    {word}
+                  </span>
+                ) : (
+                  <span key={idx}>{word} </span>
+                )
+              )
+            )}
+          </h3>
+          <div className="md:ml-8">
+            <h2 className="text-lg md:text-2xl mb-8 max-w-[20rem] md:max-w-[50rem]">
+              {data.title}
+            </h2>
+            <p className="text-sm md:text-xl mb-6 md:mb-12 max-w-[20rem] md:max-w-[60rem]">
+              {data.content}
+            </p>
+            {index === 0 && (
+              <OrangeButton text="Explore Rules and FAQ" className="mb-8" />
+            )}
+          </div>
+        </motion.div>
+
+        {/* <RotatingImage className="w-10 md:w-14 bottom-10 left-4 md:left-12 absolute" /> */}
       </div>
 
-      <motion.div
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={contentVariants}
-        className="ml-4 flex md:flex-row flex-col justify-between w-full mb-4 md:mb-16"
-      >
-        <h3 className="text-black font-semibold text-2xl md:text-3xl md:min-w-[15vw]">
-          {data.heading.split(" ").length === 1 ? (
-            <span className="text-black">{data.heading}</span>
-          ) : (
-            data.heading.split(" ").map((word, idx, arr) =>
-              idx === arr.length - 1 ? (
-                <span key={idx} className="text-orange-500 block">
-                  {word}
-                </span>
-              ) : (
-                <span key={idx}>{word} </span>
-              )
-            )
-          )}
-        </h3>
-        <div className="md:ml-8">
-          <h2 className="text-lg md:text-2xl mb-8 max-w-[20rem] md:max-w-[50rem]">
-            {data.title}
-          </h2>
-          <p className="text-sm md:text-xl mb-6 md:mb-12 max-w-[20rem] md:max-w-[60rem]">
-            {data.content}
-          </p>
-          {index === 0 && (
-            <OrangeButton text="Explore Rules and FAQ" className="mb-8" />
-          )}
-        </div>
-      </motion.div>
-    </div>
+      <RotatingImage className="w-14 md:w-20 top-[5vh] md:top-[70vh] left-1 md:left-[5rem]" />
+      <RotatingImage className="w-12 md:w-16 top-[200px] right-4 md:right-0 absolute" />
+    </>
   );
 };

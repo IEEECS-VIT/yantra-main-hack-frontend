@@ -86,7 +86,11 @@ export default function Timeline() {
           <Progressbar timeline={timelineDataRight} />
         </motion.div>
       </div>
-      <RotatingImage />
+
+      {/* Rotating Images */}
+      <RotatingImage className="w-14 md:w-20 top-[50vh] md:top-[60vh] left-1 md:left-[2rem]" />
+      <RotatingImage className="w-12 md:w-16 top-10 right-4 md:right-16 absolute" />
+      <RotatingImage className="w-10 md:w-14 bottom-10 left-4 md:left-12 absolute" />
     </div>
   );
 }
