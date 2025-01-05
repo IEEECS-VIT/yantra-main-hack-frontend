@@ -6,8 +6,10 @@ import { Loader2, MoveUpRightIcon } from "lucide-react";
 import Navbar from "@/components/ui/navbar/navbar";
 import { useEffect, useState } from "react";
 import { getTeamDetails } from "./actions";
+import TaskSubmmisionDialog from "./TaskSubmmisionDialog";
 
 export default function DashboardPage() {
+  const [showDialog, setShowDialog] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<any>(null);
   const [teamDetails, setTeamDetails] = useState<any>(null);
@@ -29,8 +31,8 @@ export default function DashboardPage() {
   }, []);
   return (
     <>
+      <TaskSubmmisionDialog open={showDialog} setOpen={setShowDialog} />
       <Navbar />
-
       <main className="relative min-h-screen pt-20">
         {/* Background gradient and noise overlay */}
         <div className="absolute inset-0">
@@ -101,7 +103,12 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="flex w-full justify-center">
-                  <button className="border p-2 rounded-lg uppercase hover:scale-105 transition-all active:scale-95">
+                  <button
+                    className="border p-2 rounded-lg uppercase hover:scale-105 transition-all active:scale-95"
+                    onClick={() => {
+                      setShowDialog(true);
+                    }}
+                  >
                     <span className="text-main-orange">Submit</span>{" "}
                     <span className="text-white">Idea</span>
                   </button>
