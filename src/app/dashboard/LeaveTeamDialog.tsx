@@ -64,7 +64,7 @@ export default function LeaveTeamDialog({
               {loading && (
                 <Loader2Icon className="size-4 shrink-0 animate-spin mr-1" />
               )}
-              Leave
+              <p className="w-full text-center">Leave</p>
             </button>
           </DialogFooter>
         </DialogHeader>

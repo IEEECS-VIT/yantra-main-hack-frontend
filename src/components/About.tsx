@@ -34,7 +34,7 @@ export default function About() {
             />
           ))}
         </div>
-        <CircularText />
+        {/* <CircularText /> */}
       </div>
     </section>
   );

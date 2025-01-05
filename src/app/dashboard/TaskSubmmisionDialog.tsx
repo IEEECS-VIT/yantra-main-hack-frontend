@@ -11,6 +11,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import FileUpload from "./FileUpload";
 import { submitFile } from "./actions";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 
 const tracksList = [
   {
@@ -51,18 +52,42 @@ export default function TaskSubmmisionDialog({
   );
 
   const handleSubmit = async () => {
-    setLoading(true);
-    const formData = new FormData();
-    if (!files) return;
-    formData.append("document", files[0]);
-    const { errors, status } = await submitFile(formData);
-    if (status !== 200) {
-      toast.error("Error submitting the file");
+    try {
+      setLoading(true);
+
+      if (!files || files.length === 0) {
+        toast.error("Please select a file");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("document", files[0]);
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/task-submit`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${Cookies.get("authToken")}`,
+          },
+          body: formData,
+          // Don't set Content-Type header - browser will set it automatically with boundary
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      toast.success("File uploaded successfully");
+      setOpen(false);
+    } catch (error) {
+      console.error("Upload error:", error);
+      toast.error("Error uploading file");
+    } finally {
       setLoading(false);
-      return;
     }
-    setLoading(false);
-    setOpen(false);
   };
 
   return (
