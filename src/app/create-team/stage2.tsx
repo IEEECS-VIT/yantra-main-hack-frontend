@@ -5,11 +5,13 @@ import Heading from "@/components/creation/Heading";
 import Progressbar from "@/components/creation/Progressbar";
 import LayeredButton from "@/components/ui/orangeButton";
 import { fetchWithAuth, handleApiResponse } from "@/lib/base";
+import { useRouter } from "next/navigation";
 
 export default function Stage2() {
   const [teamSize, setTeamSize] = useState(3);
   const [teamName, setTeamName] = useState("");
   const [currentStep, setCurrentStep] = useState(2);
+  const router = useRouter();
 
   const handleSubmit = async () => {
     if (teamName.length > 0 && teamName.length < 20) {
@@ -19,6 +21,11 @@ export default function Stage2() {
         body: JSON.stringify({ teamName }),
       });
       const res = await handleApiResponse(response);
+      if (res.status !== 200) {
+        setCurrentStep(2);
+      } else {
+        router.push("/dashboard");
+      }
       console.log(res);
     }
   };
