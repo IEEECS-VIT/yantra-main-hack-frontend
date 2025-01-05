@@ -7,6 +7,7 @@ import { AuthProvider } from "@/contexts/authContext";
 export const metadata: Metadata = {
   title: "Yantra Hack",
   description: "VIT Central Hack",
+  themeColor: "#4a2894",
 };
 
 const toastOptions = {

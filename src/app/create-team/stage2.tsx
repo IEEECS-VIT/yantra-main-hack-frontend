@@ -6,6 +6,7 @@ import Progressbar from "@/components/creation/Progressbar";
 import LayeredButton from "@/components/ui/orangeButton";
 import { fetchWithAuth, handleApiResponse } from "@/lib/base";
 import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 export default function Stage2() {
   const [teamSize, setTeamSize] = useState(3);
@@ -14,19 +15,51 @@ export default function Stage2() {
   const router = useRouter();
 
   const handleSubmit = async () => {
+    // Show loading toast
+    const toastId = toast.loading("Creating team...");
+
     if (teamName.length > 0 && teamName.length < 20) {
       setCurrentStep(3);
-      const response = await fetchWithAuth("/create-team", {
-        method: "POST",
-        body: JSON.stringify({ teamName }),
-      });
-      const res = await handleApiResponse(response);
-      if (res.status !== 201) {
-        setCurrentStep(2);
-      } else {
+
+      try {
+        const response = await fetchWithAuth("/create-team", {
+          method: "POST",
+          body: JSON.stringify({ teamName }),
+        });
+
+        // Handle error cases based on status codes
+        if (!response.ok) {
+          setCurrentStep(2);
+
+          if (response.status === 400) {
+            toast.error("Team name is required", { id: toastId });
+          } else if (response.status === 404) {
+            toast.error("User not found", { id: toastId });
+          } else if (response.status === 403) {
+            toast.error("User already in a team", { id: toastId });
+          } else if (response.status === 409) {
+            toast.error("Team name already exists", { id: toastId });
+          } else {
+            const errorData = await response.json();
+            const errorMessage = errorData.message || "Failed to create team";
+            toast.error(errorMessage, { id: toastId });
+          }
+
+          return handleApiResponse(response);
+        }
+
+        // Success toast
+        toast.success("Team created successfully!", { id: toastId });
         router.push("/dashboard");
+        return handleApiResponse(response);
+      } catch (e) {
+        // Catch block error handling
+        toast.error(
+          e instanceof Error ? e.message : "An unknown error occurred",
+          { id: toastId }
+        );
+        setCurrentStep(2);
       }
-      console.log(res);
     }
   };
 
