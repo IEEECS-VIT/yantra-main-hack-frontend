@@ -1,17 +1,34 @@
 "use client";
 import { useState } from "react";
-import InputBox from "@/components/creation/InputBox";
 import Heading from "@/components/creation/Heading";
 import Progressbar from "@/components/creation/Progressbar";
 import LayeredButton from "@/components/ui/orangeButton";
+import ProtectedRoute from "@/components/protectedRoutes";
+import Stage1Skeleton from "../create-profile/stageskeleton";
+import { fetchWithAuth, handleApiResponse } from "@/lib/base";
+import { useRouter } from "next/navigation";
 
 export default function JoinTeam() {
   const [teamCode, setTeamCode] = useState("");
   const [currentStep, setCurrentStep] = useState(3);
+  const router = useRouter();
 
-  const handleSubmit = () => {
-    if (teamCode.length > 0) {
+  const handleSubmit = async () => {
+    if (teamCode.length < 1 || !/^\d+$/.test(teamCode)) {
+      return;
+    } else {
       setCurrentStep(4);
+      const response = await fetchWithAuth("/join-team", {
+        method: "POST",
+        body: JSON.stringify({ teamCode }),
+      });
+      const res = await handleApiResponse(response);
+      if (res.status !== 200) {
+        setCurrentStep(3);
+      } else {
+        router.push("/dashboard");
+      }
+      console.log(res);
     }
   };
 
@@ -25,23 +42,32 @@ export default function JoinTeam() {
             {/* Use currentStep state */}
           </div>
         </div>
-        <div className="mt-10">
-          <div className="max-w-md mx-auto">
-            <InputBox
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <h2 className="text-white text-2xl md:text-3xl text-center font-extended mb-8">
+            Enter your team code
+          </h2>
+          <div className="w-full max-w-5xl mx-auto px-4">
+            <input
+              className="bg-opacity-30 bg-white w-full p-4 border text-center md:text-4xl text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
               placeholder="Team Code"
               value={teamCode}
-              onChange={setTeamCode}
+              onChange={(e) => setTeamCode(e.target.value)}
             />
           </div>
-          <div className="flex justify-center mt-36">
-            <div className="flex justify-center items-center space-x-2 w-[60vw] md:w-[15vw]">
-              <LayeredButton
-                text="SUBMIT"
-                enabled={teamCode.length > 0}
-                handleClick={handleSubmit} // Add onClick handler
-                className={`${teamCode.length < 1 ? "opacity-50" : "opacity-100"}`}
-              />
-            </div>
+        </div>
+
+        <div className="flex justify-center mt-16 fixed bottom-36 left-1/2 transform -translate-x-1/2">
+          <div className="flex justify-center items-center w-[50vw] md:w-[15vw]">
+            <LayeredButton
+              text="SUBMIT"
+              enabled={teamCode.length > 0 && teamCode.length < 20}
+              handleClick={handleSubmit}
+              className={`w-full ${
+                teamCode.length < 1 || teamCode.length >= 20
+                  ? "opacity-50"
+                  : "opacity-100"
+              }`}
+            />
           </div>
         </div>
       </div>

@@ -4,12 +4,31 @@ import { useState } from "react";
 import Heading from "@/components/creation/Heading";
 import Progressbar from "@/components/creation/Progressbar";
 import LayeredButton from "@/components/ui/orangeButton";
-import InputBox from "@/components/creation/InputBox";
+import { fetchWithAuth, handleApiResponse } from "@/lib/base";
+import { useRouter } from "next/navigation";
 
 export default function Stage2() {
   const [teamSize, setTeamSize] = useState(3);
   const [teamName, setTeamName] = useState("");
   const [currentStep, setCurrentStep] = useState(2);
+  const router = useRouter();
+
+  const handleSubmit = async () => {
+    if (teamName.length > 0 && teamName.length < 20) {
+      setCurrentStep(3);
+      const response = await fetchWithAuth("/create-team", {
+        method: "POST",
+        body: JSON.stringify({ teamName }),
+      });
+      const res = await handleApiResponse(response);
+      if (res.status !== 200) {
+        setCurrentStep(2);
+      } else {
+        router.push("/dashboard");
+      }
+      console.log(res);
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col py-16 px-6">
@@ -22,7 +41,7 @@ export default function Stage2() {
       </div>
 
       {/* Team Name Section - equal spacing */}
-      <div className="mb-8">
+      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <h2 className="text-white text-2xl md:text-3xl text-center font-extended mb-8">
           Name your team
         </h2>
@@ -36,80 +55,18 @@ export default function Stage2() {
         </div>
       </div>
 
-      {/* Team Size Section - equal spacing */}
-      <div className="mb-16">
-        <h2 className="text-white text-2xl md:text-3xl text-center font-extended mb-8">
-          Enter your team size
-        </h2>
-
-        {/* Team Size Selector */}
-        <div className="w-full max-w-xl mx-auto my-8 md:my-10 md:mb-8">
-          <div className="relative">
-            {/* Progress Bar Container */}
-            <div className="relative h-1">
-              {/* Background Line */}
-              <div className="absolute inset-0 bg-white rounded-full" />
-
-              {/* Progress Line */}
-              <div
-                className="absolute inset-y-0 left-0 bg-main-orange rounded-full transition-all duration-300"
-                style={{
-                  width: `${((teamSize - 3) / 2) * 100}%`,
-                }}
-              />
-
-              {/* Nodes and Numbers */}
-              <div className="absolute inset-0">
-                <div className="relative w-full h-full">
-                  {[3, 4, 5].map((size) => (
-                    <div
-                      key={size}
-                      className="absolute flex flex-col items-center"
-                      style={{
-                        left: `${((size - 3) / 2) * 100}%`,
-                        top: "50%",
-                        transform: "translate(-50%, -50%)",
-                      }}
-                    >
-                      {/* Node (Button) */}
-                      <button
-                        onClick={() => {
-                          setTeamSize(size);
-                        }}
-                        className={`w-6 h-6 rounded-full border-2 border-white flex items-center justify-center transition-colors duration-300 ${
-                          teamSize >= size
-                            ? "bg-main-orange border-main-orange"
-                            : "bg-transparent"
-                        }`}
-                      >
-                        {/* Inner Dot */}
-                        <div
-                          className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                            teamSize >= size ? "bg-white" : "bg-transparent"
-                          }`}
-                        />
-                      </button>
-                      {/* Number */}
-                      <span className="text-white mt-4 text-lg">{size}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Confirm Button */}
-        <div className="flex justify-center">
-          <div className="flex justify-center items-center space-x-10 mt-10 w-[60vw] md:w-[15vw]">
-            <LayeredButton
-              text="CONFIRM"
-              handleClick={() => {
-                setCurrentStep(3);
-                setTeamSize(teamSize);
-              }}
-            />
-          </div>
+      <div className="flex justify-center mt-16 fixed bottom-36 left-1/2 transform -translate-x-1/2">
+        <div className="flex justify-center items-center w-[50vw] md:w-[15vw]">
+          <LayeredButton
+            text="SUBMIT"
+            enabled={teamName.length > 0 && teamName.length < 20}
+            handleClick={handleSubmit}
+            className={`w-full ${
+              teamName.length < 1 || teamName.length >= 20
+                ? "opacity-50"
+                : "opacity-100"
+            }`}
+          />
         </div>
       </div>
     </div>
