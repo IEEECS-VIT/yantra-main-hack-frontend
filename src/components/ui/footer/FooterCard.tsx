@@ -122,7 +122,6 @@ const FooterCard = () => {
           width={200}
           height={200}
           className="md:w-48 w-24"
-          onClick={() => window.open("https://ieeecsvit.com")}
         />
         <Image
           src={vitLogo}
