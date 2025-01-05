@@ -25,7 +25,7 @@ const FooterCard = () => {
       <Line />
       <FooterMarquee text="NOW" reverse={true}/>
       <Line />
-      <footer className="relative p-8 bg-transparent rounded-xl bottom-0">
+      <footer className="relative p-8 bg-transparent rounded-xl bottom-0 mt-8">
         <div className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-xl rounded-b-none" />
 
         <div className="relative max-w-6xl mx-auto md:grid flex flex-col-reverse md:grid-cols-3 gap-8 text-white">

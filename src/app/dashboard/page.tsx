@@ -21,7 +21,7 @@ import TeamMemberCard from "./TeamMemberCard";
 import AddMembersDialog from "./AddMembersDialog";
 
 const MAX_TEAM_SIZE = 5;
-const MIN_TEAM_SIZE = 3;
+const MIN_TEAM_SIZE = 1;
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -164,18 +164,18 @@ export default function DashboardPage() {
                     to form a team. Idea submission is allowed only after
                     meeting this requirement.
                   </p>
+                ) : teamDetails.isLeader ? (
+                  <div className="flex w-full justify-center mt-6">
+                    <button
+                      className="border p-2 rounded-lg uppercase hover:scale-105 transition-all active:scale-95"
+                      onClick={() => setShowDialog(true)}
+                    >
+                      <span className="text-main-orange">Submit</span>{" "}
+                      <span className="text-white">Idea</span>
+                    </button>
+                  </div>
                 ) : (
-                  teamDetails.isLeader && (
-                    <div className="flex w-full justify-center mt-6">
-                      <button
-                        className="border p-2 rounded-lg uppercase hover:scale-105 transition-all active:scale-95"
-                        onClick={() => setShowDialog(true)}
-                      >
-                        <span className="text-main-orange">Submit</span>{" "}
-                        <span className="text-white">Idea</span>
-                      </button>
-                    </div>
-                  )
+                  <p className="text-center text-white">Only team leader can submit the idea.</p>
                 )}
               </>
             ) : (
