@@ -119,10 +119,22 @@ export default function Stage1({ setStage }: { setStage: any }) {
     formData.append("school", selectedSchool);
 
     const response = await createProfile(formData, router);
-    // if (response.status === 200) {
-    //   setStage(2);
-    // }
-    // console.log(response);
+    if (response.status === 200) {
+      router.push("/dashboard");
+    } else {
+      setError(response.message);
+      // reset all fields
+      setName("");
+      setPhone("");
+      setRegNo("");
+      setRoomNo("");
+      setGender("");
+      setHostelType("");
+      setHostelBlock("");
+      setSelectedBranch("");
+      setSelectedSchool("");
+      setIsAgreed(false);
+    }
   }
 
   const handleRegNoChange = (value: string) => {
