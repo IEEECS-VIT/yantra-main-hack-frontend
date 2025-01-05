@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Text from "./text";
 import FloatImages from "./floatImages";
-import Button from "../ui/orangeButton";
 import ArrowComponent from "./arrow";
 import MainButton from "./mainbutton";
 
@@ -24,7 +23,7 @@ export async function Hero() {
             An AI For SDG Hack.
           </p>
           <p className="md:text-xl text-sm">
-            Join us Feb 7-8 for VIT&apos;s best and biggest tech hackathon!
+            Join us Feb 7-9 for VIT&apos;s best and biggest tech hackathon!
           </p>
         </section>
         <MainButton />

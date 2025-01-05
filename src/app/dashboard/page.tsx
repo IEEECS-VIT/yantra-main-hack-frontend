@@ -5,11 +5,9 @@ import ProtectedRoute from "@/components/protectedRoutes";
 import Navbar from "@/components/ui/navbar/navbar";
 import LayeredButton from "@/components/ui/orangeButton";
 import {
-  Info,
   InfoIcon,
   Loader2,
   MoveUpRightIcon,
-  UserIcon,
   UserPlus2Icon,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
