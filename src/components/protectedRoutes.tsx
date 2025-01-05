@@ -6,7 +6,7 @@ import { checkAuthToken } from "@/lib/base";
 import { toast } from "react-hot-toast";
 
 const PUBLIC_ROUTES = ["/"]; // Define public routes
-const PRIVATE_ROUTES = ["/dashboard", "/create"]; // Define private routes
+const PRIVATE_ROUTES = ["/dashboard", "/create-team" , "/joint-team" , "/create-profile"]; // Define private routes
 
 type ProtectedRouteProps = {
   children?: React.ReactNode; // Make children optional

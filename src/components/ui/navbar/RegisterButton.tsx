@@ -20,7 +20,7 @@ export default function RegisterButton() {
       if (res.status === 401) {
         logout();
       } else if (res.status === 404) {
-        window.location.href = "/create";
+        window.location.href = "/create-profile";
       } else {
         window.location.href = "/dashboard";
       }
