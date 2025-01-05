@@ -135,8 +135,8 @@ export default function MobileNavbar({
                   className="text-white uppercase text-center block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
                   onClick={() => {
                     logout(); // Trigger logout on click
-                    setIsOpen(false);
                     router.push("/");
+                    setIsOpen(false);
                   }}
                 >
                   logout

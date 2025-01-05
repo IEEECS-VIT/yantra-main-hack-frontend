@@ -3,6 +3,7 @@ import Text from "./text";
 import FloatImages from "./floatImages";
 import Button from "../ui/orangeButton";
 import ArrowComponent from "./arrow";
+import MainButton from "./mainbutton";
 
 export async function Hero() {
   return (
@@ -26,19 +27,17 @@ export async function Hero() {
             Join us Feb 7-8 for VIT&apos;s best and biggest tech hackathon!
           </p>
         </section>
-        <button className="px-10 py-7 bg-gradient-to-l from-[#A240A5] to-[#322A55] border border-white rounded-sm  text-sm md:w-[500px] w-[350px] mt-6">
-          Create Account to Begin
-        </button>
+        <MainButton />
         <p className="underline">Register Now!</p>
       </div>
 
       <FloatImages />
 
       <ArrowComponent />
-
+      {/* 
       <div className="absolute left-[2%] top-[110vh]">
         <Button text="Previous year highlights!" className="md:flex hidden" />
-      </div>
+      </div> */}
     </div>
   );
 }

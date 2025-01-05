@@ -5,10 +5,10 @@ import Image from "next/image";
 export default function footer() {
   return (
     <>
-      <section className="relative bg-custom-gradient min-h-screen text-white">
+      <section className="relative bg-custom-gradient h-full text-white overflow-hidden">
         <FloatImages />
 
-        <div className="z-10 py-8 relative">
+        <div className="py-8 pb-0 relative bottom-0">
           <FooterCard />
         </div>
       </section>
