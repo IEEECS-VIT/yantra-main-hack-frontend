@@ -49,20 +49,39 @@ export default function TaskSubmmisionDialog({
       track.track.toLowerCase().includes(searchQuery.toLowerCase()) ||
       track.code.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
   const handleSubmit = async () => {
-    setLoading(true);
-    const formData = new FormData();
-    if (!files) return;
-    formData.append("document", files[0]);
-    const { errors, status } = await submitFile(formData);
-    if (status !== 200) {
-      toast.error("Error submitting the file");
-      setLoading(false);
+    if (!files || files.length === 0) {
+      toast.error("No file selected");
       return;
     }
-    setLoading(false);
-    setOpen(false);
+
+    setLoading(true);
+    const formData = new FormData();
+    const file = files[0];
+    if (!file) {
+      toast.error("Please select a PDF file to upload");
+      return;
+    }
+
+    // Ensure the selected file is a PDF
+    if (file.type !== "application/pdf") {
+      toast.error("Only PDF files are allowed");
+      return;
+    }
+    formData.append("document", file);
+    try {
+      const { errors, status } = await submitFile(formData);
+      if (status !== 200) {
+        toast.error("Error submitting the file");
+      } else {
+        toast.success("File submitted successfully");
+        setOpen(false);
+      }
+    } catch (error) {
+      toast.error("Error submitting the file");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

@@ -44,7 +44,7 @@ export default function LeaveTeamDialog({
             You are leaving the team. You can rejoin the team again by using the
             team code
           </DialogDescription>
-          <DialogFooter className="flex justify-end gap-4">
+          <DialogFooter className="flex justify-center w-full md:justify-end gap-4">
             <button
               className="text-sm"
               onClick={() => {
@@ -55,7 +55,7 @@ export default function LeaveTeamDialog({
               Cancel
             </button>
             <button
-              className="bg-main-orange p-2 rounded-md text-sm flex items-center"
+              className="bg-main-orange p-2 rounded-md text-sm flex items-center justify-center"
               disabled={loading}
               onClick={() => {
                 handleLeaveTeam();

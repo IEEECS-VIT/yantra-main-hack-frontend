@@ -29,7 +29,7 @@ export default function AddMembersDialog({
           Your team code is <span className="underline">{teamCode}</span>. Share this code with others to allow
           them to join your team.
         </p>
-        <div className="flex justify-end">
+        <div className="flex justify-center w-full md:justify-end">
           <button
             className="bg-main-orange p-2 flex items-center rounded-lg"
             onClick={() => {

@@ -21,7 +21,7 @@ import TeamMemberCard from "./TeamMemberCard";
 import AddMembersDialog from "./AddMembersDialog";
 
 const MAX_TEAM_SIZE = 5;
-const MIN_TEAM_SIZE = 3;
+const MIN_TEAM_SIZE = 1;
 
 export default function DashboardPage() {
   const router = useRouter();
