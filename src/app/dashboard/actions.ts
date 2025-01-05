@@ -68,3 +68,23 @@ export async function leaveTeam() {
     };
   }
 }
+
+export async function submitFile(formData: FormData) {
+  try {
+    const res = await fetchWithAuth("/task-submit", {
+      method: "PUT",
+      body: formData
+    })
+    console.log(res); 
+    if (!res.ok)
+      throw new Error("Error submitting the file.")
+    return handleApiResponse(res);
+  }
+  catch (err) {
+    console.error("Error submitting file");
+    return {
+      data: null,
+      errors: err instanceof Error ? err.message : "Unknown error occurred",
+    };
+  }
+}

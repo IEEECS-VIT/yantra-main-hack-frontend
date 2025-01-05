@@ -6,9 +6,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { PencilIcon } from "lucide-react";
+import { Loader2Icon, PencilIcon } from "lucide-react";
 import { Dispatch, SetStateAction, useState } from "react";
 import FileUpload from "./FileUpload";
+import { submitFile } from "./actions";
+import toast from "react-hot-toast";
 
 const tracksList = [
   {
@@ -34,9 +36,12 @@ export default function TaskSubmmisionDialog({
   open,
   setOpen,
 }: TaskSubmmisionDialogProps) {
+  const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [selectedTrack, setSelectedTrack] = useState<any>(null);
+  const [selectedTrack, setSelectedTrack] = useState<{
+    code: string;
+    track: string;
+  } | null>(null);
   const [files, setFiles] = useState<File[] | null>(null);
   const showSubmitButton = files && files.length > 0 && selectedTrack;
   const filteredTracks = tracksList.filter(
@@ -44,6 +49,21 @@ export default function TaskSubmmisionDialog({
       track.track.toLowerCase().includes(searchQuery.toLowerCase()) ||
       track.code.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    const formData = new FormData();
+    if (!files) return;
+    formData.append("document", files[0]);
+    const { errors, status } = await submitFile(formData);
+    if (status !== 200) {
+      toast.error("Error submitting the file");
+      setLoading(false);
+      return;
+    }
+    setLoading(false);
+    setOpen(false);
+  };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -99,7 +119,16 @@ export default function TaskSubmmisionDialog({
         </div>
         <FileUpload files={files} setFiles={setFiles} />
         {showSubmitButton && (
-          <button className="bg-main-orange rounded-full p-2">Submit</button>
+          <button
+            className="bg-main-orange rounded-full p-2 flex items-center justify-center"
+            onClick={() => {
+              handleSubmit();
+            }}
+            disabled={loading}
+          >
+            {loading && <Loader2Icon className="size-5 animate-spin mr-1" />}
+            Submit
+          </button>
         )}
       </DialogContent>
     </Dialog>

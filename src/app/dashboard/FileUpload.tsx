@@ -16,7 +16,7 @@ interface FileUploadProps {
 const FileUpload = ({ files, setFiles }: FileUploadProps) => {
   const dropZoneConfig = {
     maxFiles: 1,
-    maxSize: 1024 * 1024 * 2, // 2MB
+    maxSize: 1024 * 1024 * 3, // 3MB
     multiple: false,
     accept: {
       "application/pdf": [".pdf"],
@@ -41,7 +41,7 @@ const FileUpload = ({ files, setFiles }: FileUploadProps) => {
         {files &&
           files.length > 0 &&
           files.map((file, i) => (
-            <FileUploaderItem key={i} index={i}>
+            <FileUploaderItem key={i} index={i} className="overflow-x-auto no-scrollbar">
               <Paperclip className="h-4 w-4 stroke-current" />
               <span>{file.name}</span>
             </FileUploaderItem>

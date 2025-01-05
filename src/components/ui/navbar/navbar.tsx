@@ -52,8 +52,7 @@ export default function Navbar() {
       <nav className="fixed top-0 left-0 right-0 hidden lg:flex h-[100px] items-center justify-around border border-white overflow-hidden font-monument z-50 opacity-95">
         <div className="absolute inset-0 z-0 h-full">
           <div
-            className="absolute inset-0 bg-gradient-to-r from-[#4B1A4F] via-[#9B7DF2] to-[#5C3175]
-"
+            className="absolute inset-0 bg-gradient-to-r from-[#4B1A4F] via-[#9B7DF2] to-[#5C3175]"
           />
           <div
             className="absolute inset-0 mix-blend-overlay opacity-50 h-full"

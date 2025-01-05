@@ -3,15 +3,29 @@ import Text from "@/components/hero/text";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProtectedRoute from "@/components/protectedRoutes";
 import Navbar from "@/components/ui/navbar/navbar";
-import { Loader2 } from "lucide-react";
+import LayeredButton from "@/components/ui/orangeButton";
+import {
+  Info,
+  InfoIcon,
+  Loader2,
+  MoveUpRightIcon,
+  UserIcon,
+  UserPlus2Icon,
+} from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getTeamDetails, TeamResponseData } from "./actions";
 import LeaveTeamDialog from "./LeaveTeamDialog";
 import TaskSubmmisionDialog from "./TaskSubmmisionDialog";
 import TeamMemberCard from "./TeamMemberCard";
-import { useRouter } from "next/navigation";
+import AddMembersDialog from "./AddMembersDialog";
+
+const MAX_TEAM_SIZE = 5;
+const MIN_TEAM_SIZE = 3;
 
 export default function DashboardPage() {
+  const router = useRouter();
+  const [showAddMemberDialog, setShowAddMemberDialog] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const [showLeaveTeamAlert, setShowLeaveTeamAlert] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -44,6 +58,11 @@ export default function DashboardPage() {
         open={showLeaveTeamAlert}
         setOpen={setShowLeaveTeamAlert}
       />
+      <AddMembersDialog
+        open={showAddMemberDialog}
+        setOpen={setShowAddMemberDialog}
+        teamCode={teamDetails?.team?.teamCode as string}
+      />
       <Navbar />
       <main className="relative min-h-screen pt-20">
         {/* Background gradient and noise overlay */}
@@ -63,10 +82,16 @@ export default function DashboardPage() {
                 textSize="text-4xl md:text-7xl"
                 layerCount={3}
               />
-              <p className="max-w-96 md:max-w-[35rem] text-white text-center text-opacity-90 text-xs md:text-sm">
+              {/* <p className="max-w-96 md:max-w-[35rem] text-white text-center text-opacity-90 text-xs md:text-sm">
                 The given dashboard displays the information about you and your
                 team mates
-              </p>
+              </p> */}
+              {teamDetails && (
+                <div className="text-white mt-4">
+                  <h6>Team Name : {teamDetails.team.teamName}</h6>
+                  <h6>Team Code : {teamDetails.team.teamCode}</h6>
+                </div>
+              )}
             </div>
 
             {loading ? (
@@ -77,18 +102,45 @@ export default function DashboardPage() {
                 </h1>
               </div>
             ) : error ? (
-              <div className="flex justify-center items-center h-96">
+              <div className="flex justify-center flex-col items-center h-96">
                 <h1 className="text-lg text-center text-white">{error}</h1>
+                {error === "User not part of any team" && (
+                  <div className="flex flex-col gap-8 pt-2">
+                    <LayeredButton
+                      text="Join Team"
+                      className="!w-80"
+                      handleClick={() => {
+                        router.push("/join-team");
+                      }}
+                    />
+                    <LayeredButton
+                      text="Create Team"
+                      className="!w-80"
+                      handleClick={() => {
+                        router.push("/create-team");
+                      }}
+                    />
+                  </div>
+                )}
               </div>
             ) : teamDetails?.members?.length && teamDetails.memberCount > 0 ? (
               <>
-                <div className="flex justify-center md:justify-end">
+                <div className="flex justify-center md:justify-end gap-4">
+                  {teamDetails.memberCount < MAX_TEAM_SIZE && (
+                    <button
+                      className="bg-main-orange text-white p-2 rounded-full flex items-center tracking-wider hover:scale-105 transition-transform active:scale-95"
+                      onClick={() => setShowAddMemberDialog(true)}
+                    >
+                      Add Members
+                      <UserPlus2Icon className="bg-blue-500 text-white p-1 rounded-full shrink-0 ml-2 size-6 " />
+                    </button>
+                  )}
                   <button
                     className="bg-main-orange text-white p-2 rounded-full flex items-center tracking-wider group hover:scale-105 transition-transform active:scale-95"
                     onClick={() => setShowLeaveTeamAlert(true)}
                   >
-                    leave team
-                    <div className="bg-blue-500 text-white p-1 rounded-full shrink-0 ml-2 size-6 group-hover:rotate-[15deg] transition-transform" />
+                    Leave Team
+                    <MoveUpRightIcon className="bg-blue-500 text-white p-1 rounded-full shrink-0 ml-2 size-6 group-hover:rotate-[15deg] transition-transform" />
                   </button>
                 </div>
 
@@ -104,16 +156,23 @@ export default function DashboardPage() {
                     />
                   ))}
                 </div>
-
-                <div className="flex w-full justify-center">
-                  <button
-                    className="border p-2 rounded-lg uppercase hover:scale-105 transition-all active:scale-95"
-                    onClick={() => setShowDialog(true)}
-                  >
-                    <span className="text-main-orange">Submit</span>{" "}
-                    <span className="text-white">Idea</span>
-                  </button>
-                </div>
+                {teamDetails.members.length < MIN_TEAM_SIZE ? (
+                  <p className="bg-white/20 backdrop-blur-md flex items-center text-white gap-4 p-2 rounded-lg text-sm max-w-prose mx-auto">
+                    <InfoIcon />A minimum of {MIN_TEAM_SIZE} members is required
+                    to form a team. Idea submission is allowed only after
+                    meeting this requirement.
+                  </p>
+                ) : (
+                  <div className="flex w-full justify-center mt-6">
+                    <button
+                      className="border p-2 rounded-lg uppercase hover:scale-105 transition-all active:scale-95"
+                      onClick={() => setShowDialog(true)}
+                    >
+                      <span className="text-main-orange">Submit</span>{" "}
+                      <span className="text-white">Idea</span>
+                    </button>
+                  </div>
+                )}
               </>
             ) : (
               <div className="flex justify-center items-center h-96 text-center">
