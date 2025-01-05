@@ -17,7 +17,6 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [teamDetails, setTeamDetails] = useState<TeamResponseData | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     const fetchTeamDetails = async () => {
@@ -28,7 +27,7 @@ export default function DashboardPage() {
         if (response.success && response.data) {
           setTeamDetails(response.data);
         } else {
-          setError(response.errors || "An unknown error occurred.");
+          setError(response.errors || "User not part of any team");
         }
       } finally {
         setLoading(false);
@@ -59,7 +58,7 @@ export default function DashboardPage() {
             <div className="flex flex-col items-center gap-4 my-8">
               <Text
                 text="DASHBOARD"
-                animation={false}
+                animation
                 className="!text-main-orange"
                 textSize="text-4xl md:text-7xl"
                 layerCount={3}
@@ -81,7 +80,7 @@ export default function DashboardPage() {
               <div className="flex justify-center items-center h-96">
                 <h1 className="text-lg text-center text-white">{error}</h1>
               </div>
-            ) : teamDetails?.members?.length ? (
+            ) : teamDetails?.members?.length && teamDetails.memberCount > 0 ? (
               <>
                 <div className="flex justify-center md:justify-end">
                   <button

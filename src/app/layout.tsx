@@ -49,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-monument overflow-x-hidden">
+      <body className="font-monument overflow-x-hidden scroll-smooth">
         <AuthProvider>
           <Provider>
             <div>{children}</div>
