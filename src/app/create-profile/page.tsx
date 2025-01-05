@@ -8,9 +8,6 @@ import Stage1Skeleton from "./stageskeleton";
 export default function CreateProfile() {
   const [stage, setStage] = useState(1);
 
-  useEffect(() => {
-    console.log(`Current Stage: ${stage}`);
-  }, [stage]);
 
   return (
     <ProtectedRoute skeletonComponent={<Stage1Skeleton />}>

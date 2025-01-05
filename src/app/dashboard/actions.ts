@@ -75,7 +75,6 @@ export async function submitFile(formData: FormData) {
       method: "PUT",
       body: formData
     })
-    console.log(res);
     if (!res.ok)
       throw new Error("Error submitting the file.")
     return handleApiResponse(res);

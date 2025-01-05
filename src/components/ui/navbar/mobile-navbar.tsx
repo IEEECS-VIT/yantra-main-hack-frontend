@@ -24,6 +24,7 @@ export default function MobileNavbar({
       const token = await handleLogin();
       if (token) login(token);
       const response = await fetchWithAuth("/login", { method: "GET" });
+      
       const res = await handleApiResponse(response);
       if (res.status === 401) {
         logout();

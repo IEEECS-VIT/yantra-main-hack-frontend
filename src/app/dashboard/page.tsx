@@ -35,7 +35,6 @@ export default function DashboardPage() {
       try {
         setLoading(true);
         const response = await getTeamDetails();
-        console.log(response.data);
         if (response.success && response.data) {
           setTeamDetails(response.data);
         } else {

@@ -1,6 +1,7 @@
 "use client";
 
 import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 
 export type ApiResponse<T> = {
   data: T | null;
@@ -19,13 +20,13 @@ export async function fetchWithAuth(
 
   // Log cookies only in the browser environment
   if (isBrowser) {
-    // console.log("Browser cookies:", document.cookie);
+    console.log("Browser cookies:", document.cookie);
   }
 
   const headers = new Headers(options.headers);
 
   if (!authToken) {
-    console.log("You need to be logged in to perform this action");
+    toast.error("You need to be logged in to perform this action");
   }
 
   if (authToken) {
@@ -84,7 +85,6 @@ export async function checkAuthToken(
   try {
     const response = await fetchWithAuth("/login", { method: "GET" });
     const data = await response.json();
-    console.log("API Response Data:", data); // Add this log
     if (response.ok) {
       return { status: 0, data }; // Ensure this status is consistent
     }
