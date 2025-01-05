@@ -76,28 +76,27 @@ export async function handleApiResponse<T>(
 
 export async function checkAuthToken(
   authToken?: string
-): Promise<number | boolean> {
+): Promise<{ status: number | boolean; data: any }> {
   if (!authToken) {
-    return true;
+    return { status: true, data: "No token found" };
   }
 
   try {
     const response = await fetchWithAuth("/login", { method: "GET" });
+    const data = await response.json();
+    console.log("API Response Data:", data); // Add this log
     if (response.ok) {
-      return false;
+      return { status: 0, data }; // Ensure this status is consistent
     }
-    // Handle specific response status codes
     if (response.status === 401) {
-      console.log("Token expired. Redirecting to signin.");
-      return 1;
+      return { status: 1, data };
     } else if (response.status === 404) {
-      console.log("Token invalid or user not found.");
-      return 2;
+      return { status: 2, data };
     }
   } catch (error) {
     console.error("Error validating token:", error);
-    return 1;
+    return { status: 1, data: error };
   }
 
-  return false;
+  return { status: false, data: "An unexpected error occurred" };
 }

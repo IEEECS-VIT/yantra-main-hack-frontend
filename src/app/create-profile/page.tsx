@@ -15,7 +15,7 @@ export default function CreateProfile() {
   return (
     <ProtectedRoute skeletonComponent={<Stage1Skeleton />}>
       <main className="flex flex-col items-center min-h-screen bg-custom-gradient">
-        {stage === 1 && <Stage1 setStage={setStage} />}
+        {stage === 1 && <Stage1 />}
       </main>
     </ProtectedRoute>
   );

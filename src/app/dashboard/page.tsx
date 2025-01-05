@@ -9,7 +9,6 @@ import { getTeamDetails, TeamResponseData } from "./actions";
 import LeaveTeamDialog from "./LeaveTeamDialog";
 import TaskSubmmisionDialog from "./TaskSubmmisionDialog";
 import TeamMemberCard from "./TeamMemberCard";
-import { useRouter } from "next/navigation";
 
 export default function DashboardPage() {
   const [showDialog, setShowDialog] = useState(false);
