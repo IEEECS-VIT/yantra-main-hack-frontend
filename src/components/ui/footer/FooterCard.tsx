@@ -93,7 +93,7 @@ const FooterCard = () => {
           <div className="relative overflow-hidden rounded-xl border border-white/20">
             <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" />
             <div className="relative space-y-8 p-8">
-              <h2 className="md:text-2xl text-xl font-semibold text-[#557cff]">
+              <h2 className="md:text-2xl text-xl font-semibold text-buttonBg">
                 CONTACT US
               </h2>
               <div className="space-y-3 md:text-lg text-sm">
