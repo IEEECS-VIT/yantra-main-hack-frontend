@@ -9,9 +9,11 @@ import { useAuth } from "@/contexts/authContext";
 import handleLogin from "@/lib/firebaselogin";
 import { fetchWithAuth, handleApiResponse } from "@/lib/base";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const { isLoggedIn, login, logout } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -19,6 +21,7 @@ export default function Navbar() {
         const res = await handleApiResponse(response);
         if (res.status === 401) {
           logout();
+          router.push("/");
         }
       });
     }
@@ -32,6 +35,7 @@ export default function Navbar() {
       const res = await handleApiResponse(response);
       if (res.status === 401) {
         logout();
+        router.push("/");
       } else if (res.status === 404) {
         window.location.href = "/create-profile";
       } else {

@@ -10,7 +10,9 @@ export default function JoinTeam() {
   const [currentStep, setCurrentStep] = useState(3);
 
   const handleSubmit = () => {
-    if (teamCode.length > 0) {
+    if (teamCode.length < 1 || !/^\d+$/.test(teamCode)) {
+      return;
+    } else {
       setCurrentStep(4);
     }
   };
@@ -42,10 +44,12 @@ export default function JoinTeam() {
           <div className="flex justify-center items-center w-[50vw] md:w-[15vw]">
             <LayeredButton
               text="SUBMIT"
-              enabled={teamCode.length > 0}
+              enabled={teamCode.length > 0 && /^\d+$/.test(teamCode)}
               handleClick={handleSubmit}
               className={`w-full ${
-                teamCode.length < 1 ? "opacity-50" : "opacity-100"
+                teamCode.length < 1 || !/^\d+$/.test(teamCode)
+                  ? "opacity-50"
+                  : "opacity-100"
               }`}
             />
           </div>

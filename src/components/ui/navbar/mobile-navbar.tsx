@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useAuth } from "@/contexts/authContext";
 import handleLogin from "@/lib/firebaselogin";
 import { fetchWithAuth, handleApiResponse } from "@/lib/base";
+import { useRouter } from "next/navigation";
 
 export default function MobileNavbar({
   navItems,
@@ -16,6 +17,7 @@ export default function MobileNavbar({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const { isLoggedIn, login, logout } = useAuth(); // Use context to get login state
+  const router = useRouter();
 
   async function handleClick() {
     if (!isLoggedIn) {
@@ -25,6 +27,7 @@ export default function MobileNavbar({
       const res = await handleApiResponse(response);
       if (res.status === 401) {
         logout();
+        router.push("/");
       } else if (res.status === 404) {
         window.location.href = "/create-profile";
       } else {
@@ -133,6 +136,7 @@ export default function MobileNavbar({
                   onClick={() => {
                     logout(); // Trigger logout on click
                     setIsOpen(false);
+                    router.push("/");
                   }}
                 >
                   logout

@@ -4,16 +4,22 @@ import { useState } from "react";
 import Heading from "@/components/creation/Heading";
 import Progressbar from "@/components/creation/Progressbar";
 import LayeredButton from "@/components/ui/orangeButton";
-import InputBox from "@/components/creation/InputBox";
+import { fetchWithAuth, handleApiResponse } from "@/lib/base";
 
 export default function Stage2() {
   const [teamSize, setTeamSize] = useState(3);
   const [teamName, setTeamName] = useState("");
   const [currentStep, setCurrentStep] = useState(2);
 
-  const handleSubmit = () => {
-    if (teamName.length > 0) {
+  const handleSubmit = async () => {
+    if (teamName.length > 0 && teamName.length < 20) {
       setCurrentStep(3);
+      const response = await fetchWithAuth("/create-team", {
+        method: "POST",
+        body: JSON.stringify({ teamName }),
+      });
+      const res = await handleApiResponse(response);
+      console.log(res);
     }
   };
 
@@ -46,10 +52,12 @@ export default function Stage2() {
         <div className="flex justify-center items-center w-[50vw] md:w-[15vw]">
           <LayeredButton
             text="SUBMIT"
-            enabled={teamName.length > 0}
+            enabled={teamName.length > 0 && teamName.length < 20}
             handleClick={handleSubmit}
             className={`w-full ${
-              teamName.length < 1 ? "opacity-50" : "opacity-100"
+              teamName.length < 1 || teamName.length >= 20
+                ? "opacity-50"
+                : "opacity-100"
             }`}
           />
         </div>
