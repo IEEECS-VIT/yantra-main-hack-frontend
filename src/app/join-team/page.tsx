@@ -3,10 +3,9 @@ import { useState } from "react";
 import Heading from "@/components/creation/Heading";
 import Progressbar from "@/components/creation/Progressbar";
 import LayeredButton from "@/components/ui/orangeButton";
-import ProtectedRoute from "@/components/protectedRoutes";
-import Stage1Skeleton from "../create-profile/stageskeleton";
 import { fetchWithAuth, handleApiResponse } from "@/lib/base";
 import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 export default function JoinTeam() {
   const [teamCode, setTeamCode] = useState("");
@@ -14,21 +13,56 @@ export default function JoinTeam() {
   const router = useRouter();
 
   const handleSubmit = async () => {
+    // Show loading toast
+    const toastId = toast.loading("Joining team...");
+
     if (teamCode.length < 1 || !/^\d+$/.test(teamCode)) {
+      toast.error("Invalid team code format", { id: toastId });
       return;
     } else {
       setCurrentStep(4);
-      const response = await fetchWithAuth("/join-team", {
-        method: "POST",
-        body: JSON.stringify({ teamCode }),
-      });
-      const res = await handleApiResponse(response);
-      if (res.status !== 200) {
-        setCurrentStep(3);
-      } else {
+
+      try {
+        const response = await fetchWithAuth("/join-team", {
+          method: "POST",
+          body: JSON.stringify({ teamCode }),
+        });
+
+        // Handle error cases based on status codes
+        if (!response.ok) {
+          setCurrentStep(3);
+
+          if (response.status === 400) {
+            toast.error("Team code is required", { id: toastId });
+          } else if (response.status === 404) {
+            toast.error("User not found", { id: toastId });
+          } else if (response.status === 403) {
+            toast.error("User already in a team", { id: toastId });
+          } else if (response.status === 422) {
+            toast.error("Invalid team code", { id: toastId });
+          } else if (response.status === 409) {
+            toast.error("Team is already full", { id: toastId });
+          } else {
+            const errorData = await response.json();
+            const errorMessage = errorData.message || "Failed to join team";
+            toast.error(errorMessage, { id: toastId });
+          }
+
+          return handleApiResponse(response);
+        }
+
+        // Success toast
+        toast.success("Joined team successfully!", { id: toastId });
         router.push("/dashboard");
+        return handleApiResponse(response);
+      } catch (e) {
+        // Catch block error handling
+        toast.error(
+          e instanceof Error ? e.message : "An unknown error occurred",
+          { id: toastId }
+        );
+        setCurrentStep(3);
       }
-      console.log(res);
     }
   };
 
@@ -38,8 +72,7 @@ export default function JoinTeam() {
         <div className="mb-16 ">
           <Heading text="ALREADY HAVE A TEAM?" />
           <div className="mt-8">
-            <Progressbar currentStep={currentStep} />{" "}
-            {/* Use currentStep state */}
+            <Progressbar currentStep={currentStep} />
           </div>
         </div>
         <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
