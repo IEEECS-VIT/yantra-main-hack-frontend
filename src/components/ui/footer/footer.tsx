@@ -1,6 +1,5 @@
 import FloatImages from "@/components/hero/floatImages";
 import FooterCard from "./FooterCard";
-import Image from "next/image";
 
 export default function footer() {
   return (

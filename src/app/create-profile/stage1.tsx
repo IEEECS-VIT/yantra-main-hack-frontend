@@ -176,66 +176,31 @@ export default function Stage1() {
       </h1>
       <div className="w-full max-w-4xl mx-auto p-6 space-y-4 md:space-y-2">
         <div className="grid grid-cols-1 md:grid-cols-2  gap-4 md:gap-16">
-          <InputBox placeholder="Name" value={name} onChange={setName} />
-          <InputBox placeholder="Phone Num" value={phone} onChange={setPhone} />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16">
+          <InputBox placeholder="Full Name" value={name} onChange={setName} />
           <InputBox
             placeholder="Reg Num"
             value={regNo}
             onChange={handleRegNoChange}
           />
-          <InputBox
-            placeholder="Room Num"
-            value={roomNo}
-            onChange={setRoomNo}
-          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16">
-          <div className="relative w-full max-w-md">
-            <select
-              className="bg-opacity-30 bg-white w-full p-6 border text-center text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
-              value={hostelType}
-              onChange={(e) => handleHostelTypeChange(e.target.value)}
-            >
-              <option value="" className="text-gray-400">
-                Hostel Type
-              </option>
-              <option value="MH" className="text-main-orange">
-                Mens Hostel
-              </option>
-              <option value="LH" className="text-main-orange">
-                Ladies Hostel
-              </option>
-              <option value="DS" className="text-main-orange">
-                Day Scholar
-              </option>
-            </select>
-          </div>
-
-          <div className="relative w-full max-w-md">
-            <select
-              className={`bg-opacity-30 bg-white w-full p-6 border text-center text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent ${!hostelType || hostelType === "DS" ? "cursor-not-allowed" : ""}`}
-              value={hostelBlock}
-              onChange={(e) => setHostelBlock(e.target.value)}
-              disabled={!hostelType || hostelType === "DS"}
-            >
-              <option value="" className="text-gray-400">
-                Hostel Block
-              </option>
-              {blocks.map((block) => (
-                <option
-                  key={block}
-                  value={block}
-                  className="text-main-orange py-2 px-4 hover:bg-white/10"
-                >
-                  {block}
-                </option>
-              ))}
-            </select>
-          </div>
+          <InputBox placeholder="Phone Num" value={phone} onChange={setPhone} />
+          <select
+            className="bg-opacity-30 bg-white  w-full p-6 border text-center text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+          >
+            <option value="" className="text-gray-400">
+              Gender
+            </option>
+            <option value="male" className="text-main-orange">
+              male
+            </option>
+            <option value="female" className="text-main-orange">
+              female
+            </option>
+          </select>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16">
@@ -281,23 +246,58 @@ export default function Stage1() {
             </select>
           </div>
         </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16">
+          <div className="relative w-full max-w-md">
+            <select
+              className="bg-opacity-30 bg-white w-full p-6 border text-center text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+              value={hostelType}
+              onChange={(e) => handleHostelTypeChange(e.target.value)}
+            >
+              <option value="" className="text-gray-400">
+                Hostel Type
+              </option>
+              <option value="MH" className="text-main-orange">
+                Mens Hostel
+              </option>
+              <option value="LH" className="text-main-orange">
+                Ladies Hostel
+              </option>
+              <option value="DS" className="text-main-orange">
+                Day Scholar
+              </option>
+            </select>
+          </div>
+
+          <div className="relative w-full max-w-md">
+            <select
+              className={`bg-opacity-30 bg-white w-full p-6 border text-center text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent ${!hostelType || hostelType === "DS" ? "cursor-not-allowed" : ""}`}
+              value={hostelBlock}
+              onChange={(e) => setHostelBlock(e.target.value)}
+              disabled={!hostelType || hostelType === "DS"}
+            >
+              <option value="" className="text-gray-400">
+                Hostel Block
+              </option>
+              {blocks.map((block) => (
+                <option
+                  key={block}
+                  value={block}
+                  className="text-main-orange py-2 px-4 hover:bg-white/10"
+                >
+                  {block}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
 
         <div className="relative w-full flex items-center justify-center">
-          <select
-            className="bg-opacity-30 bg-white md:w-[50%] w-full p-6 border text-center text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-          >
-            <option value="" className="text-gray-400">
-              Gender
-            </option>
-            <option value="male" className="text-main-orange">
-              male
-            </option>
-            <option value="female" className="text-main-orange">
-              female
-            </option>
-          </select>
+          <InputBox
+            placeholder="Room Num"
+            value={roomNo}
+            onChange={setRoomNo}
+            disabled={!hostelType || hostelType === "DS"}
+          />
         </div>
 
         <div className="flex justify-center items-center space-x-2">

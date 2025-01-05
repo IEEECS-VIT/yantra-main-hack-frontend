@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Text from "./text";
 import FloatImages from "./floatImages";
-import Button from "../ui/orangeButton";
 import ArrowComponent from "./arrow";
 import MainButton from "./mainbutton";
 

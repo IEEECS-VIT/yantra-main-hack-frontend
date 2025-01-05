@@ -23,7 +23,7 @@ const FooterCard = () => {
       <Line />
       <FooterMarquee text="REGISTER" />
       <Line />
-      <FooterMarquee text="NOW" reverse={true}/>
+      <FooterMarquee text="NOW" reverse={true} />
       <Line />
       <footer className="relative p-8 bg-transparent rounded-xl bottom-0">
         <div className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-xl rounded-b-none" />
@@ -98,13 +98,13 @@ const FooterCard = () => {
               </h2>
               <div className="space-y-3 md:text-lg text-sm">
                 <Link
-                  href="/"
+                  href="tel:+919999999999"
                   className="block hover:text-blue-200 transition-colors"
                 >
                   +91 9999999999
                 </Link>
                 <Link
-                  href="/"
+                  href="mailto:yantra.sw@vit.ac.in"
                   className="block hover:text-blue-200 transition-colors"
                 >
                   yantra.sw@vit.ac.in
@@ -122,6 +122,7 @@ const FooterCard = () => {
           width={200}
           height={200}
           className="md:w-48 w-24"
+          onClick={() => window.open("https://ieeecsvit.com")}
         />
         <Image
           src={vitLogo}
