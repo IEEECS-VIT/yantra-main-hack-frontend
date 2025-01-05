@@ -23,7 +23,7 @@ export default function JoinTeam() {
         body: JSON.stringify({ teamCode }),
       });
       const res = await handleApiResponse(response);
-      if (res.status !== 201) {
+      if (res.status !== 200) {
         setCurrentStep(3);
       } else {
         router.push("/dashboard");

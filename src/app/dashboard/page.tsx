@@ -105,7 +105,7 @@ export default function DashboardPage() {
             ) : error ? (
               <div className="flex justify-center flex-col items-center h-96">
                 <h1 className="text-lg text-center text-white">{error}</h1>
-                {error === "User not found or not part of any team" && (
+                {(error === "User not found or not part of any team" || error === "User not part of any team") && (
                   <div className="flex flex-col gap-8 pt-2">
                     <LayeredButton
                       text="Join Team"
