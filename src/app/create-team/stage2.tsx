@@ -21,7 +21,7 @@ export default function Stage2() {
         body: JSON.stringify({ teamName }),
       });
       const res = await handleApiResponse(response);
-      if (res.status !== 200) {
+      if (res.status !== 201) {
         setCurrentStep(2);
       } else {
         router.push("/dashboard");
