@@ -13,6 +13,7 @@ import {
   FaLinkedin,
 } from "react-icons/fa"; // Import social media icons
 import { FooterMarquee, Line } from "./FooterMarquee";
+import RotatingImage from "@/components/hero/starThingy";
 
 const FooterCard = () => {
   const currentYear = new Date().getFullYear();
@@ -24,27 +25,71 @@ const FooterCard = () => {
       <Line />
       <FooterMarquee text="NOW" reverse={true} />
       <Line />
-      <footer className="relative p-8 bg-transparent rounded-xl bottom-0">
+      <footer className="bg-custom-gradient relative p-8 rounded-3xl bottom-0 mt-4 pt-24">
         <div className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-xl rounded-b-none" />
 
-        <div className="relative max-w-6xl mx-auto md:grid flex flex-col-reverse md:grid-cols-3 gap-8 text-white">
+        <div className="relative max-w-6xl mx-auto md:grid flex flex-col-reverse md:grid-cols-4 gap-8 text-white">
           <div className="space-y-4 md:text-left text-center">
-            <h1 className="text-xl md:text-5xl">
-              YANTRA <span className="block">HACK</span>
+            <h1 className="text-xl md:text-5xl font-monumentBold">
+              Yantra{" "}
+              <span className="block [-webkit-text-stroke:1px_white] text-transparent">
+                Hack
+              </span>
             </h1>
-            <div className="space-y-2">
+            <RotatingImage className="invert left-0" />
+            <div className="space-y-2 pt-24">
               <h2 className="text-lg md:text-xl italic">
                 Made with <Heart className="inline text-white" /> by
               </h2>
-              <p className="text-2xl md:text-5xl">IEEE-CS</p>
-              <p className="text-xs md:text-sm mt-4">
-                © {currentYear}, All rights reserved
+              <p className="text-2xl md:text-5xl ">
+                IEEE
+                <span className=" [-webkit-text-stroke:1px_white] text-transparent">
+                  CS
+                </span>
               </p>
+              {/* <p className="text-xs md:text-sm mt-4">
+                © {currentYear}, All rights reserved
+              </p> */}
             </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-xl border border-white/20">
-            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" />
+          <div className="relative overflow-hidden rounded-xl ">
+            <div className="absolute inset-0 " />
+            <div className="relative space-y-8 p-8">
+              <h2 className="md:text-2xl text-xl font-semibold text-buttonBg">
+                PAGES
+              </h2>
+              <div className="space-y-3 md:text-lg text-sm">
+                <Link
+                  href="/"
+                  className="block hover:text-blue-200 transition-colors"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/#timeline"
+                  className="block hover:text-blue-200 transition-colors"
+                >
+                  Timeline
+                </Link>
+                <Link
+                  href="/#prize"
+                  className="block hover:text-blue-200 transition-colors"
+                >
+                  Prize
+                </Link>
+                <Link
+                  href="/dashboard"
+                  className="block hover:text-blue-200 transition-colors"
+                >
+                  Dashboard
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden rounded-xl">
+            <div className="absolute inset-0 " />
             <div className="relative space-y-8 p-8">
               <h2 className="md:text-2xl text-xl font-semibold text-buttonBg">
                 LINKS
@@ -89,22 +134,22 @@ const FooterCard = () => {
             </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-xl border border-white/20">
-            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" />
-            <div className="relative space-y-8 p-8">
-              <h2 className="md:text-2xl text-xl font-semibold text-buttonBg">
+          <div className="relative overflow-hidden rounded-xl ">
+            <div className="absolute inset-0 " />
+            <div className="relative space-y-8 py-8 px-4">
+              <h2 className="md:text-2xl text-xl font-semibold text-buttonBg whitespace-nowrap">
                 CONTACT US
               </h2>
               <div className="space-y-3 md:text-lg text-sm">
                 <Link
                   href="tel:+918125351715"
-                  className="block hover:text-blue-200 transition-colors"
+                  className="block hover:text-blue-200 transition-colors whitespace-nowrap"
                 >
                   +91 81253 51715
                 </Link>
                 <Link
                   href="mailto:yantra.sw@vit.ac.in"
-                  className="block hover:text-blue-200 transition-colors"
+                  className="block hover:text-blue-200 transition-colors whitespace-nowrap"
                 >
                   yantra.sw@vit.ac.in
                 </Link>
@@ -114,7 +159,7 @@ const FooterCard = () => {
           </div>
         </div>
       </footer>
-      <div className="flex justify-evenly space-x-4 py-6 px-2 backdrop-blur-lg bg-opacity-90 bg-black/30">
+      {/* <div className="flex justify-evenly space-x-4 py-6 px-2 backdrop-blur-lg bg-opacity-90 bg-black/30">
         <Image
           src={vitLogo}
           alt="VIT"
@@ -136,7 +181,7 @@ const FooterCard = () => {
           height={200}
           className="md:w-48 w-24"
         />
-      </div>
+      </div> */}
     </>
   );
 };
