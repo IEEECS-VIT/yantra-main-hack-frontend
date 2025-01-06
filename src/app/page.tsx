@@ -3,6 +3,7 @@ import Navbar from "@/components/ui/navbar/navbar";
 import Image from "next/image";
 import Timeline from "@/components/hero/Timeline";
 import About from "@/components/About";
+import Prizes from "@/components/ui/Prizes";
 import Footer from "@/components/ui/footer/footer";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       </div>
       <About />
       <Timeline />
+      <Prizes/>
       <Footer/>
     </main>
   );
