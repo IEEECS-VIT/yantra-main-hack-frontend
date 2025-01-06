@@ -20,7 +20,7 @@ const faqData = [
   {
     question: "What is the team size requirement?",
     answer:
-      "Teams must consist of 3 to 5 members. While having at least one female member is encouraged, it is not mandatory.",
+      "Teams must consist of minimum 3 to a maximium of 5 members. While having at least one female member is encouraged, it is not mandatory. Team having less than 3 members will not be able to proceed with idea submission.",
   },
   {
     question: "What information is required for registration?",
