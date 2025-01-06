@@ -65,7 +65,7 @@ export default function DashboardPage() {
       <main className="relative min-h-screen pt-10">
         {/* Background gradient and noise overlay */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-custom-gradient" />
+          <div className="absolute inset-0 bg-[#FFF8F8]" />
           <div className="absolute inset-0 mix-blend-overlay opacity-25" />
         </div>
 

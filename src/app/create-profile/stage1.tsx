@@ -33,7 +33,7 @@ export default function Stage1() {
 
   mhBlocks.push("MH-B Annex");
   mhBlocks.push("MH-D Annex");
-
+  mhBlocks.sort();
   const blocks =
     hostelType === "MH" ? mhBlocks : hostelType === "LH" ? lhBlocks : [];
 
