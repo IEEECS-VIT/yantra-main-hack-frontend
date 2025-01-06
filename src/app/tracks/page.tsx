@@ -25,7 +25,7 @@ export default function ProblemStatementPage() {
 
   return (
     <div className="container w-[100%] mx-auto mt-8 font-mono bg-white text-black min-h-screen pb-8">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 ">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 px-4">
         <div className="flex items-center gap-4">
           <BackButton />
           <h1 className="text-2xl font-bold text-buttonBg">
