@@ -5,7 +5,6 @@ import { useState } from "react";
 import LayeredButton from "@/components/ui/orangeButton";
 import { createProfile } from "@/actions/createProfile";
 import { useRouter } from "next/navigation";
-import ProtectedRoute from "@/components/protectedRoutes";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function Stage1() {
@@ -31,6 +30,9 @@ export default function Stage1() {
     { length: 10 },
     (_, i) => `LH-${String.fromCharCode(65 + i)}`
   ).filter((block) => block !== "LH-I");
+
+  mhBlocks.push("MH-B Annex");
+  mhBlocks.push("MH-D Annex");
 
   const blocks =
     hostelType === "MH" ? mhBlocks : hostelType === "LH" ? lhBlocks : [];
@@ -115,7 +117,7 @@ export default function Stage1() {
     }
 
     if (!validateRegNo(regNo)) {
-      setError("Invalid registration number format. Use 12ABC1234.");
+      setError("Invalid registration number format. Use 22BCE0729.");
       return;
     }
 
@@ -195,10 +197,10 @@ export default function Stage1() {
               Gender
             </option>
             <option value="male" className="text-main-orange">
-              male
+              Male
             </option>
             <option value="female" className="text-main-orange">
-              female
+              Female
             </option>
           </select>
         </div>

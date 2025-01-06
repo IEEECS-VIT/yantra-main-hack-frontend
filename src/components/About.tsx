@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import OrangeButton from "@/components/ui/orangeButton";
-import { CircularText } from "./hero/circularText";
 import { motion, useInView } from "framer-motion";
 import RotatingImage from "./hero/starThingy";
 
@@ -108,7 +107,9 @@ const TimelineItem = ({
     <>
       <div
         ref={itemRef}
-        className="relative flex items-start last:mb-0"
+        className={`relative flex items-start ${
+          index === 0 ? "pt-[100px]" : ""
+        } last:mb-0`}
         id="about"
       >
         <div className="flex flex-col items-center h-full">
@@ -171,8 +172,8 @@ const TimelineItem = ({
         {/* <RotatingImage className="w-10 md:w-14 bottom-10 left-4 md:left-12 absolute" /> */}
       </div>
 
-      <RotatingImage className="w-14 md:w-20 top-[5vh] md:top-[70vh] left-1 md:left-[5rem]" />
-      <RotatingImage className="w-12 md:w-16 top-[200px] right-4 md:right-0 absolute" />
+      <RotatingImage className="w-14 md:w-20 top-[5vh] md:top-[50vh] left-1 md:left-[5rem]" />
+      <RotatingImage className="w-12 md:w-16 top-[50px] right-4 md:right-0 absolute" />
     </>
   );
 };

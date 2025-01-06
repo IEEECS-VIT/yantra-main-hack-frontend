@@ -5,6 +5,7 @@ import Timeline from "@/components/hero/Timeline";
 import About from "@/components/About";
 import Prizes from "@/components/ui/Prizes";
 import Footer from "@/components/ui/footer/footer";
+import FAQ from "@/components/faq";
 
 export default function Home() {
   return (
@@ -23,7 +24,8 @@ export default function Home() {
       <About />
       <Timeline />
       <Prizes/>
-      <Footer/>
+      <FAQ />
+      <Footer />
     </main>
   );
 }
