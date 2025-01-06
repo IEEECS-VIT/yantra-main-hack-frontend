@@ -98,10 +98,10 @@ const FooterCard = () => {
               </h2>
               <div className="space-y-3 md:text-lg text-sm">
                 <Link
-                  href="tel:+919999999999"
+                  href="tel:+918125351715"
                   className="block hover:text-blue-200 transition-colors"
                 >
-                  +91 9999999999
+                  +91 81253 51715
                 </Link>
                 <Link
                   href="mailto:yantra.sw@vit.ac.in"
