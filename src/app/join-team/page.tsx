@@ -1,17 +1,27 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Heading from "@/components/creation/Heading";
 import Progressbar from "@/components/creation/Progressbar";
 import LayeredButton from "@/components/ui/orangeButton";
 import { fetchWithAuth, handleApiResponse } from "@/lib/base";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
+import Cookies from "js-cookie";
 
 export default function JoinTeam() {
   const [teamCode, setTeamCode] = useState("");
   const [currentStep, setCurrentStep] = useState(3);
   const router = useRouter();
-
+  useEffect(() => {
+    if (Cookies.get("authToken") === undefined) {
+      toast.error("You need to be logged in to create a team", {
+        duration: 1000,
+      });
+      setTimeout(() => {
+        router.push("/");
+      }, 1000);
+    }
+  }, []);
   const handleSubmit = async () => {
     // Show loading toast
     const toastId = toast.loading("Joining team...");

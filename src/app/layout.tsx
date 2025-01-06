@@ -55,9 +55,9 @@ export default function RootLayout({
           <Provider>
             <div>{children}</div>
             <div className="noise" />
+            <Toaster position="top-right" toastOptions={toastOptions} />
           </Provider>
         </AuthProvider>
-        <Toaster position="top-right" toastOptions={toastOptions} />
       </body>
     </html>
   );

@@ -50,12 +50,12 @@ export default function FAQ() {
                     value={`item-${index}`}
                     className="border-none"
                   >
-                    <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-gray-50 text-left transition-none">
+                    <AccordionTrigger className="px-2 py-4 hover:no-underline hover:bg-gray-50 text-left transition-none">
                       <span className="text-lg font-normal">
                         {faq.question}
                       </span>
                     </AccordionTrigger>
-                    <AccordionContent className="px-6 py-4 text-gray-600 data-[state=closed]:animate-none data-[state=open]:animate-none">
+                    <AccordionContent className="px-2 py-4 text-gray-600 data-[state=closed]:animate-none data-[state=open]:animate-none">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -68,7 +68,7 @@ export default function FAQ() {
           ))}
         </div>
       </div>
-      <RotatingImage className="right-8 rotate-2 absolute" />
+      <RotatingImage className="right-8 rotate-2 absolute sm:block hidden" />
     </div>
   );
 }

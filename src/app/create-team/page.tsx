@@ -1,6 +1,4 @@
-import ProtectedRoute from "@/components/protectedRoutes";
 import Stage2 from "./stage2";
-import Stage1Skeleton from "../create-profile/stageskeleton";
 
 export default function CreateTeam() {
   return (
