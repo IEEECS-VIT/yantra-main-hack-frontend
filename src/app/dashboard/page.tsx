@@ -2,8 +2,6 @@
 import Text from "@/components/hero/text";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProtectedRoute from "@/components/protectedRoutes";
-import Navbar from "@/components/ui/navbar/navbar";
-import LayeredButton from "@/components/ui/orangeButton";
 import {
   InfoIcon,
   Loader2,
@@ -17,6 +15,7 @@ import LeaveTeamDialog from "./LeaveTeamDialog";
 import TaskSubmmisionDialog from "./TaskSubmmisionDialog";
 import TeamMemberCard from "./TeamMemberCard";
 import AddMembersDialog from "./AddMembersDialog";
+import BackButton from "@/components/ui/backbutton";
 
 const MAX_TEAM_SIZE = 5;
 const MIN_TEAM_SIZE = 3;
@@ -61,29 +60,17 @@ export default function DashboardPage() {
         setOpen={setShowAddMemberDialog}
         teamCode={teamDetails?.team?.teamCode as string}
       />
-      {/* <Navbar /> */}
-      <main className="relative min-h-screen pt-10">
-        {/* Background gradient and noise overlay */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[#FFF8F8]" />
-          <div className="absolute inset-0 mix-blend-overlay opacity-25" />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 py-10">
+      <main className="relative min-h-screen pt-10 bg-custom-gradient">
+        <div className="relative z-10   ">
           <MaxWidthWrapper>
             <div className="flex flex-col items-center gap-4 my-8">
               <Text
                 text="DASHBOARD"
                 animation
-                className="!text-white"
+                className="!text-main-orange"
                 textSize="text-4xl md:text-7xl"
                 layerCount={3}
               />
-              {/* <p className="max-w-96 md:max-w-[35rem] text-white text-center text-opacity-90 text-xs md:text-sm">
-                The given dashboard displays the information about you and your
-                team mates
-              </p> */}
               {teamDetails && (
                 <div className="text-white mt-4">
                   <h6>Team Name : {teamDetails.team.teamName}</h6>
@@ -123,20 +110,6 @@ export default function DashboardPage() {
                     >
                       Join Team
                     </button>
-                    {/* <LayeredButton
-                      text="Join Team"
-                      className="!w-80"
-                      handleClick={() => {
-                        router.push("/join-team");
-                      }}
-                    />
-                    <LayeredButton
-                      text="Create Team"
-                      className="!w-80"
-                      handleClick={() => {
-                        router.push("/create-team");
-                      }}
-                    /> */}
                   </div>
                 )}
               </div>

@@ -24,7 +24,7 @@ export default function MobileNavbar({
       const token = await handleLogin();
       if (token) login(token);
       const response = await fetchWithAuth("/login", { method: "GET" });
-      
+
       const res = await handleApiResponse(response);
       if (res.status === 401) {
         logout();
@@ -38,7 +38,7 @@ export default function MobileNavbar({
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-[#321335] via-[#8B6BE5] to-[#40295C] z-50 lg:hidden">
+    <nav className="absolute top-0 left-0 right-0  z-50 lg:hidden">
       <div className="max-w-7xl mx-auto border-2 border-white">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center h-full">

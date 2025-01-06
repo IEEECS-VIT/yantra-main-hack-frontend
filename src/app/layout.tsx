@@ -51,9 +51,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-monument overflow-x-hidden scroll-smooth">
         <AuthProvider>
-            <div>{children}</div>
-            <div className="noise" />
-            <Toaster position="top-right" toastOptions={toastOptions} />
+          <div>{children}</div>
+          <div className="noise" />
+          <Toaster position="top-right" toastOptions={toastOptions} />
         </AuthProvider>
       </body>
     </html>

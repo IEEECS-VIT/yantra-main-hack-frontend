@@ -20,28 +20,23 @@ const FooterCard = () => {
 
   return (
     <>
-      <Line />
-      <FooterMarquee text="REGISTER" />
-      <Line />
-      <FooterMarquee text="NOW" reverse={true} />
-      <Line />
-      <footer className="bg-custom-gradient relative p-8 rounded-3xl bottom-0 mt-4 pt-24">
+      <footer className="bg-custom-gradient relative pb-8  rounded-3xl bottom-0 mt-4 pt-8">
         <div className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-xl rounded-b-none" />
 
         <div className="relative max-w-6xl mx-auto md:grid flex flex-col-reverse md:grid-cols-4 gap-8 text-white">
-          <div className="space-y-4 md:text-left text-center">
+          <div className="flex flex-col justify-around md:text-left text-center">
             <h1 className="text-xl md:text-5xl font-monumentBold">
               Yantra{" "}
               <span className="block [-webkit-text-stroke:1px_white] text-transparent">
                 Hack
               </span>
             </h1>
-            <RotatingImage className="invert left-0" />
-            <div className="space-y-2 pt-24">
-              <h2 className="text-lg md:text-xl italic">
+            {/* <RotatingImage className="invert left-0" /> */}
+            <div className="space-y-2 ">
+              <h2 className="text-sm md:text-lg italic">
                 Made with <Heart className="inline text-white" /> by
               </h2>
-              <p className="text-2xl md:text-5xl ">
+              <p className="text-xl md:text-3xl ">
                 IEEE
                 <span className=" [-webkit-text-stroke:1px_white] text-transparent">
                   CS
@@ -54,7 +49,7 @@ const FooterCard = () => {
           </div>
 
           <div className="relative overflow-hidden rounded-xl ">
-            <div className="absolute inset-0 " />
+            {/* <div className="absolute inset-0 " /> */}
             <div className="relative space-y-8 p-8">
               <h2 className="md:text-2xl text-xl font-semibold text-buttonBg">
                 PAGES

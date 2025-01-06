@@ -8,15 +8,14 @@ interface FooterMarqueeProps {
 
 export function FooterMarquee({ text, reverse = false }: FooterMarqueeProps) {
   return (
-    <div>
-      <VelocityScroll numRows={1} className="my-4" reverse={reverse}>
-        <span className="bg-custom-gradient bg-clip-text text-transparent text-3xl sm:text-5xl md:text-9xl mx-4 tracking-wider">
+    <div className="bg-[#FFF8F8]">
+      <VelocityScroll numRows={1} className="py-4" reverse={reverse}>
+        <span className="bg-custom-gradient bg-clip-text text-transparent text-xl sm:text-2xl md:text-4xl mx-4 tracking-wider ">
           {text}
         </span>
 
         <span
-          className="text-transparent font-bold text-3xl sm:text-5xl md:text-9xl mx-4 tracking-wider"
-          style={{ WebkitTextStroke: "1px #E7643B" }}
+          className="text-buttonBg font-bold text-xl sm:text-2xl md:text-4xl mx-4 tracking-wider"
         >
           {text}
         </span>
@@ -27,7 +26,7 @@ export function FooterMarquee({ text, reverse = false }: FooterMarqueeProps) {
 
 export function Line() {
   return (
-    <div className="flex items-center gap-[-5rem]">
+    <div className="flex items-center gap-[-5rem] bg-[#FFF8F8]">
       {Array.from({ length: 5 }).map((_, idx) => (
         <Image
           key={idx}

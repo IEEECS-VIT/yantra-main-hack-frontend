@@ -6,7 +6,7 @@ import Progressbar from "../creation/VerticalProgressBar";
 import RotatingImage from "./starThingy";
 
 const timelineDataLeft = [
-  { heading: "REGISTERATIONS STARTS", date: "JAN 6" },
+  { heading: "REGISTERATIONS STARTS", date: "JAN 7" },
   { heading: "IDEA SUBMISSION", date: "JAN 15" },
 ];
 
@@ -16,7 +16,7 @@ const timelineDataRight = [
 ];
 
 const mobileTimelineData = [
-  { heading: "REGISTERATION STARTS", date: "JAN 6" },
+  { heading: "REGISTERATION STARTS", date: "JAN 7" },
   { heading: "IDEA SUBMISSION", date: "JAN 15" },
   { heading: "PARTICIPANT SHORTLISITNG", date: "JAN 20" },
   { heading: "HACKATHON STARTS", date: "FEB 7" },

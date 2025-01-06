@@ -3,7 +3,6 @@ import Text from "./text";
 import FloatImages from "./floatImages";
 import ArrowComponent from "./arrow";
 import MainButton from "./mainbutton";
-import RotatingImage from "./starThingy";
 
 export async function Hero() {
   return (
@@ -31,7 +30,7 @@ export async function Hero() {
       </div>
 
       <FloatImages />
-      
+
       <ArrowComponent />
       {/* 
       <div className="absolute left-[2%] top-[110vh]">
