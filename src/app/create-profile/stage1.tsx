@@ -196,10 +196,10 @@ export default function Stage1() {
             <option value="" className="text-gray-400">
               Gender
             </option>
-            <option value="male" className="text-main-orange">
+            <option value="male" className="text-black">
               Male
             </option>
-            <option value="female" className="text-main-orange">
+            <option value="female" className="text-black">
               Female
             </option>
           </select>
@@ -219,7 +219,7 @@ export default function Stage1() {
                 <option
                   key={branch}
                   value={branch}
-                  className="text-main-orange py-2 px-4 hover:bg-white/10"
+                  className="text-black py-2 px-4 hover:bg-white/10"
                 >
                   {branch}
                 </option>
@@ -240,7 +240,7 @@ export default function Stage1() {
                 <option
                   key={school}
                   value={school}
-                  className="text-main-orange py-2 px-4 hover:bg-white/10"
+                  className="text-black py-2 px-4 hover:bg-white/10"
                 >
                   {school}
                 </option>
@@ -258,13 +258,13 @@ export default function Stage1() {
               <option value="" className="text-gray-400">
                 Hostel Type
               </option>
-              <option value="MH" className="text-main-orange">
+              <option value="MH" className="text-black">
                 Mens Hostel
               </option>
-              <option value="LH" className="text-main-orange">
+              <option value="LH" className="text-black">
                 Ladies Hostel
               </option>
-              <option value="DS" className="text-main-orange">
+              <option value="DS" className="text-black">
                 Day Scholar
               </option>
             </select>
@@ -284,7 +284,7 @@ export default function Stage1() {
                 <option
                   key={block}
                   value={block}
-                  className="text-main-orange py-2 px-4 hover:bg-white/10"
+                  className="text-black py-2 px-4 hover:bg-white/10"
                 >
                   {block}
                 </option>
