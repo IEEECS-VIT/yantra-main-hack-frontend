@@ -61,8 +61,8 @@ export default function DashboardPage() {
         setOpen={setShowAddMemberDialog}
         teamCode={teamDetails?.team?.teamCode as string}
       />
-      <Navbar />
-      <main className="relative min-h-screen pt-20">
+      {/* <Navbar /> */}
+      <main className="relative min-h-screen pt-10">
         {/* Background gradient and noise overlay */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-custom-gradient" />
@@ -76,7 +76,7 @@ export default function DashboardPage() {
               <Text
                 text="DASHBOARD"
                 animation
-                className="!text-main-orange"
+                className="!text-white"
                 textSize="text-4xl md:text-7xl"
                 layerCount={3}
               />
@@ -101,11 +101,29 @@ export default function DashboardPage() {
               </div>
             ) : error ? (
               <div className="flex justify-center flex-col items-center h-96">
-                <h1 className="text-lg text-center text-white">{error}</h1>
+                <h1 className="text-lg text-center text-white">
+                  {"You are not a part of a team yet"}
+                </h1>
                 {(error === "User not found or not part of any team" ||
                   error === "User not part of any team") && (
                   <div className="flex flex-col gap-8 pt-2">
-                    <LayeredButton
+                    <button
+                      className="text-white px-10 py-7 bg-gradient-to-l from-[#A240A5] to-[#322A55] border border-white rounded-sm text-sm md:w-[500px] w-[350px] mt-6"
+                      onClick={() => {
+                        router.push("/create-team");
+                      }}
+                    >
+                      Create Team
+                    </button>
+                    <button
+                      className="text-white px-10 py-7 bg-gradient-to-l from-[#A240A5] to-[#322A55] border border-white rounded-sm text-sm md:w-[500px] w-[350px] mt-6"
+                      onClick={() => {
+                        router.push("/join-team");
+                      }}
+                    >
+                      Join Team
+                    </button>
+                    {/* <LayeredButton
                       text="Join Team"
                       className="!w-80"
                       handleClick={() => {
@@ -118,7 +136,7 @@ export default function DashboardPage() {
                       handleClick={() => {
                         router.push("/create-team");
                       }}
-                    />
+                    /> */}
                   </div>
                 )}
               </div>
@@ -172,7 +190,9 @@ export default function DashboardPage() {
                     </button>
                   </div>
                 ) : (
-                  <p className="text-center text-white">Only team leader can submit the idea.</p>
+                  <p className="text-center text-white">
+                    Only team leader can submit the idea.
+                  </p>
                 )}
               </>
             ) : (
