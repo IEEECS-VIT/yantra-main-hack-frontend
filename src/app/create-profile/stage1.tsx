@@ -115,7 +115,7 @@ export default function Stage1() {
     }
 
     if (!validateRegNo(regNo)) {
-      setError("Invalid registration number format. Use 12ABC1234.");
+      setError("Invalid registration number format. Use 22BCE0729.");
       return;
     }
 
@@ -195,10 +195,10 @@ export default function Stage1() {
               Gender
             </option>
             <option value="male" className="text-main-orange">
-              male
+              Male
             </option>
             <option value="female" className="text-main-orange">
-              female
+              Female
             </option>
           </select>
         </div>

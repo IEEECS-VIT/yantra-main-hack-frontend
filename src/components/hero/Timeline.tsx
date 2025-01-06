@@ -40,7 +40,7 @@ const titleVariants = {
 export default function Timeline() {
   return (
     <div
-      className="min-h-screen p-4 bg-[#FFF8F8] relative flex flex-col items-center md:pt-[100px] pt-0"
+      className="min-h-screen p-4 bg-[#FFF8F8] relative flex flex-col items-center md:pt-[100px] pt-0 overflow-hidden"
       id="timeline"
     >
       <motion.div

@@ -58,7 +58,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 hidden lg:flex h-[100px] items-center justify-around border border-white overflow-hidden font-monument z-50 opacity-95">
+      <nav className="fixed top-0 left-0 right-0 hidden lg:flex h-[100px] items-center justify-around border border-white overflow-hidden font-monument z-50 opacity-95 ">
         <div className="absolute inset-0 z-0 h-full">
           <div className="absolute inset-0 bg-gradient-to-r from-[#4B1A4F] via-[#9B7DF2] to-[#5C3175]" />
           <div
@@ -76,18 +76,6 @@ export default function Navbar() {
           <div className="flex items-center h-full">
             <Link
               href="https://vit.ac.in/"
-              className="border-l border-r border-white h-full w-36 px-8 py-2 flex items-center justify-center"
-            >
-              <Image
-                src="/logos/vit_40_years.svg"
-                alt="VIT Vellore"
-                height={200}
-                width={200}
-                className="h-12 w-auto object-contain"
-              />
-            </Link>
-            <Link
-              href="https://vit.ac.in/"
               className="border-l border-r border-white h-full w-60 px-8 py-2"
             >
               <Image
@@ -96,6 +84,18 @@ export default function Navbar() {
                 height={200}
                 width={200}
                 className="h-full w-full object-contain"
+              />
+            </Link>
+            <Link
+              href="https://vit.ac.in/"
+              className="border-l border-r border-white h-full w-36 px-8 py-2 flex items-center justify-center"
+            >
+              <Image
+                src="/logos/vit_40_years.svg"
+                alt="VIT Vellore"
+                height={200}
+                width={200}
+                className="h-12 w-auto object-contain"
               />
             </Link>
           </div>

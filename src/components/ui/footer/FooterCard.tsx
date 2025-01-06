@@ -1,4 +1,3 @@
-import Text from "./text";
 import React from "react";
 import Link from "next/link";
 import { Heart } from "lucide-react";
@@ -117,13 +116,6 @@ const FooterCard = () => {
       </footer>
       <div className="flex justify-evenly space-x-4 py-6 px-2 backdrop-blur-lg bg-opacity-90 bg-black/30">
         <Image
-          src={ieeeLogo}
-          alt="VIT"
-          width={200}
-          height={200}
-          className="md:w-48 w-24"
-        />
-        <Image
           src={vitLogo}
           alt="VIT"
           width={200}
@@ -133,6 +125,13 @@ const FooterCard = () => {
         <Image
           src={yantraLogo}
           alt="Yantra"
+          width={200}
+          height={200}
+          className="md:w-48 w-24"
+        />
+        <Image
+          src={ieeeLogo}
+          alt="VIT"
           width={200}
           height={200}
           className="md:w-48 w-24"
