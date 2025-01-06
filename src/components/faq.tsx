@@ -36,7 +36,7 @@ const faqData = [
 
 export default function FAQ() {
   return (
-    <div className="w-full px-6 py-8 bg-[#FFF8F8] flex justify-center items-center min-h-[600px] relative">
+    <div className="w-full px-6 py-8 bg-[#FFF8F8] flex justify-center items-center min-h-[600px] relative sm:pb-[100px] pb-[50px]">
       <div className="max-w-5xl bg-white border-main-orange border-2 p-8 w-full">
         <h2 className="text-4xl font-light mb-12 text-main-orange pl-6">
           FAQs

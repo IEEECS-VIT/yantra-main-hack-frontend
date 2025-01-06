@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Provider from "@/lib/providers";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/contexts/authContext";
 
@@ -52,11 +51,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-monument overflow-x-hidden scroll-smooth">
         <AuthProvider>
-          <Provider>
             <div>{children}</div>
             <div className="noise" />
             <Toaster position="top-right" toastOptions={toastOptions} />
-          </Provider>
         </AuthProvider>
       </body>
     </html>
