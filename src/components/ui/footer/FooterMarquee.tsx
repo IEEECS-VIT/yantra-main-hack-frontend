@@ -10,10 +10,13 @@ export function FooterMarquee({ text, reverse = false }: FooterMarqueeProps) {
   return (
     <div>
       <VelocityScroll numRows={1} className="my-4" reverse={reverse}>
-        <span className="text-white text-3xl sm:text-5xl md:text-9xl mx-4 tracking-wider">{text}</span>
+        <span className="bg-custom-gradient bg-clip-text text-transparent text-3xl sm:text-5xl md:text-9xl mx-4 tracking-wider">
+          {text}
+        </span>
+
         <span
           className="text-transparent font-bold text-3xl sm:text-5xl md:text-9xl mx-4 tracking-wider"
-          style={{ WebkitTextStroke: "1px white" }}
+          style={{ WebkitTextStroke: "1px #E7643B" }}
         >
           {text}
         </span>
@@ -28,7 +31,7 @@ export function Line() {
       {Array.from({ length: 5 }).map((_, idx) => (
         <Image
           key={idx}
-          src="/footer-line.svg"
+          src="/footer-line-new.svg"
           className="w-full inline-block -ml-[1.24rem]"
           alt=""
           aria-hidden
