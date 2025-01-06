@@ -4,6 +4,7 @@ import Image from "next/image";
 import Timeline from "@/components/hero/Timeline";
 import About from "@/components/About";
 import Footer from "@/components/ui/footer/footer";
+import FAQ from "@/components/faq";
 
 export default function Home() {
   return (
@@ -21,7 +22,8 @@ export default function Home() {
       </div>
       <About />
       <Timeline />
-      <Footer/>
+      <FAQ />
+      <Footer />
     </main>
   );
 }
