@@ -5,6 +5,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import RotatingImage from "./hero/starThingy";
+import { Button } from "./ui/button";
+import { Download } from "lucide-react";
+import { Rulebookbutton } from "./rulebookbutton";
 
 const faqData = [
   {
@@ -36,11 +39,17 @@ const faqData = [
 
 export default function FAQ() {
   return (
-    <div className="w-full px-6 py-8 bg-[#FFF8F8] flex justify-center items-center min-h-[600px] relative sm:pb-[100px] pb-[50px]" id="faqs">
+    <div
+      className="w-full px-6 py-8 bg-[#FFF8F8] flex justify-center items-center min-h-[600px] relative sm:pb-[100px] pb-[50px]"
+      id="faqs"
+    >
       <div className="max-w-6xl bg-white border-main-orange border-2 p-8 w-full">
-        <h2 className="text-4xl font-light mb-12 text-main-orange pl-6">
+        <div className="flex justify-between sm:flex-row flex-col sm:items-start items-center mb-12">
+          <h2 className="text-6xl font-light sm:mb-10 mb-2 text-main-orange sm:pl-6 pl-2">
           FAQs
-        </h2>
+          </h2>
+          <Rulebookbutton />
+        </div>
         <div>
           {faqData.map((faq, index) => (
             <div key={index}>

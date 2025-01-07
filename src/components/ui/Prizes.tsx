@@ -205,6 +205,7 @@ export default function Prizes() {
             className={`${showMore ? "relative" : "absolute"} bottom-0 opacity-80 flex justify-center mt-6 cursor-pointer bg-gradient-to-r from-white to-[#e8643b] w-full p-3 flex-col items-center`}
             onClick={() => {
               if (showMore) {
+                setShowMore(!showMore);
                 redirect("/#faqs");
               } else {
                 setShowMore(!showMore);
