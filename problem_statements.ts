@@ -84,7 +84,7 @@ export const data: ProblemStatement[] = [
   {
     id: 6,
     statementID: "HCHEM06",
-    title: "AI-Optimized Sustainable Chemical Process Design\n(SDG 9, SDG 12)",
+    title: "AI-Optimized Sustainable Chemical Process Design\n",
     category: "Software",
     description: {
       summary:
@@ -99,7 +99,7 @@ export const data: ProblemStatement[] = [
     id: 7,
     statementID: "HCHEM07",
     title:
-      "AI-Powered Predictive Maintenance in Chemical Plants\n(SDG 9, SDG 12)",
+      "AI-Powered Predictive Maintenance in Chemical Plants\n",
     category: "Software",
     description: {
       summary:
@@ -169,7 +169,7 @@ export const data: ProblemStatement[] = [
   {
     id: 12,
     statementID: "HBIOT05",
-    title: "AI-Enhanced Bioremediation Monitoring System\n(SDG 6 and SDG 15)",
+    title: "AI-Enhanced Bioremediation Monitoring System\n",
     category: "Software /\nHardware",
     description: {
       summary:
@@ -324,7 +324,7 @@ export const data: ProblemStatement[] = [
     id: 23,
     statementID: "HMECH05",
     title:
-      "AI-Enhanced Design of Sustainable Mechanical Systems\n(SDG 9, SDG 12)",
+      "AI-Enhanced Design of Sustainable Mechanical Systems\n",
     category: "Software /\nHardware",
     description: {
       summary:
@@ -422,7 +422,7 @@ export const data: ProblemStatement[] = [
   {
     id: 30,
     statementID: "HCSIT06",
-    title: "AI-Powered Waste Management System\n(SDG-11, SDG 12)",
+    title: "AI-Powered Waste Management System\n",
     category: "Software",
     description: {
       summary:
@@ -435,7 +435,7 @@ export const data: ProblemStatement[] = [
   {
     id: 31,
     statementID: "HCSIT07",
-    title: "AI-Driven Renewable Energy Forecasting\n(SDG 7, SDG 9)",
+    title: "AI-Driven Renewable Energy Forecasting\n",
     category: "Software",
     description: {
       summary:
@@ -518,7 +518,7 @@ export const data: ProblemStatement[] = [
   {
     id: 37,
     statementID: "HECEE06",
-    title: "AI-Optimized Spectrum Management for 5G Networks\n(SDG 9, SDG 12)",
+    title: "AI-Optimized Spectrum Management for 5G Networks\n",
     category: "Software",
     description: {
       summary:
@@ -533,7 +533,7 @@ export const data: ProblemStatement[] = [
     id: 38,
     statementID: "HECEE07",
     title:
-      "AI-Driven Intelligent Antenna Systems for Sustainable Connectivity\n(SDG 7, SDG 9)",
+      "AI-Driven Intelligent Antenna Systems for Sustainable Connectivity\n",
     category: "Software",
     description: {
       summary:
@@ -548,7 +548,7 @@ export const data: ProblemStatement[] = [
     id: 39,
     statementID: "HECEE08",
     title:
-      "AI-Driven Fault Detection and Predictive Maintenance in Electrical Systems\n(SDG 9, SDG 12)",
+      "AI-Driven Fault Detection and Predictive Maintenance in Electrical Systems\n",
     category: "Software /\nHardware",
     description: {
       summary:

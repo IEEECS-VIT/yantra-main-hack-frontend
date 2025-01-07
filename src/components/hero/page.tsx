@@ -37,8 +37,8 @@ export async function Hero() {
 
       <div className="absolute md:left-[2%] left-[50%] md:translate-x-[0] translate-x-[-50%] top-[110vh]">
         <LayeredButton
-          text="Problem Statements"
-          className="flex w-[80vw] py-2"
+          text="Tracks"
+          className="md:w-[200px] flex px-2  py-2"
           tracks
         />
       </div>
