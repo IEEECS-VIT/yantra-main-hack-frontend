@@ -21,9 +21,7 @@ export async function Hero() {
       </div>
       <div className="text-center flex gap-6 flex-col items-center m-4">
         <section>
-          <p className="font-monument md:text-5xl text-3xl">
-            An AI For SDG Hack.
-          </p>
+          <p className="font-monument md:text-5xl text-3xl">AI For SDG Hack.</p>
           <p className="md:text-xl text-sm">
             Join us Feb 7-9 for VIT&apos;s best and biggest tech hackathon!
           </p>

@@ -35,12 +35,14 @@ const firstPrize = [
 const prizeData = [
   {
     position: "SECOND",
-    content: "Recognizing exceptional innovation and problem-solving.",
+    content:
+      "Though the top honors may have eluded you, your hard work and creativity have truly set you apart.",
     prizeMoney: "",
   },
   {
     position: "THIRD",
-    content: "Honoring creativity and dedication to excellence.",
+    content:
+      "Third place may not be first, but you're still on the podium—proof that your hard work is paying off!",
     prizeMoney: "",
   },
   {
