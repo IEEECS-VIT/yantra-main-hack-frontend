@@ -32,9 +32,9 @@ export default function ProblemStatementPage() {
     );
   };
 
-  useEffect(() => {
-    redirect("/");
-  }, []);
+  // useEffect(() => {
+  //   redirect("/");
+  // }, []);
 
   return (
     <div className="container w-[100%] mx-auto mt-8 font-mono bg-white text-black min-h-screen pb-8">
