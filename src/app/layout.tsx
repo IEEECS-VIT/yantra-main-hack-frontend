@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/contexts/authContext";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Yantra Hack",
@@ -49,6 +50,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-PL2W95B7JD"
+        />
+
+        <Script id="google-analytics">
+          {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config','G-PL2W95B7JD');
+          `}
+        </Script>
+      </head>
       <body className="font-monument overflow-x-hidden scroll-smooth">
         <AuthProvider>
           <div>{children}</div>
