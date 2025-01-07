@@ -6,19 +6,19 @@ import Progressbar from "../creation/VerticalProgressBar";
 import RotatingImage from "./starThingy";
 
 const timelineDataLeft = [
-  { heading: "REGISTRATIONS START", date: "JAN 7" },
+  { heading: "REGISTRATIONS START", date: "JAN 8" },
   { heading: "IDEA SUBMISSION", date: "JAN 17" },
 ];
 
 const timelineDataRight = [
-  { heading: "PARTICIPANT SHORTLISITNG", date: "JAN 20" },
+  { heading: "PARTICIPANT SHORTLISTING", date: "JAN 20" },
   { heading: "HACKATHON STARTS", date: "FEB 7" },
 ];
 
 const mobileTimelineData = [
-  { heading: "REGISTRATIONS START", date: "JAN 7" },
+  { heading: "REGISTRATIONS START", date: "JAN 8" },
   { heading: "IDEA SUBMISSION", date: "JAN 17" },
-  { heading: "PARTICIPANT SHORTLISITNG", date: "JAN 20" },
+  { heading: "PARTICIPANT SHORTLISTING", date: "JAN 20" },
   { heading: "HACKATHON STARTS", date: "FEB 7" },
 ];
 
@@ -59,7 +59,7 @@ export default function Timeline() {
         </h1>
         {/* Smaller front text */}
         <h1 className="relative text-[#e8643b] text-[7vw] md:text-[5vw] tracking-widest z-10 text-start mx-auto">
-          TIME LINE
+          TIMELINE
         </h1>
       </motion.div>
 

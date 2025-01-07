@@ -93,35 +93,36 @@ const FooterCard = () => {
                   target="_blank"
                   className="flex items-center gap-2 hover:text-blue-200 transition-colors"
                 >
-                  <FaInstagram className="text-xl" /> <span>Instagram</span>
+                  <FaInstagram className="text-xl mb-[0.15rem]" />{" "}
+                  <span>Instagram</span>
                 </Link>
                 <Link
                   href="https://x.com/VIT_univ"
                   target="_blank"
                   className="flex items-center gap-2 hover:text-blue-200 transition-colors"
                 >
-                  <FaTwitter className="text-xl" /> <span>Twitter</span>
+                  <FaTwitter className="text-xl " /> <span>Twitter</span>
                 </Link>
                 <Link
                   href="https://www.youtube.com/channel/UCA9pirjKrKlg2bCvPKRDkyg"
                   target="_blank"
                   className="flex items-center gap-2 hover:text-blue-200 transition-colors"
                 >
-                  <FaYoutube className="text-xl" /> <span>Youtube</span>
+                  <FaYoutube className="text-xl " /> <span>Youtube</span>
                 </Link>
                 <Link
                   href="https://www.facebook.com/vituniversity"
                   target="_blank"
                   className="flex items-center gap-2 hover:text-blue-200 transition-colors"
                 >
-                  <FaFacebook className="text-xl" /> <span>Facebook</span>
+                  <FaFacebook className="text-xl mb-1" /> <span>Facebook</span>
                 </Link>
                 <Link
                   href="https://www.linkedin.com/school/vellore-institute-of-technology/posts/?feedView=all"
                   target="_blank"
                   className="flex items-center gap-2 hover:text-blue-200 transition-colors"
                 >
-                  <FaLinkedin className="text-xl" /> <span>Linkedin</span>
+                  <FaLinkedin className="text-xl mb-1" /> <span>LinkedIn</span>
                 </Link>
               </div>
             </div>

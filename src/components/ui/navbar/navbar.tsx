@@ -54,8 +54,8 @@ export default function Navbar() {
         })(),
         {
           loading: "Logging in...",
-          success: (message) => message,
-          error: (err) => err.toString(),
+          success: (message : any) => message,
+          error: (err : any) => err.toString(),
         }
       );
     }
@@ -120,12 +120,12 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="h-full min-w-fit w-40 border text-white flex flex-col items-center justify-center">
-              {!isLoggedIn && <RegisterButton />}
+              {/* {!isLoggedIn && <RegisterButton />} */}
               <div
                 className="w-full text-center flex items-center justify-center h-full uppercase hover:cursor-pointer"
                 onClick={isLoggedIn ? handleLogout : handleClick}
               >
-                {isLoggedIn ? "logout" : "login"}
+                {isLoggedIn ? "Sign Out" : "Sign In"}
               </div>
             </div>
           </div>

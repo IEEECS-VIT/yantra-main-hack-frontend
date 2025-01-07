@@ -42,8 +42,8 @@ export default function RegisterButton() {
         })(),
         {
           loading: "Logging in...",
-          success: (message) => message,
-          error: (err) => err.toString(),
+          success: (message : any) => message,
+          error: (err : any) => err.toString(),
         }
       );
     }
@@ -57,7 +57,7 @@ export default function RegisterButton() {
       onClick={handleClick}
     >
       <motion.span
-        className="relative z-10 flex items-center gap-2"
+        className="relative z-10 flex items-center"
         initial={{ x: 0 }}
         animate={{ x: isHovered ? -8 : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}

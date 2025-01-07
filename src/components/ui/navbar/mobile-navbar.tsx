@@ -48,8 +48,8 @@ export default function MobileNavbar({
         })(),
         {
           loading: "Logging in...",
-          success: (message) => message,
-          error: (err) => err.toString(),
+          success: (message: any) => message,
+          error: (err: any) => err.toString(),
         }
       );
     }
@@ -134,9 +134,9 @@ export default function MobileNavbar({
                       setIsOpen(false);
                     }}
                   >
-                    login
+                    Sign In
                   </Link>
-                  <Link
+                  {/* <Link
                     href=""
                     className="text-white uppercase text-center block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
                     onClick={() => {
@@ -146,7 +146,7 @@ export default function MobileNavbar({
                     }}
                   >
                     register
-                  </Link>
+                  </Link> */}
                 </>
               ) : (
                 <Link
@@ -158,7 +158,7 @@ export default function MobileNavbar({
                     setIsOpen(false);
                   }}
                 >
-                  logout
+                  Sign Out
                 </Link>
               )}
             </div>

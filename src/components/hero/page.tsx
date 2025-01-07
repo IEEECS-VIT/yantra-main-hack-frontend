@@ -23,7 +23,7 @@ export async function Hero() {
         <section>
           <p className="font-monument md:text-5xl text-3xl">AI For SDG Hack.</p>
           <p className="md:text-xl text-sm">
-            Join us Feb 7-9 for VIT&apos;s best and biggest tech hackathon!
+            Join us from February 7th to 9th for VIT&apos;s best and biggest tech hackathon!
           </p>
         </section>
         <MainButton />

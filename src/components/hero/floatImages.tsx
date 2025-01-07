@@ -52,7 +52,7 @@ export default function FloatImages() {
   return (
     <>
       <Image
-        src={"./left_frame1.svg"}
+        src={"./left_frame2.svg"}
         alt=""
         width={250}
         height={400}
