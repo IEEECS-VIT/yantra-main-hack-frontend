@@ -1,9 +1,10 @@
 "use client";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import ProblemStatementTable from "./table";
 import BackButton from "@/components/ui/backbutton";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
 
 const TableSkeleton = () => (
   <div className="animate-pulse px-4">
@@ -30,6 +31,10 @@ export default function ProblemStatementPage() {
       "_blank"
     );
   };
+
+  useEffect(() => {
+    redirect("/");
+  }, []);
 
   return (
     <div className="container w-[100%] mx-auto mt-8 font-mono bg-white text-black min-h-screen pb-8">
