@@ -85,7 +85,7 @@ export default function Stage2() {
       </div>
 
       {/* Team Name Section - equal spacing */}
-      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
         <h2 className="text-white text-2xl md:text-3xl text-center font-extended mb-8">
           Name your team
         </h2>

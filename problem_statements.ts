@@ -13,7 +13,7 @@ export interface ProblemStatement {
 export const data: ProblemStatement[] = [
   {
     id: 1,
-    statementID: "PS-1001",
+    statementID: "HCHEM01",
     title: "Leak Detection in Pipelines",
     category: "Software /\nHardware",
     description: {
@@ -27,7 +27,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 2,
-    statementID: "PS-1002",
+    statementID: "HCHEM02",
     title: "Predictive Maintenance for Equipment",
     category: "Software",
     description: {
@@ -41,7 +41,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 3,
-    statementID: "PS-1003",
+    statementID: "HCHEM03",
     title: "Carbon Capture and Utilization (CCU)",
     category: "Software /\nHardware",
     description: {
@@ -55,7 +55,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 4,
-    statementID: "PS-1004",
+    statementID: "HCHEM04",
     title: "Self-Healing Polymers",
     category: "Hardware",
     description: {
@@ -69,7 +69,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 5,
-    statementID: "PS-1005",
+    statementID: "HCHEM05",
     title: "Nanoparticle-Based Drug Delivery Systems",
     category: "Hardware",
     description: {
@@ -83,7 +83,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 6,
-    statementID: "PS-1006",
+    statementID: "HCHEM06",
     title: "AI-Optimized Sustainable Chemical Process Design\n(SDG 9, SDG 12)",
     category: "Software",
     description: {
@@ -97,7 +97,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 7,
-    statementID: "PS-1007",
+    statementID: "HCHEM07",
     title:
       "AI-Powered Predictive Maintenance in Chemical Plants\n(SDG 9, SDG 12)",
     category: "Software",
@@ -112,7 +112,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 8,
-    statementID: "PS-1001",
+    statementID: "HBIOT01",
     title: "Smart Crop Rotation Optimization",
     category: "Software",
     description: {
@@ -126,7 +126,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 9,
-    statementID: "PS-1002",
+    statementID: "HBIOT02",
     title: "Precision Food Adulterant Detection with AI",
     category: "Software",
     description: {
@@ -140,7 +140,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 10,
-    statementID: "PS-1003",
+    statementID: "HBIOT03",
     title: "AI for Bioremediation Pathway Prediction",
     category: "Software",
     description: {
@@ -154,7 +154,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 11,
-    statementID: "PS-1004",
+    statementID: "HBIOT04",
     title: "Biosensor Signal Processing Software",
     category: "Software",
     description: {
@@ -168,7 +168,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 12,
-    statementID: "PS-1005",
+    statementID: "HBIOT05",
     title: "AI-Enhanced Bioremediation Monitoring System\n(SDG 6 and SDG 15)",
     category: "Software /\nHardware",
     description: {
@@ -182,7 +182,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 13,
-    statementID: "PS-1006",
+    statementID: "HBIOT06",
     title: "AI-Powered Personalized Medicine Platform",
     category: "Software",
     description: {
@@ -196,7 +196,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 14,
-    statementID: "PS-1001",
+    statementID: "HCIVL01",
     title: "Smart Monitoring and Analysis System for Concrete Structures",
     category: "Hardware",
     description: {
@@ -210,7 +210,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 15,
-    statementID: "PS-1002",
+    statementID: "HCIVL02",
     title: "Digital Twins for Real-Time Problem Solving",
     category: "Software",
     description: {
@@ -224,7 +224,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 16,
-    statementID: "PS-1003",
+    statementID: "HCIVL03",
     title: "Smart Infrastructure Maintenance Systems",
     category: "Hardware",
     description: {
@@ -238,7 +238,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 17,
-    statementID: "PS-1004",
+    statementID: "HCIVL04",
     title: "Advanced Traffic Control System for Urban Road Network",
     category: "Software /\nHardware",
     description: {
@@ -252,7 +252,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 18,
-    statementID: "PS-1005",
+    statementID: "HCIVL05",
     title: "AI-Powered Sustainable Urban Planning Tool",
     category: "Software /\nHardware",
     description: {
@@ -266,7 +266,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 19,
-    statementID: "PS-1001",
+    statementID: "HMECH01",
     title: "Smart Prosthetic Limb with Enhanced Comfort and Functionality",
     category: "Hardware",
     description: {
@@ -280,7 +280,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 20,
-    statementID: "PS-1002",
+    statementID: "HMECH02",
     title: "Modular Lightweight Body Armor for Soldiers",
     category: "Hardware",
     description: {
@@ -294,7 +294,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 21,
-    statementID: "PS-1003",
+    statementID: "HMECH03",
     title: "Drone Swarm Technology for Autonomous Operations",
     category: "Hardware",
     description: {
@@ -308,7 +308,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 22,
-    statementID: "PS-1004",
+    statementID: "HMECH04",
     title: "Smart Cooling System for Data Centers and Industrial Machines",
     category: "Software /\nHardware",
     description: {
@@ -322,7 +322,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 23,
-    statementID: "PS-1005",
+    statementID: "HMECH05",
     title:
       "AI-Enhanced Design of Sustainable Mechanical Systems\n(SDG 9, SDG 12)",
     category: "Software /\nHardware",
@@ -337,7 +337,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 24,
-    statementID: "PS-1006",
+    statementID: "HMECH06",
     title: "Innovative Thermal Management System for Automotive Applications",
     category: "Software /\nHardware",
     description: {
@@ -351,7 +351,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 25,
-    statementID: "PS-1001",
+    statementID: "HCSIT01",
     title: "Countering Misinformation and Ethical Challenges in Generative AI",
     category: "Software",
     description: {
@@ -365,7 +365,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 26,
-    statementID: "PS-1002",
+    statementID: "HCSIT02",
     title: "Immersive AR/VR Training for High-Risk Scenarios",
     category: "Software",
     description: {
@@ -379,7 +379,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 27,
-    statementID: "PS-1003",
+    statementID: "HCSIT03",
     title: "Cloud Application Dependency Analyzer",
     category: "Software",
     description: {
@@ -393,7 +393,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 28,
-    statementID: "PS-1004",
+    statementID: "HCSIT04",
     title: "AI-Powered Data Quality Enhancer",
     category: "Software",
     description: {
@@ -407,7 +407,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 29,
-    statementID: "PS-1005",
+    statementID: "HCSIT05",
     title: "Mental Health Support Platform for Women in High-Stress Careers",
     category: "Software",
     description: {
@@ -421,7 +421,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 30,
-    statementID: "PS-1006",
+    statementID: "HCSIT06",
     title: "AI-Powered Waste Management System\n(SDG-11, SDG 12)",
     category: "Software",
     description: {
@@ -434,7 +434,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 31,
-    statementID: "PS-1007",
+    statementID: "HCSIT07",
     title: "AI-Driven Renewable Energy Forecasting\n(SDG 7, SDG 9)",
     category: "Software",
     description: {
@@ -448,7 +448,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 32,
-    statementID: "PS-1001",
+    statementID: "HECEE01",
     title: "Wearable Technology for Marathon Runners",
     category: "Hardware",
     description: {
@@ -462,7 +462,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 33,
-    statementID: "PS-1002",
+    statementID: "HECEE02",
     title: "Gesture-Controlled Systems Without Cameras",
     category: "Hardware",
     description: {
@@ -476,7 +476,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 34,
-    statementID: "PS-1003",
+    statementID: "HECEE03",
     title: "Drones for Tunnel or Mine Mapping and Fault Detection",
     category: "Software /\nHardware",
     description: {
@@ -490,7 +490,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 35,
-    statementID: "PS-1004",
+    statementID: "HECEE04",
     title: "FPGA Based Application",
     category: "Hardware",
     description: {
@@ -504,7 +504,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 36,
-    statementID: "PS-1005",
+    statementID: "HECEE05",
     title: "Intelligent Battery Management System for Renewable Energy",
     category: "Hardware",
     description: {
@@ -517,7 +517,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 37,
-    statementID: "PS-1006",
+    statementID: "HECEE06",
     title: "AI-Optimized Spectrum Management for 5G Networks\n(SDG 9, SDG 12)",
     category: "Software",
     description: {
@@ -531,7 +531,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 38,
-    statementID: "PS-1007",
+    statementID: "HECEE07",
     title:
       "AI-Driven Intelligent Antenna Systems for Sustainable Connectivity\n(SDG 7, SDG 9)",
     category: "Software",
@@ -546,7 +546,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 39,
-    statementID: "PS-1008",
+    statementID: "HECEE08",
     title:
       "AI-Driven Fault Detection and Predictive Maintenance in Electrical Systems\n(SDG 9, SDG 12)",
     category: "Software /\nHardware",
@@ -561,7 +561,7 @@ export const data: ProblemStatement[] = [
   },
   {
     id: 40,
-    statementID: "PS-1009",
+    statementID: "HECEE09",
     title: "Automated Quality Checking of Export Fruits",
     category: "Software /\nHardware",
     description: {

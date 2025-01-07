@@ -60,7 +60,7 @@ export default function DashboardPage() {
         setOpen={setShowAddMemberDialog}
         teamCode={teamDetails?.team?.teamCode as string}
       />
-      <main className="relative min-h-screen pt-10 bg-custom-gradient">
+      <main className="relative min-h-screen pt-10 pb-4 bg-custom-gradient">
         <div className="relative z-10">
           <MaxWidthWrapper>
             <button

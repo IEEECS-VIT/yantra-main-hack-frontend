@@ -19,9 +19,9 @@ export async function fetchWithAuth(
   const authToken = isBrowser ? Cookies.get("authToken") : undefined;
 
   // Log cookies only in the browser environment
-  if (isBrowser) {
-    console.log("Browser cookies:", document.cookie);
-  }
+  // if (isBrowser) {
+  //   console.log("Browser cookies:", document.cookie);
+  // }
 
   const headers = new Headers(options.headers);
 

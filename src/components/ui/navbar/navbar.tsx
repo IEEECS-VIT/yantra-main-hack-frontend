@@ -74,6 +74,7 @@ export default function Navbar() {
                 height={200}
                 width={200}
                 className="h-full w-full object-contain"
+                loading="eager"
               />
             </Link>
             <Link
@@ -86,6 +87,7 @@ export default function Navbar() {
                 height={200}
                 width={200}
                 className="h-12 w-auto object-contain"
+                loading="eager"
               />
             </Link>
           </div>

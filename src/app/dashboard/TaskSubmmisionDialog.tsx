@@ -9,24 +9,14 @@ import {
 import { Loader2Icon, PencilIcon } from "lucide-react";
 import { Dispatch, SetStateAction, useState } from "react";
 import FileUpload from "./FileUpload";
-import { submitFile } from "./actions";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
+import { data } from "../../../problem_statements";
 
-const tracksList = [
-  {
-    code: "13",
-    track: "Frontend",
-  },
-  {
-    code: "14",
-    track: "Backend",
-  },
-  {
-    code: "15",
-    track: "Mobile",
-  },
-];
+const tracksList = data.map((problem) => ({
+  code: problem.statementID,
+  track: problem.title,
+}));
 
 interface TaskSubmmisionDialogProps {
   open: boolean;
@@ -91,11 +81,11 @@ export default function TaskSubmmisionDialog({
         <DialogHeader>
           <DialogTitle>Task Submission</DialogTitle>
         </DialogHeader>
-        <div className="w-full">
+        <div className="w-full font-mono">
           {!selectedTrack && (
             <>
               <input
-                className="bg-[#d0d0d050] text-center p-2 w-full rounded-full"
+                className="bg-[#d0d0d050] text-center p-2 w-full rounded-full font-mono"
                 placeholder="Search for track"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}

@@ -7,11 +7,13 @@ import { fetchWithAuth, handleApiResponse } from "@/lib/base";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import Cookies from "js-cookie";
+import { IoArrowBack } from "react-icons/io5";
 
 export default function JoinTeam() {
   const [teamCode, setTeamCode] = useState("");
   const [currentStep, setCurrentStep] = useState(3);
   const router = useRouter();
+
   useEffect(() => {
     if (Cookies.get("authToken") === undefined) {
       toast.error("You need to be logged in to create a team", {
@@ -22,8 +24,8 @@ export default function JoinTeam() {
       }, 1000);
     }
   }, []);
+
   const handleSubmit = async () => {
-    // Show loading toast
     const toastId = toast.loading("Joining team...");
 
     if (teamCode.length < 1 || !/^\d+$/.test(teamCode)) {
@@ -38,7 +40,6 @@ export default function JoinTeam() {
           body: JSON.stringify({ teamCode }),
         });
 
-        // Handle error cases based on status codes
         if (!response.ok) {
           setCurrentStep(3);
 
@@ -61,12 +62,10 @@ export default function JoinTeam() {
           return handleApiResponse(response);
         }
 
-        // Success toast
         toast.success("Joined team successfully!", { id: toastId });
         router.push("/dashboard");
         return handleApiResponse(response);
       } catch (e) {
-        // Catch block error handling
         toast.error(
           e instanceof Error ? e.message : "An unknown error occurred",
           { id: toastId }
@@ -78,20 +77,35 @@ export default function JoinTeam() {
 
   return (
     <main className="flex flex-col items-center min-h-screen bg-custom-gradient">
-      <div className="min-h-screen flex flex-col py-16 px-6">
-        <div className="mb-16 ">
+      <div className="min-h-screen flex flex-col py-8 px-4">
+        {/* Back Button */}
+        <div className="flex items-center mb-6">
+          <IoArrowBack
+            className="text-white text-2xl cursor-pointer"
+            onClick={() => router.push("/dashboard")}
+          />
+          <span
+            className="text-white text-lg font-medium ml-2 cursor-pointer"
+            onClick={() => router.push("/dashboard")}
+          >
+            Back
+          </span>
+        </div>
+
+        <div className="mb-12">
           <Heading text="ALREADY HAVE A TEAM?" />
-          <div className="mt-8">
+          <div className="mt-6">
             <Progressbar currentStep={currentStep} />
           </div>
         </div>
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <h2 className="text-white text-2xl md:text-3xl text-center font-extended mb-8">
+
+        <div className="mt-12">
+          <h2 className="text-white text-xl md:text-2xl text-center font-extended mb-6">
             Enter your team code
           </h2>
-          <div className="w-full max-w-5xl mx-auto px-4">
+          <div className="w-full max-w-md mx-auto px-2">
             <input
-              className="bg-opacity-30 bg-white w-full p-4 border text-center md:text-4xl text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+              className="bg-opacity-30 bg-white w-full p-3 border text-center md:text-2xl text-white bg-transparent border-white rounded-lg placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
               placeholder="Team Code"
               value={teamCode}
               onChange={(e) => setTeamCode(e.target.value)}
@@ -99,8 +113,8 @@ export default function JoinTeam() {
           </div>
         </div>
 
-        <div className="flex justify-center mt-16 fixed bottom-36 left-1/2 transform -translate-x-1/2">
-          <div className="flex justify-center items-center w-[50vw] md:w-[15vw]">
+        <div className="flex justify-center mt-8 fixed bottom-24 left-1/2 transform -translate-x-1/2 w-full px-4">
+          <div className="flex justify-center items-center w-full md:w-1/2">
             <LayeredButton
               text="SUBMIT"
               enabled={teamCode.length > 0 && teamCode.length < 20}

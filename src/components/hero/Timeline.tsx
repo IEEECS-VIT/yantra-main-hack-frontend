@@ -7,7 +7,7 @@ import RotatingImage from "./starThingy";
 
 const timelineDataLeft = [
   { heading: "REGISTERATIONS STARTS", date: "JAN 7" },
-  { heading: "IDEA SUBMISSION", date: "JAN 15" },
+  { heading: "IDEA SUBMISSION", date: "JAN 17" },
 ];
 
 const timelineDataRight = [
@@ -17,7 +17,7 @@ const timelineDataRight = [
 
 const mobileTimelineData = [
   { heading: "REGISTERATION STARTS", date: "JAN 7" },
-  { heading: "IDEA SUBMISSION", date: "JAN 15" },
+  { heading: "IDEA SUBMISSION", date: "JAN 17" },
   { heading: "PARTICIPANT SHORTLISITNG", date: "JAN 20" },
   { heading: "HACKATHON STARTS", date: "FEB 7" },
 ];
@@ -53,7 +53,7 @@ export default function Timeline() {
         {/* Foreground outlined text */}
         <h1
           className="absolute text-transparent text-[13vw] md:text-[14vw] tracking-widest z-0 w-full text-center"
-        style={{ WebkitTextStroke: "1.8px #E5E5E5" }}
+          style={{ WebkitTextStroke: "1.8px #E5E5E5" }}
         >
           TIMELINE
         </h1>
