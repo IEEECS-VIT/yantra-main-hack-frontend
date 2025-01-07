@@ -16,7 +16,7 @@ export default function MobileNavbar({
   navItems: { label: string; href: string }[];
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const { isLoggedIn, login, logout } = useAuth(); // Use context to get login state
+  const { isLoggedIn, login, logout } = useAuth();
   const router = useRouter();
 
   async function handleClick() {
@@ -93,7 +93,7 @@ export default function MobileNavbar({
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="lg:hidden"
           >
-            <div className="bg-gradient-to-r from-[#321335] via-[#8B6BE5] to-[#40295C]">
+            <div className="bg-[#23123A] ">
               {navItems.map((item) => (
                 <Link
                   key={item.label}

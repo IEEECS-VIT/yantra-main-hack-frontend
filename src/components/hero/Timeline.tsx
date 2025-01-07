@@ -53,7 +53,7 @@ export default function Timeline() {
         {/* Foreground outlined text */}
         <h1
           className="absolute text-transparent text-[13vw] md:text-[14vw] tracking-widest z-0 w-full text-center"
-          style={{ WebkitTextStroke: "1.5px #E5E5E5" }}
+        style={{ WebkitTextStroke: "1.8px #E5E5E5" }}
         >
           TIMELINE
         </h1>

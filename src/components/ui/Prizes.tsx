@@ -164,6 +164,12 @@ export default function Prizes() {
           viewport={{ once: true, margin: "-100px" }}
           variants={titleVariants}
         >
+          <h1
+            className="absolute text-transparent text-[13vw] md:text-[14vw] tracking-widest z-0 w-full text-center"
+            style={{ WebkitTextStroke: "1.8px #E5E5E5" }}
+          >
+            PRIZES!
+          </h1>
           <h1 className="relative text-[#e8643b] text-[7vw] md:text-[5vw] tracking-widest z-10 text-center w-full">
             PRIZES!
           </h1>

@@ -8,6 +8,7 @@ import {
   MoveUpRightIcon,
   UserPlus2Icon,
 } from "lucide-react";
+import { FaArrowLeft } from "react-icons/fa"; // Importing the back arrow icon
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getTeamDetails, TeamResponseData } from "./actions";
@@ -15,7 +16,6 @@ import LeaveTeamDialog from "./LeaveTeamDialog";
 import TaskSubmmisionDialog from "./TaskSubmmisionDialog";
 import TeamMemberCard from "./TeamMemberCard";
 import AddMembersDialog from "./AddMembersDialog";
-import BackButton from "@/components/ui/backbutton";
 
 const MAX_TEAM_SIZE = 5;
 const MIN_TEAM_SIZE = 3;
@@ -61,13 +61,18 @@ export default function DashboardPage() {
         teamCode={teamDetails?.team?.teamCode as string}
       />
       <main className="relative min-h-screen pt-10 bg-custom-gradient">
-        <div className="relative z-10   ">
+        <div className="relative z-10">
           <MaxWidthWrapper>
+            <button
+              className="flex items-center gap-2 text-white mb-4 p-2 bg-transparent hover:underline"
+              onClick={() => router.push("/")}
+            >
+              <FaArrowLeft className="text-lg" /> Back
+            </button>
             <div className="flex flex-col items-center gap-4 my-8">
               <Text
                 text="DASHBOARD"
-                animation
-                className="!text-main-orange"
+                animation={false}
                 textSize="text-4xl md:text-7xl"
                 layerCount={3}
               />

@@ -1,18 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-
-interface ProblemStatement {
-  id: number;
-  statementID: string;
-  title: string;
-  category: string;
-  description: {
-    summary: string;
-    objective: string;
-    expectedOutcomes: string;
-  };
-}
+import { ProblemStatement } from "../../../problem_statements";
+import { data } from "../../../problem_statements";
 
 const ProblemStatementTable: React.FC = () => {
   const [selectedProblem, setSelectedProblem] =
@@ -21,20 +11,6 @@ const ProblemStatementTable: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [categorySort, setCategorySort] = useState<"asc" | "desc" | null>(null);
   const itemsPerPage = 10;
-
-  const data: ProblemStatement[] = Array.from({ length: 40 }, (_, index) => ({
-    id: index + 1,
-    statementID: `PS-${1000 + index}`,
-    title: `Problem Statement Title ${index + 1}`,
-    category: index % 2 === 0 ? "Software" : "Hardware",
-    description: {
-      summary: `The rapid increase of AI-generated content, such as deep fakes, poses threats to digital content integrity and ethical standards. Objective: Build a system to detect manipulated media, mitigate misinformation, and promote ethical AI deployment. Expected Outcomes: Reduced spread of misinformation, ethical AI practices, and enhanced trust in digital media.`,
-      objective:
-        "Build a system to detect manipulated media, mitigate misinformation, and promote ethical AI deployment. Use advanced algorithms to analyze images, videos, and text for signs of manipulation in real time. Implement guidelines and tools for responsible AI usage.",
-      expectedOutcomes:
-        "Reduced spread of misinformation, ethical AI practices, and enhanced trust in digital media.",
-    },
-  }));
 
   const filteredData = data.filter(
     (problem) =>

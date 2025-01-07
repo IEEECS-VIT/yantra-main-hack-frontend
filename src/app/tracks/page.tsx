@@ -18,9 +18,17 @@ const TableSkeleton = () => (
 
 export default function ProblemStatementPage() {
   const handleDownloadPDF = () => {
-    // Placeholder logic to download PDF
-    console.log("Downloading PDF...");
-    // Add your PDF generation and download logic here
+    window.open(
+      "https://firebasestorage.googleapis.com/v0/b/yantra-hack-1c5c1.firebasestorage.app/o/permanent%2FYantra%20Central%20Hack%2025%20Problem%20Statements.pdf?alt=media",
+      "_blank"
+    );
+  };
+
+  const handleDownloadProposal = () => {
+    window.open(
+      "https://firebasestorage.googleapis.com/v0/b/yantra-hack-1c5c1.firebasestorage.app/o/permanent%2FProject_proposal.pdf?alt=media",
+      "_blank"
+    );
   };
 
   return (
@@ -32,13 +40,22 @@ export default function ProblemStatementPage() {
             Problem Statements
           </h1>
         </div>
-        <Button
-          onClick={handleDownloadPDF}
-          className="flex items-center gap-2 px-4 py-2 bg-buttonBg text-white rounded-lg hover:opacity-90"
-        >
-          <Download className="h-4 w-4" />
-          Download PDF
-        </Button>
+        <div className="flex gap-2 items-center  flex-wrap">
+          <Button
+            onClick={handleDownloadProposal}
+            className="flex items-center gap-2 px-4 py-2 bg-buttonBg text-white rounded-lg hover:opacity-90"
+          >
+            <Download className="h-4 w-4" />
+            Submission Template
+          </Button>
+          <Button
+            onClick={handleDownloadPDF}
+            className="flex items-center gap-2 px-4 py-2 bg-buttonBg text-white rounded-lg hover:opacity-90"
+          >
+            <Download className="h-4 w-4" />
+            Download PDF
+          </Button>
+        </div>
       </div>
 
       <Suspense fallback={<TableSkeleton />}>

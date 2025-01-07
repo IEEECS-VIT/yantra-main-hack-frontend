@@ -3,10 +3,12 @@ import Text from "./text";
 import FloatImages from "./floatImages";
 import ArrowComponent from "./arrow";
 import MainButton from "./mainbutton";
+import LayeredButton from "../ui/orangeButton";
+import { redirect } from "next/navigation";
 
 export async function Hero() {
   return (
-    <div className="flex flex-col items-center justify-around sm:h-[120vh] h-[110vh] bg-custom-gradient z-0 pt-[110px] text-white pb-6 overflow-hidden">
+    <div className="flex flex-col items-center justify-around h-[120vh] bg-custom-gradient z-0 pt-[110px] text-white pb-6 overflow-hidden">
       <div className="flex flex-col items-center gap-4">
         <Image
           src={"./logos/yantra.svg"}
@@ -32,10 +34,14 @@ export async function Hero() {
       <FloatImages />
 
       <ArrowComponent />
-      {/* 
-      <div className="absolute left-[2%] top-[110vh]">
-        <Button text="Previous year highlights!" className="md:flex hidden" />
-      </div> */}
+
+      <div className="absolute md:left-[2%] left-[50%] md:translate-x-[0] translate-x-[-50%] top-[110vh]">
+        <LayeredButton
+          text="Problem Statements"
+          className="flex w-[80vw] py-2"
+          tracks
+        />
+      </div>
     </div>
   );
 }

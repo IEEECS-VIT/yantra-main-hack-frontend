@@ -5,14 +5,15 @@ import OrangeButton from "@/components/ui/orangeButton";
 import { motion, useInView } from "framer-motion";
 import RotatingImage from "./hero/starThingy";
 import { redirect } from "next/navigation";
+import LayeredButton from "@/components/ui/orangeButton";
 
 export default function About() {
   const aboutData = [
     {
-      heading: "WHAT IS YANTRA?",
-      title: "WELCOME TO VIT'S BIGGEST AI HACKATHON",
+      heading: "WHAT IS YANTRA CENTRAL HACK?",
+      title: "WELCOME TO VIT'S BIGGEST HACKATHON",
       content:
-        "Yantra Hack brings together participants from various disciplines to work on real-world challenges, encouraging creative problem-solving and teamwork. The event also provides a platform for networking, learning, and showcasing technical skills, helping students gain exposure to industry trends and cutting-edge technologies.",
+        "Yantra Central Hack is an event where participants from diverse fields collaborate to solve real-world challenges. It fosters teamwork, creative problem-solving, and technical skill development. The event also offers opportunities for networking, learning, and staying updated with industry trends and technologies.",
     },
     {
       heading: "WHAT IS SDG?",
@@ -140,9 +141,9 @@ const TimelineItem = ({
           variants={contentVariants}
           className="ml-4 flex md:flex-row flex-col justify-between w-full mb-4 md:mb-16"
         >
-          <h3 className="text-black font-semibold text-2xl md:text-3xl md:min-w-[15vw]">
+          <h3 className="text-black font-semibold text-2xl md:text-3xl md:min-w-[15vw] md:max-w-[15vw]">
             {data.heading.split(" ").length === 1 ? (
-              <span className="text-black">{data.heading}</span>
+              <span className="text-black ">{data.heading}</span>
             ) : (
               data.heading.split(" ").map((word, idx, arr) =>
                 idx === arr.length - 1 ? (
@@ -163,9 +164,10 @@ const TimelineItem = ({
               {data.content}
             </p>
             {index === 0 && (
-              <OrangeButton
+              <LayeredButton
                 text="Explore Rules and FAQ"
                 handleClick={() => redirect("/#faqs")}
+                className="text-sm"
               />
             )}
           </div>
@@ -175,7 +177,7 @@ const TimelineItem = ({
       </div>
 
       <RotatingImage className="w-14 md:w-20 top-[5vh] md:top-[70vh] left-1 md:left-[5rem]" />
-      <RotatingImage className="w-12 md:w-16 top-[200px] right-4 md:right-0 absolute" />
+      <RotatingImage className="w-12 md:w-16 top-[200px] right-4 md:right-0 absolute  " />
     </>
   );
 };

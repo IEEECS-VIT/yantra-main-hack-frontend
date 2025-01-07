@@ -1,4 +1,3 @@
-// components/Navbar.tsx
 "use client";
 
 import Image from "next/image";
@@ -51,7 +50,7 @@ export default function Navbar() {
 
   const NAV_ITEMS = [
     { label: "home", href: "/" },
-    { label: "about", href: "/#about" },
+    { label: "Tracks", href: "/tracks" },
     { label: "timeline", href: "/#timeline" },
     ...(isLoggedIn ? [{ label: "dashboard", href: "/dashboard" }] : []),
   ];
@@ -60,7 +59,7 @@ export default function Navbar() {
     <>
       <nav className="absolute top-0 left-0 right-0 hidden lg:flex h-[100px] items-center justify-around border border-white overflow-hidden font-monument z-50 opacity-95 w-screen">
         <div className="absolute inset-0 z-0 h-full">
-          <div className="absolute inset-0 bg-custom-gradient" /> 
+          <div className="absolute inset-0 bg-custom-gradient" />
         </div>
 
         <div className="relative z-10 flex w-full items-center justify-around h-full">

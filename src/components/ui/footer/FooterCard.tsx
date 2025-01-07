@@ -1,29 +1,21 @@
 import React from "react";
 import Link from "next/link";
 import { Heart } from "lucide-react";
-import Image from "next/image";
-import vitLogo from "../../../../public/logos/vit.svg";
-import yantraLogo from "../../../../public/logos/yantra.svg";
-import ieeeLogo from "../../../../public/logos/ieee-cs.svg";
 import {
   FaInstagram,
   FaTwitter,
   FaYoutube,
   FaFacebook,
   FaLinkedin,
-} from "react-icons/fa"; // Import social media icons
-import { FooterMarquee, Line } from "./FooterMarquee";
-import RotatingImage from "@/components/hero/starThingy";
+} from "react-icons/fa";
 
 const FooterCard = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <>
-      <footer className="bg-custom-gradient relative pb-8  rounded-3xl bottom-0 mt-4 pt-8">
+      <footer className="bg-custom-gradient relative pb-0  rounded-3xl bottom-0 mt-4 pt-2">
         <div className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-xl rounded-b-none" />
 
-        <div className="relative max-w-6xl mx-auto md:grid flex flex-col-reverse md:grid-cols-4 gap-8 text-white">
+        <div className="relative max-w-6xl mx-auto md:grid flex flex-col-reverse md:grid-cols-4 gap-0 text-white">
           <div className="flex flex-col justify-around md:text-left text-center">
             <h1 className="text-xl md:text-5xl font-monumentBold">
               Yantra{" "}
@@ -32,7 +24,7 @@ const FooterCard = () => {
               </span>
             </h1>
             {/* <RotatingImage className="invert left-0" /> */}
-            <div className="space-y-2 ">
+            <div className="space-y-0 sm:-mt-[7rem] ">
               <h2 className="text-sm md:text-lg italic">
                 Made with <Heart className="inline text-white" /> by
               </h2>
@@ -50,7 +42,7 @@ const FooterCard = () => {
 
           <div className="relative overflow-hidden rounded-xl ">
             {/* <div className="absolute inset-0 " /> */}
-            <div className="relative space-y-8 p-8">
+            <div className="relative space-y-4 p-8">
               <h2 className="md:text-2xl text-xl font-semibold text-buttonBg">
                 PAGES
               </h2>
@@ -60,6 +52,18 @@ const FooterCard = () => {
                   className="block hover:text-blue-200 transition-colors"
                 >
                   Home
+                </Link>
+                <Link
+                  href="/tracks"
+                  className="block hover:text-blue-200 transition-colors"
+                >
+                  Tracks
+                </Link>
+                <Link
+                  href="/dashboard"
+                  className="block hover:text-blue-200 transition-colors"
+                >
+                  Dashboard
                 </Link>
                 <Link
                   href="/#timeline"
@@ -73,19 +77,13 @@ const FooterCard = () => {
                 >
                   Prize
                 </Link>
-                <Link
-                  href="/dashboard"
-                  className="block hover:text-blue-200 transition-colors"
-                >
-                  Dashboard
-                </Link>
               </div>
             </div>
           </div>
 
           <div className="relative overflow-hidden rounded-xl">
             <div className="absolute inset-0 " />
-            <div className="relative space-y-8 p-8">
+            <div className="relative space-y-4 p-8">
               <h2 className="md:text-2xl text-xl font-semibold text-buttonBg">
                 LINKS
               </h2>
@@ -131,16 +129,16 @@ const FooterCard = () => {
 
           <div className="relative overflow-hidden rounded-xl ">
             <div className="absolute inset-0 " />
-            <div className="relative space-y-8 py-8 px-4">
+            <div className="relative space-y-4 py-8 px-4">
               <h2 className="md:text-2xl text-xl font-semibold text-buttonBg whitespace-nowrap">
                 CONTACT US
               </h2>
               <div className="space-y-3 md:text-lg text-sm">
                 <Link
-                  href="tel:+918125351715"
+                  href="tel:+918438162183"
                   className="block hover:text-blue-200 transition-colors whitespace-nowrap"
                 >
-                  +91 81253 51715
+                  +91 84381 62183
                 </Link>
                 <Link
                   href="mailto:yantra.sw@vit.ac.in"
@@ -148,7 +146,6 @@ const FooterCard = () => {
                 >
                   yantra.sw@vit.ac.in
                 </Link>
-                <p>MB-102</p>
               </div>
             </div>
           </div>

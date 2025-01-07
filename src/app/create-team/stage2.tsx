@@ -10,7 +10,6 @@ import { toast } from "react-hot-toast";
 import Cookies from "js-cookie";
 
 export default function Stage2() {
-  const [teamSize, setTeamSize] = useState(3);
   const [teamName, setTeamName] = useState("");
   const [currentStep, setCurrentStep] = useState(2);
   const router = useRouter();
