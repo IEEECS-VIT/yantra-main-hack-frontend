@@ -7,8 +7,8 @@ import MobileNavbar from "./mobile-navbar";
 import { useAuth } from "@/contexts/authContext";
 import handleLogin from "@/lib/firebaselogin";
 import { fetchWithAuth, handleApiResponse } from "@/lib/base";
-import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 export default function Navbar() {
   const { isLoggedIn, login, logout } = useAuth();
@@ -28,18 +28,36 @@ export default function Navbar() {
 
   async function handleClick() {
     if (!isLoggedIn) {
-      const token = await handleLogin();
-      if (token) login(token);
-      const response = await fetchWithAuth("/login", { method: "GET" });
-      const res = await handleApiResponse(response);
-      if (res.status === 401) {
-        logout();
-        router.push("/");
-      } else if (res.status === 404) {
-        router.push("/create-profile");
-      } else {
-        router.push("/dashboard");
-      }
+      toast.promise(
+        (async () => {
+          try {
+            const token = await handleLogin();
+            if (!token) throw new Error("Login failed");
+
+            login(token);
+            const response = await fetchWithAuth("/login", { method: "GET" });
+            const res = await handleApiResponse(response);
+
+            if (res.status === 401) {
+              logout();
+              router.push("/");
+            } else if (res.status === 404) {
+              router.push("/create-profile");
+              return "Please create your profile";
+            } else {
+              router.push("/dashboard");
+              return "Login successful!";
+            }
+          } catch (error: any) {
+            throw error.message || "An error occurred during login";
+          }
+        })(),
+        {
+          loading: "Logging in...",
+          success: (message) => message,
+          error: (err) => err.toString(),
+        }
+      );
     }
   }
 
