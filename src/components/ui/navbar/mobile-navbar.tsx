@@ -30,9 +30,9 @@ export default function MobileNavbar({
         logout();
         router.push("/");
       } else if (res.status === 404) {
-        window.location.href = "/create-profile";
+        router.push("/create-profile");
       } else {
-        window.location.href = "/dashboard";
+        router.push("/dashboard");
       }
     }
   }

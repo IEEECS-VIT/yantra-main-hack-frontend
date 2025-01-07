@@ -6,10 +6,12 @@ import { useState } from "react";
 import handleLogin from "@/lib/firebaselogin";
 import { useAuth } from "@/contexts/authContext";
 import { fetchWithAuth, handleApiResponse } from "@/lib/base";
+import { useRouter } from "next/navigation";
 
 export default function RegisterButton() {
   const [isHovered, setIsHovered] = useState(false);
   const { isLoggedIn, login, logout } = useAuth();
+  const router = useRouter();
 
   async function handleClick() {
     if (!isLoggedIn) {
@@ -21,9 +23,9 @@ export default function RegisterButton() {
       if (res.status === 401) {
         logout();
       } else if (res.status === 404) {
-        window.location.href = "/create-profile";
+        router.push("/create-profile");
       } else {
-        window.location.href = "/dashboard";
+        router.push("/dashboard");
       }
     }
   }
