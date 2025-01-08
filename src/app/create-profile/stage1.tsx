@@ -50,6 +50,7 @@ export default function Stage1() {
     "B.Tech - Computer Science and Engineering (Bioinformatics)",
     "B.Tech - Computer Science and Engineering and Business Systems",
     "B.Tech - Computer Science and Engineering (Data Science)",
+    "B.Tech - Computer Science and Engineering (IOT)",
     "B.Tech - Computer Science and Engineering (AI/ML)",
     "B.Tech - Computer Science and Engineering (AI and Data Engineering)",
     "B.Tech - Computer Science and Engineering (Cyber Sec.)",
