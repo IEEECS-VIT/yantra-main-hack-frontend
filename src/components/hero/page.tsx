@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 
 export async function Hero() {
   return (
-    <div className="flex flex-col items-center justify-around h-[120vh] bg-custom-gradient z-0 pt-[110px] text-white pb-6 overflow-hidden">
+    <div className="flex flex-col items-center justify-around h-[110vh] bg-custom-gradient z-0 pt-[110px] text-white pb-6 overflow-hidden">
       <div className="flex flex-col items-center gap-4">
         {/* <Image
           src={"./logos/yantra.svg"}
