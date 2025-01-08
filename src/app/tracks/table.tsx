@@ -15,8 +15,16 @@ const ProblemStatementTable: React.FC = () => {
   const filteredData = data.filter(
     (problem) =>
       problem.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      problem.description.summary
-        .toLowerCase()
+      problem.description.summary.toLowerCase()
+        .includes(searchQuery.toLowerCase())
+      || 
+      problem.description.objective.toLowerCase()
+        .includes(searchQuery.toLowerCase())
+      ||
+      problem.description.expectedOutcomes.toLowerCase()
+        .includes(searchQuery.toLowerCase())
+      ||
+      problem.statementID.toLowerCase()
         .includes(searchQuery.toLowerCase())
   );
 
@@ -39,7 +47,7 @@ const ProblemStatementTable: React.FC = () => {
       <div className="mb-4 px-4">
         <input
           type="text"
-          placeholder="Search by title or description..."
+          placeholder="Search..."
           className="border rounded-lg px-4 py-2 w-full md:w-1/2"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
