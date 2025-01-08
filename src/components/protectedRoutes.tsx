@@ -1,9 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, CSSProperties } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { checkAuthToken } from "@/lib/base";
 import { toast } from "react-hot-toast";
+import PuffLoader from "react-spinners/PuffLoader";
+
+const override: CSSProperties = {
+  display: "",
+  margin: "0 auto",
+  borderColor: "red",
+};
 
 const PUBLIC_ROUTES = ["/"]; // Define public routes
 const PRIVATE_ROUTES = [
@@ -52,13 +59,17 @@ export default function ProtectedRoute({
               error: "Please log in to access this page",
             }
           );
-          setTimeout(() => router.push("/"), 1000); // Redirect to login page
+          router.push("/"); // Redirect to login page
         }
         return;
       }
 
+      setLoading(true); // Mark loading as true while validating auth token
       const isValidToken = await checkAuthToken(authToken);
-
+      setLoading(false); // Mark loading as false after auth check
+      if (isValidToken.status === 2) {
+        router.push("/create-profile");
+      }
       // If token is valid and trying to access a public route, redirect to dashboard
       if (isValidToken.status === 0) {
         if (isPublicRoute) {
@@ -91,5 +102,21 @@ export default function ProtectedRoute({
   }
 
   // Render the protected content once loading is complete and authentication is validated
-  return <>{children}</>;
+  return (
+    <>
+      {loading && (
+        <div className="loader-overlay">
+          <PuffLoader
+            color="#FFFFFF"
+            loading={loading}
+            cssOverride={override}
+            size={75}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      )}
+      {children}
+    </>
+  );
 }

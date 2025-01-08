@@ -7,7 +7,7 @@ export default function footer() {
       <section className="relative bg-[#FFF8F8] h-full text-white overflow-hidden ">
         <FloatImages />
 
-        <div className="  relative bottom-0">
+        <div className="  relative bottom-0 ">
           <FooterCard />
         </div>
       </section>
