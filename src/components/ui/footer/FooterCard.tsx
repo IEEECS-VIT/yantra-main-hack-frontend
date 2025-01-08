@@ -37,7 +37,7 @@ const FooterCard = () => {
           </div>
 
           <div className="col-span-2 grid grid-cols-2 gap-2 md:gap-4">
-            <div className="flex flex-col space-y-4 md:space-y-4 p-3 md:p-8 items-center md:items-start">
+            <div className="flex flex-col space-y-4 md:space-y-4 p-3 md:p-8 items-start mx-auto md:items-start">
               <h2 className="md:text-2xl text-xl font-semibold text-buttonBg">
                 PAGES
               </h2>
@@ -75,7 +75,7 @@ const FooterCard = () => {
               </div>
             </div>
 
-            <div className="flex flex-col space-y-3 md:space-y-4 p-3 md:p-8 items-center md:items-start">
+            <div className="flex flex-col space-y-3 md:space-y-4 p-3 md:p-8 items-start mx-auto md:items-start">
               <h2 className="md:text-2xl text-xl font-semibold text-buttonBg">
                 LINKS
               </h2>
@@ -124,7 +124,7 @@ const FooterCard = () => {
             <h2 className="md:text-2xl text-xl font-semibold text-buttonBg whitespace-nowrap">
               CONTACT US
             </h2>
-            <div className="space-y-2 md:space-y-3 md:text-lg text-sm">
+            <div className="space-y-2 md:space-y-3 md:text-lg text-sm text-center">
               <Link
                 href="tel:+918438162183"
                 className="block hover:text-blue-200 transition-colors"

@@ -10,13 +10,15 @@ export async function Hero() {
   return (
     <div className="flex flex-col items-center justify-around h-[120vh] bg-custom-gradient z-0 pt-[110px] text-white pb-6 overflow-hidden">
       <div className="flex flex-col items-center gap-4">
-        <Image
+        {/* <Image
           src={"./logos/yantra.svg"}
           alt="medhansh"
           width={150}
           height={100}
           className="mb-4"
-        />
+        /> */}
+        <h6 className="font-monument text-base md:text-xl leading-3">Office of Student&apos;s Welfare</h6>
+        <h6 className="font-monument text-sm md:text-lg leading-3 mb-4">presents</h6>
         <Text text="Yantra Hack" animation={true} />
       </div>
       <div className="text-center flex gap-6 flex-col items-center m-4">
