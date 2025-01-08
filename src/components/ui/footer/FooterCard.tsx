@@ -24,7 +24,7 @@ const FooterCard = () => {
               </span>
             </h1>
             {/* <RotatingImage className="invert left-0" /> */}
-            <div className="space-y-0 sm:-mt-[7rem] ">
+            <div className="space-y-0 sm:-mt-[7rem] pb-10">
               <h2 className="text-sm md:text-lg italic">
                 Made with <Heart className="inline text-white" /> by
               </h2>
@@ -39,96 +39,99 @@ const FooterCard = () => {
               </p> */}
             </div>
           </div>
+          <div className="flex flex-row justify-center items-center">
+            <div className="relative overflow-hidden rounded-xl ">
+              {/* <div className="absolute inset-0 " /> */}
+              <div className="relative space-y-4 p-8">
+                <h2 className="md:text-2xl text-xl font-semibold text-buttonBg">
+                  PAGES
+                </h2>
+                <div className="space-y-3 md:text-lg text-sm">
+                  <Link
+                    href="/"
+                    className="block hover:text-blue-200 transition-colors"
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    href="/tracks"
+                    className="block hover:text-blue-200 transition-colors"
+                  >
+                    Tracks
+                  </Link>
+                  <Link
+                    href="/dashboard"
+                    className="block hover:text-blue-200 transition-colors"
+                  >
+                    Dashboard
+                  </Link>
+                  <Link
+                    href="/#timeline"
+                    className="block hover:text-blue-200 transition-colors"
+                  >
+                    Timeline
+                  </Link>
+                  <Link
+                    href="/#prize"
+                    className="block hover:text-blue-200 transition-colors"
+                  >
+                    Prize
+                  </Link>
+                </div>
+              </div>
+            </div>
 
-          <div className="relative overflow-hidden rounded-xl ">
-            {/* <div className="absolute inset-0 " /> */}
-            <div className="relative space-y-4 p-8">
-              <h2 className="md:text-2xl text-xl font-semibold text-buttonBg">
-                PAGES
-              </h2>
-              <div className="space-y-3 md:text-lg text-sm">
-                <Link
-                  href="/"
-                  className="block hover:text-blue-200 transition-colors"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/tracks"
-                  className="block hover:text-blue-200 transition-colors"
-                >
-                  Tracks
-                </Link>
-                <Link
-                  href="/dashboard"
-                  className="block hover:text-blue-200 transition-colors"
-                >
-                  Dashboard
-                </Link>
-                <Link
-                  href="/#timeline"
-                  className="block hover:text-blue-200 transition-colors"
-                >
-                  Timeline
-                </Link>
-                <Link
-                  href="/#prize"
-                  className="block hover:text-blue-200 transition-colors"
-                >
-                  Prize
-                </Link>
+            <div className="relative overflow-hidden rounded-xl">
+              <div className="absolute inset-0 " />
+              <div className="relative space-y-4 p-8">
+                <h2 className="md:text-2xl text-xl font-semibold text-buttonBg">
+                  LINKS
+                </h2>
+                <div className="flex flex-col space-y-3 md:text-lg text-sm">
+                  <Link
+                    href="https://www.instagram.com/sw_vit?igsh=MWgyMWdicDJ3aHphZQ== "
+                    target="_blank"
+                    className="flex items-center gap-2 hover:text-blue-200 transition-colors"
+                  >
+                    <FaInstagram className="text-xl mb-[0.15rem]" />{" "}
+                    <span>Instagram</span>
+                  </Link>
+                  <Link
+                    href="https://x.com/VIT_univ"
+                    target="_blank"
+                    className="flex items-center gap-2 hover:text-blue-200 transition-colors"
+                  >
+                    <FaTwitter className="text-xl " /> <span>Twitter</span>
+                  </Link>
+                  <Link
+                    href="https://www.youtube.com/channel/UCA9pirjKrKlg2bCvPKRDkyg"
+                    target="_blank"
+                    className="flex items-center gap-2 hover:text-blue-200 transition-colors"
+                  >
+                    <FaYoutube className="text-xl " /> <span>Youtube</span>
+                  </Link>
+                  <Link
+                    href="https://www.facebook.com/vituniversity"
+                    target="_blank"
+                    className="flex items-center gap-2 hover:text-blue-200 transition-colors"
+                  >
+                    <FaFacebook className="text-xl mb-1" />{" "}
+                    <span>Facebook</span>
+                  </Link>
+                  <Link
+                    href="https://www.linkedin.com/school/vellore-institute-of-technology/posts/?feedView=all"
+                    target="_blank"
+                    className="flex items-center gap-2 hover:text-blue-200 transition-colors"
+                  >
+                    <FaLinkedin className="text-xl mb-1" />{" "}
+                    <span>LinkedIn</span>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-xl">
-            <div className="absolute inset-0 " />
-            <div className="relative space-y-4 p-8">
-              <h2 className="md:text-2xl text-xl font-semibold text-buttonBg">
-                LINKS
-              </h2>
-              <div className="flex flex-col space-y-3 md:text-lg text-sm">
-                <Link
-                  href="https://www.instagram.com/sw_vit?igsh=MWgyMWdicDJ3aHphZQ== "
-                  target="_blank"
-                  className="flex items-center gap-2 hover:text-blue-200 transition-colors"
-                >
-                  <FaInstagram className="text-xl mb-[0.15rem]" />{" "}
-                  <span>Instagram</span>
-                </Link>
-                <Link
-                  href="https://x.com/VIT_univ"
-                  target="_blank"
-                  className="flex items-center gap-2 hover:text-blue-200 transition-colors"
-                >
-                  <FaTwitter className="text-xl " /> <span>Twitter</span>
-                </Link>
-                <Link
-                  href="https://www.youtube.com/channel/UCA9pirjKrKlg2bCvPKRDkyg"
-                  target="_blank"
-                  className="flex items-center gap-2 hover:text-blue-200 transition-colors"
-                >
-                  <FaYoutube className="text-xl " /> <span>Youtube</span>
-                </Link>
-                <Link
-                  href="https://www.facebook.com/vituniversity"
-                  target="_blank"
-                  className="flex items-center gap-2 hover:text-blue-200 transition-colors"
-                >
-                  <FaFacebook className="text-xl mb-1" /> <span>Facebook</span>
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/school/vellore-institute-of-technology/posts/?feedView=all"
-                  target="_blank"
-                  className="flex items-center gap-2 hover:text-blue-200 transition-colors"
-                >
-                  <FaLinkedin className="text-xl mb-1" /> <span>LinkedIn</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative overflow-hidden rounded-xl ">
+          <div className="relative overflow-hidden rounded-xl flex justify-center items-center md:block">
             <div className="absolute inset-0 " />
             <div className="relative space-y-4 py-8 px-4">
               <h2 className="md:text-2xl text-xl font-semibold text-buttonBg whitespace-nowrap">
