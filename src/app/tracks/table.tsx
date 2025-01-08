@@ -17,6 +17,12 @@ const ProblemStatementTable: React.FC = () => {
       problem.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       problem.description.summary.toLowerCase()
         .includes(searchQuery.toLowerCase())
+      || 
+      problem.description.objective.toLowerCase()
+        .includes(searchQuery.toLowerCase())
+      ||
+      problem.description.expectedOutcomes.toLowerCase()
+        .includes(searchQuery.toLowerCase())
       ||
       problem.statementID.toLowerCase()
         .includes(searchQuery.toLowerCase())
