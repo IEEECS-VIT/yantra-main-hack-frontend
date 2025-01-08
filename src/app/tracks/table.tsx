@@ -15,8 +15,10 @@ const ProblemStatementTable: React.FC = () => {
   const filteredData = data.filter(
     (problem) =>
       problem.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      problem.description.summary
-        .toLowerCase()
+      problem.description.toLowerCase()
+        .includes(searchQuery.toLowerCase())
+      ||
+      problem.statementID.toLowerCase()
         .includes(searchQuery.toLowerCase())
   );
 
