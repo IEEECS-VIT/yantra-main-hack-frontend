@@ -46,8 +46,10 @@ export default function Stage2() {
             toast.error("Team name is required", { id: toastId });
           } else if (response.status === 404) {
             toast.error("User not found", { id: toastId });
+            router.push("/create-profile");
           } else if (response.status === 403) {
             toast.error("User already in a team", { id: toastId });
+            router.push("/dashboard");
           } else if (response.status === 409) {
             toast.error("Team name already exists", { id: toastId });
           } else {

@@ -47,8 +47,10 @@ export default function JoinTeam() {
             toast.error("Team code is required", { id: toastId });
           } else if (response.status === 404) {
             toast.error("User not found", { id: toastId });
+            router.push("/create-profile");
           } else if (response.status === 403) {
             toast.error("User already in a team", { id: toastId });
+            router.push("/dashboard");
           } else if (response.status === 422) {
             toast.error("Invalid team code", { id: toastId });
           } else if (response.status === 409) {
