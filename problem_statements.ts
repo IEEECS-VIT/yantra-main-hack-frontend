@@ -429,8 +429,7 @@ export const data: ProblemStatement[] = [
         "Description: Effective waste management and recycling are crucial for sustainable urban development. AI can automate waste segregation and optimize recycling processes to improve the efficiency of waste management systems.",
       objective:
         "Develop an AI-based solution to automate waste segregation and optimize recycling processes, enhancing efficiency in waste management systems.\nExpected Outcomes : Waste classification and segregation using AI models, Optimization of recycling workflows, Monitoring waste generation and recycling rates.",
-      expectedOutcomes: "Waste classification and segregation using AI models, Optimization of recycling workflows, Monitoring waste
-generation and recycling rates.",
+      expectedOutcomes:"Waste classification and segregation using AI models,Optimization of recycling workflows,Monitoring waste generation and recycling rates.",
     },
   },
   {
