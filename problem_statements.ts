@@ -429,7 +429,8 @@ export const data: ProblemStatement[] = [
         "Description: Effective waste management and recycling are crucial for sustainable urban development. AI can automate waste segregation and optimize recycling processes to improve the efficiency of waste management systems.",
       objective:
         "Develop an AI-based solution to automate waste segregation and optimize recycling processes, enhancing efficiency in waste management systems.\nExpected Outcomes : Waste classification and segregation using AI models, Optimization of recycling workflows, Monitoring waste generation and recycling rates.",
-      expectedOutcomes: "",
+      expectedOutcomes: "Waste classification and segregation using AI models, Optimization of recycling workflows, Monitoring waste
+generation and recycling rates.",
     },
   },
   {
@@ -512,7 +513,8 @@ export const data: ProblemStatement[] = [
         "Description: Develop a BMS to optimize energy storage and distribution from renewable sources like solar and wind, ensuring efficient charging, enhanced battery lifespan, and real-time monitoring.",
       objective:
         "Create a system that improves renewable energy efficiency, ensures seamless integration, monitors battery health, and provides intuitive control interfaces.\nExpected Outcome: A functional BMS prototype with real-time monitoring, efficient energy management, smooth renewable energy integration, and user-friendly control.",
-      expectedOutcomes: "",
+      expectedOutcomes: "A functional BMS prototype with real-time monitoring, efficient energy management, smooth renewable energy
+integration, and user-friendly control.",
     },
   },
   {
