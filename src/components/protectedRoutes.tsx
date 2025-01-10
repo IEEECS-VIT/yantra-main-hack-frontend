@@ -4,6 +4,7 @@ import { useEffect, useState, CSSProperties } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { checkAuthToken } from "@/lib/base";
 import { toast } from "react-hot-toast";
+
 import PuffLoader from "react-spinners/PuffLoader";
 
 const override: CSSProperties = {
@@ -11,6 +12,8 @@ const override: CSSProperties = {
   margin: "0 auto",
   borderColor: "red",
 };
+import { useAuth } from "@/contexts/authContext";
+
 
 const PUBLIC_ROUTES = ["/"]; // Define public routes
 const PRIVATE_ROUTES = [
@@ -32,6 +35,7 @@ export default function ProtectedRoute({
   const router = useRouter();
   const pathname = usePathname();
   const [loading, setLoading] = useState(true); // Still need loading state to control initial behavior
+  const { logout } = useAuth();
 
   useEffect(() => {
     const validateAuth = async () => {
@@ -76,6 +80,7 @@ export default function ProtectedRoute({
           setTimeout(() => router.push("/dashboard"), 1000); // Redirect to dashboard if logged in
         }
       } else if (isValidToken.status === 1) {
+        logout();
         toast.promise(
           new Promise<void>((_, reject) =>
             reject("Session expired, please sign in again")
@@ -85,7 +90,7 @@ export default function ProtectedRoute({
             error: "Session expired, please sign in again",
           }
         );
-        setTimeout(() => router.push("/"), 1000); // Redirect to login page on session expiry
+        setTimeout(() => router.push("/"), 1000);
       } else {
         //let them be on route
       }

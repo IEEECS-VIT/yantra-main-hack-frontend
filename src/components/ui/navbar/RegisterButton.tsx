@@ -42,8 +42,8 @@ export default function RegisterButton() {
         })(),
         {
           loading: "Logging in...",
-          success: (message : any) => message,
-          error: (err : any) => err.toString(),
+          success: (message: any) => message,
+          error: (err: any) => err.toString(),
         }
       );
     }

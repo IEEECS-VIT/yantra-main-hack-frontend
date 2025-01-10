@@ -7,7 +7,7 @@ import RotatingImage from "./starThingy";
 
 const timelineDataLeft = [
   { heading: "REGISTRATIONS START", date: "JAN 8" },
-  { heading: "IDEA SUBMISSION", date: "JAN 17" },
+  { heading: "IDEA SUBMISSION", date: "JAN 8-17" },
 ];
 
 const timelineDataRight = [
@@ -17,7 +17,7 @@ const timelineDataRight = [
 
 const mobileTimelineData = [
   { heading: "REGISTRATIONS START", date: "JAN 8" },
-  { heading: "IDEA SUBMISSION", date: "JAN 17" },
+  { heading: "IDEA SUBMISSION", date: "JAN 8-17" },
   { heading: "PARTICIPANT SHORTLISTING", date: "JAN 20" },
   { heading: "HACKATHON STARTS", date: "FEB 7" },
 ];
