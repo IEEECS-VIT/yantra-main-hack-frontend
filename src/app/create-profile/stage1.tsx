@@ -31,6 +31,8 @@ export default function Stage1() {
     (_, i) => `LH-${String.fromCharCode(65 + i)}`
   ).filter((block) => block !== "LH-I");
 
+  lhBlocks.push("RGT");
+
   mhBlocks.push("MH-B Annex");
   mhBlocks.push("MH-D Annex");
   mhBlocks.sort();
