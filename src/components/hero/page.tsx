@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 
 export async function Hero() {
   return (
-    <div className="flex flex-col items-center justify-around h-[120vh] bg-custom-gradient z-0 pt-[110px] text-white pb-6 overflow-hidden">
+    <div className="flex flex-col items-center justify-around h-[110vh] bg-custom-gradient z-0 pt-[110px] text-white pb-6 overflow-hidden">
       <div className="flex flex-col items-center gap-4">
         {/* <Image
           src={"./logos/yantra.svg"}
@@ -17,7 +17,7 @@ export async function Hero() {
           height={100}
           className="mb-4"
         /> */}
-        <h6 className="font-monument text-base md:text-xl leading-3">Office of Student&apos;s Welfare</h6>
+        <h6 className="font-monument text-base md:text-xl leading-3">Office of Students&apos;  Welfare</h6>
         <h6 className="font-monument text-sm md:text-lg leading-3 mb-4">presents</h6>
         <Text text="Yantra Hack" animation={true} />
       </div>

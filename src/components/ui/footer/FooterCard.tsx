@@ -129,7 +129,7 @@ const FooterCard = () => {
                 href="tel:+918438162183"
                 className="block hover:text-blue-200 transition-colors"
               >
-                +91 8438162183
+                +91 84381 62183
               </Link>
               <Link
                 href="mailto:yantra.sw@vit.ac.in"

@@ -50,7 +50,9 @@ const ProblemStatementTable: React.FC = () => {
           placeholder="Search..."
           className="border rounded-lg px-4 py-2 w-full md:w-1/2"
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) => {setSearchQuery(e.target.value);
+ setCurrentPage(1);}
+}
         />
       </div>
 
