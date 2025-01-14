@@ -50,6 +50,11 @@ export default function TaskSubmmisionDialog({
       }
       const formData = new FormData();
       formData.append("document", files[0]);
+      formData.append(
+        "track",
+        selectedTrack!.code + " " + selectedTrack!.track
+      );
+
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/task-submit`,
         {
