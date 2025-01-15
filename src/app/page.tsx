@@ -16,7 +16,7 @@ export default function Home() {
       <Navbar />
       <div className="w-screen h-fit ">
         <Image
-          src={"./logo_svg.svg"}
+          src={"./new_strip.svg"}
           alt=""
           width={300}
           height={300}
