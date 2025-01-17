@@ -35,6 +35,8 @@ export default function DashboardPage() {
         setLoading(true);
         const response = await getTeamDetails();
         if (response.success && response.data) {
+          console.log(response.data);
+
           setTeamDetails(response.data);
         } else {
           setError(response.errors || "User not part of any team");
@@ -50,7 +52,11 @@ export default function DashboardPage() {
 
   return (
     <ProtectedRoute>
-      <TaskSubmmisionDialog open={showDialog} setOpen={setShowDialog} />
+      <TaskSubmmisionDialog
+        open={showDialog}
+        setOpen={setShowDialog}
+        teamDetails={teamDetails?.team}
+      />
       <LeaveTeamDialog
         open={showLeaveTeamAlert}
         setOpen={setShowLeaveTeamAlert}

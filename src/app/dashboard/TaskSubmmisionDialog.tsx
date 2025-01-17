@@ -6,12 +6,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Loader2Icon, PencilIcon } from "lucide-react";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Loader2Icon, PencilIcon, DownloadIcon } from "lucide-react";
+import { Dispatch, SetStateAction, useState, useEffect } from "react";
 import FileUpload from "./FileUpload";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
 import { data } from "../../../problem_statements";
+import { TeamDetails } from "./actions";
 
 const tracksList = data.map((problem) => ({
   code: problem.statementID,
@@ -21,11 +22,13 @@ const tracksList = data.map((problem) => ({
 interface TaskSubmmisionDialogProps {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  teamDetails: TeamDetails | undefined;
 }
 
 export default function TaskSubmmisionDialog({
   open,
   setOpen,
+  teamDetails,
 }: TaskSubmmisionDialogProps) {
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -34,12 +37,29 @@ export default function TaskSubmmisionDialog({
     track: string;
   } | null>(null);
   const [files, setFiles] = useState<File[] | null>(null);
+
+  useEffect(() => {
+    if (teamDetails?.track) {
+      const [code, ...trackParts] = teamDetails.track.split(" ");
+      setSelectedTrack({
+        code,
+        track: trackParts.join(" "),
+      });
+    }
+  }, [teamDetails]);
+
   const showSubmitButton = files && files.length > 0 && selectedTrack;
   const filteredTracks = tracksList.filter(
     (track) =>
       track.track.toLowerCase().includes(searchQuery.toLowerCase()) ||
       track.code.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleDownload = () => {
+    if (teamDetails?.documentLink) {
+      window.open(teamDetails.documentLink, "_blank");
+    }
+  };
 
   const handleSubmit = async () => {
     try {
@@ -63,13 +83,12 @@ export default function TaskSubmmisionDialog({
             Authorization: `Bearer ${Cookies.get("authToken")}`,
           },
           body: formData,
-          // Don't set Content-Type header - browser will set it automatically with boundary
         }
       );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      const data = await response.json();
+      await response.json();
       toast.success("File uploaded successfully");
       setOpen(false);
     } catch (error) {
@@ -132,13 +151,25 @@ export default function TaskSubmmisionDialog({
             </div>
           )}
         </div>
+
+        {teamDetails?.documentLink && (
+          <div className="flex justify-between items-center bg-[#d0d0d050] p-2 rounded-lg mb-4">
+            <span>Previous submission available</span>
+            <button
+              onClick={handleDownload}
+              className="flex items-center bg-main-orange rounded-full px-3 py-1"
+            >
+              <DownloadIcon className="h-4 w-4 mr-1" />
+              Download
+            </button>
+          </div>
+        )}
+
         <FileUpload files={files} setFiles={setFiles} />
         {showSubmitButton && (
           <button
             className="bg-main-orange rounded-full p-2 flex items-center justify-center"
-            onClick={() => {
-              handleSubmit();
-            }}
+            onClick={handleSubmit}
             disabled={loading}
           >
             {loading && <Loader2Icon className="size-5 animate-spin mr-1" />}

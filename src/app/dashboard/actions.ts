@@ -12,6 +12,7 @@ export interface TeamDetails {
   srNo: number;
   teamName: string;
   teamCode: string;
+  track: string | null;
   hackQualified: boolean;
   internalQualification: number;
   documentLink: string | null;
@@ -73,13 +74,11 @@ export async function submitFile(formData: FormData) {
   try {
     const res = await fetchWithAuth("/task-submit", {
       method: "PUT",
-      body: formData
-    })
-    if (!res.ok)
-      throw new Error("Error submitting the file.")
+      body: formData,
+    });
+    if (!res.ok) throw new Error("Error submitting the file.");
     return handleApiResponse(res);
-  }
-  catch (err) {
+  } catch (err) {
     console.error("Error submitting file");
     return {
       data: null,
