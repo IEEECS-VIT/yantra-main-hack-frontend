@@ -95,7 +95,7 @@ export default function DashboardPage() {
                 </h1>
                 {(error === "User not found or not part of any team" ||
                   error === "User not part of any team") && (
-                  <div className="flex flex-col gap-8 pt-2">
+                  <div className="flex flex-col gap-8 pt-2 text-white">
                     Registrations Closed!
                   </div>
                 )}
