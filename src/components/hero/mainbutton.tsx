@@ -28,7 +28,7 @@ export default function MainButton() {
             toast.error("User not found. Please create a profile.", {
               id: toastId,
             });
-            router.push("/create-profile");
+            router.push("/");
           } else {
             const errorData = await response.json();
             const errorMessage = errorData.message || "Failed to log in";

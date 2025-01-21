@@ -106,35 +106,6 @@ export default function TaskSubmmisionDialog({
           <DialogTitle>Task Submission</DialogTitle>
         </DialogHeader>
         <div className="w-full font-mono">
-          {!selectedTrack && (
-            <>
-              <input
-                className="bg-[#d0d0d050] text-center p-2 w-full rounded-full font-mono"
-                placeholder="Search for track"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <ul className="rounded-lg p-2 my-2 w-full h-52 overflow-auto bg-[#d0d0d050]">
-                {filteredTracks.map((track) => (
-                  <li
-                    onClick={() => {
-                      setSelectedTrack({
-                        code: track.code,
-                        track: track.track,
-                      });
-                    }}
-                    className="hover:bg-black/20 p-1 rounded-lg cursor-pointer"
-                    key={track.code}
-                  >
-                    {track.code}-{track.track}
-                  </li>
-                ))}
-                {filteredTracks.length === 0 && (
-                  <li className="text-center">No tracks found</li>
-                )}
-              </ul>
-            </>
-          )}
           {selectedTrack && (
             <div className="my-4 bg-[#d0d0d050] p-2 rounded-lg flex items-center justify-between">
               <p>
@@ -146,7 +117,7 @@ export default function TaskSubmmisionDialog({
                   setSelectedTrack(null);
                 }}
               >
-                <PencilIcon className="h-4 w-4 stroke-current shrink-0 ml-1" />
+                {/* <PencilIcon className="h-4 w-4 stroke-current shrink-0 ml-1" /> */}
               </button>
             </div>
           )}
@@ -165,7 +136,7 @@ export default function TaskSubmmisionDialog({
           </div>
         )}
 
-        <FileUpload files={files} setFiles={setFiles} />
+        {/* <FileUpload files={files} setFiles={setFiles} />
         {showSubmitButton && (
           <button
             className="bg-main-orange rounded-full p-2 flex items-center justify-center"
@@ -175,7 +146,7 @@ export default function TaskSubmmisionDialog({
             {loading && <Loader2Icon className="size-5 animate-spin mr-1" />}
             Submit
           </button>
-        )}
+        )} */}
       </DialogContent>
     </Dialog>
   );

@@ -36,7 +36,7 @@ export default function MobileNavbar({
               logout();
               router.push("/");
             } else if (res.status === 404) {
-              router.push("/create-profile");
+              router.push("/");
               return "Please create your profile";
             } else {
               router.push("/dashboard");

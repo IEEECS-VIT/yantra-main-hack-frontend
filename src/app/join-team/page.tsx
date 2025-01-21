@@ -4,12 +4,15 @@ import Heading from "@/components/creation/Heading";
 import Progressbar from "@/components/creation/Progressbar";
 import LayeredButton from "@/components/ui/orangeButton";
 import { fetchWithAuth, handleApiResponse } from "@/lib/base";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import Cookies from "js-cookie";
 import { IoArrowBack } from "react-icons/io5";
 
 export default function JoinTeam() {
+  useEffect(() => {
+    redirect("/");
+  }, []);
   const [teamCode, setTeamCode] = useState("");
   const [currentStep, setCurrentStep] = useState(3);
   const router = useRouter();
@@ -47,7 +50,7 @@ export default function JoinTeam() {
             toast.error("Team code is required", { id: toastId });
           } else if (response.status === 404) {
             toast.error("User not found", { id: toastId });
-            router.push("/create-profile");
+            router.push("/");
           } else if (response.status === 403) {
             toast.error("User already in a team", { id: toastId });
             router.push("/dashboard");
