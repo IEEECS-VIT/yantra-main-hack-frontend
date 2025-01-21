@@ -2,13 +2,8 @@
 import Text from "@/components/hero/text";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProtectedRoute from "@/components/protectedRoutes";
-import {
-  InfoIcon,
-  Loader2,
-  MoveUpRightIcon,
-  UserPlus2Icon,
-} from "lucide-react";
-import { FaArrowLeft } from "react-icons/fa"; // Importing the back arrow icon
+import { InfoIcon, Loader2 } from "lucide-react";
+import { FaArrowLeft } from "react-icons/fa"; 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getTeamDetails, TeamResponseData } from "./actions";
@@ -17,7 +12,6 @@ import TaskSubmmisionDialog from "./TaskSubmmisionDialog";
 import TeamMemberCard from "./TeamMemberCard";
 import AddMembersDialog from "./AddMembersDialog";
 
-const MAX_TEAM_SIZE = 5;
 const MIN_TEAM_SIZE = 3;
 
 export default function DashboardPage() {
@@ -35,12 +29,9 @@ export default function DashboardPage() {
         setLoading(true);
         const response = await getTeamDetails();
         if (response.success && response.data) {
-          console.log(response.data);
-
           setTeamDetails(response.data);
         } else {
           setError(response.errors || "User not part of any team");
-          console.error(response.errors);
         }
       } finally {
         setLoading(false);
@@ -85,7 +76,7 @@ export default function DashboardPage() {
               {teamDetails && (
                 <div className="text-white mt-4">
                   <h6>Team Name : {teamDetails.team.teamName}</h6>
-                  <h6>Team Code : {teamDetails.team.teamCode}</h6>
+                  {/* <h6>Team Code : {teamDetails.team.teamCode}</h6> */}
                 </div>
               )}
             </div>
@@ -105,29 +96,14 @@ export default function DashboardPage() {
                 {(error === "User not found or not part of any team" ||
                   error === "User not part of any team") && (
                   <div className="flex flex-col gap-8 pt-2">
-                    <button
-                      className="text-white px-10 py-7 bg-gradient-to-l from-[#A240A5] to-[#322A55] border border-white rounded-sm text-sm md:w-[500px] w-[350px] mt-6"
-                      onClick={() => {
-                        router.push("/create-team");
-                      }}
-                    >
-                      Create Team
-                    </button>
-                    <button
-                      className="text-white px-10 py-7 bg-gradient-to-l from-[#A240A5] to-[#322A55] border border-white rounded-sm text-sm md:w-[500px] w-[350px] mt-6"
-                      onClick={() => {
-                        router.push("/join-team");
-                      }}
-                    >
-                      Join Team
-                    </button>
+                    Registrations Closed!
                   </div>
                 )}
               </div>
             ) : teamDetails?.members?.length && teamDetails.memberCount > 0 ? (
               <>
                 <div className="flex justify-center md:justify-end gap-4">
-                  {teamDetails.memberCount < MAX_TEAM_SIZE && (
+                  {/* {teamDetails.memberCount < MAX_TEAM_SIZE && (
                     <button
                       className="bg-main-orange text-white p-2 rounded-full flex items-center tracking-wider hover:scale-105 transition-transform active:scale-95"
                       onClick={() => setShowAddMemberDialog(true)}
@@ -142,9 +118,8 @@ export default function DashboardPage() {
                   >
                     Leave Team
                     <MoveUpRightIcon className="bg-blue-500 text-white p-1 rounded-full shrink-0 ml-2 size-6 group-hover:rotate-[15deg] transition-transform" />
-                  </button>
+                  </button> */}
                 </div>
-
                 <div className="flex gap-8 flex-wrap justify-center py-8">
                   {teamDetails.members.map((member, idx) => (
                     <TeamMemberCard
@@ -163,20 +138,18 @@ export default function DashboardPage() {
                     to form a team. Idea submission is allowed only after
                     meeting this requirement.
                   </p>
-                ) : teamDetails.isLeader ? (
+                ) : teamDetails.team.documentLink ? (
                   <div className="flex w-full justify-center mt-6">
                     <button
                       className="border p-2 rounded-lg uppercase hover:scale-105 transition-all active:scale-95"
                       onClick={() => setShowDialog(true)}
                     >
-                      <span className="text-main-orange">Submit</span>{" "}
-                      <span className="text-white">Idea</span>
+                      <span className="text-main-orange">View</span>{" "}
+                      <span className="text-white">Submission</span>
                     </button>
                   </div>
                 ) : (
-                  <p className="text-center text-white">
-                    Only team leader can submit the idea.
-                  </p>
+                  <p className="text-center text-white">Idea not submitted!</p>
                 )}
               </>
             ) : (

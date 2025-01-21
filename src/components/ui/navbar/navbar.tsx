@@ -42,7 +42,7 @@ export default function Navbar() {
               logout();
               router.push("/");
             } else if (res.status === 404) {
-              router.push("/create-profile");
+              router.push("/");
               return "Please create your profile";
             } else {
               router.push("/dashboard");
@@ -54,8 +54,8 @@ export default function Navbar() {
         })(),
         {
           loading: "Logging in...",
-          success: (message : any) => message,
-          error: (err : any) => err.toString(),
+          success: (message: any) => message,
+          error: (err: any) => err.toString(),
         }
       );
     }

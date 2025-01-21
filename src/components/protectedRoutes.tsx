@@ -14,7 +14,6 @@ const override: CSSProperties = {
 };
 import { useAuth } from "@/contexts/authContext";
 
-
 const PUBLIC_ROUTES = ["/"]; // Define public routes
 const PRIVATE_ROUTES = [
   "/dashboard",
@@ -72,7 +71,7 @@ export default function ProtectedRoute({
       const isValidToken = await checkAuthToken(authToken);
       setLoading(false); // Mark loading as false after auth check
       if (isValidToken.status === 2) {
-        router.push("/create-profile");
+        router.push("/");
       }
       // If token is valid and trying to access a public route, redirect to dashboard
       if (isValidToken.status === 0) {
