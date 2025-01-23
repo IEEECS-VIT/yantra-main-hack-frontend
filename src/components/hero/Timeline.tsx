@@ -11,14 +11,14 @@ const timelineDataLeft = [
 ];
 
 const timelineDataRight = [
-  { heading: "PARTICIPANT SHORTLISTING", date: "JAN 23" },
+  { heading: "PARTICIPANT SHORTLISTING", date: "JAN 24" },
   { heading: "HACKATHON STARTS", date: "FEB 7" },
 ];
 
 const mobileTimelineData = [
   { heading: "REGISTRATIONS START", date: "JAN 8" },
   { heading: "IDEA SUBMISSION", date: "JAN 8-21" },
-  { heading: "PARTICIPANT SHORTLISTING", date: "JAN 23" },
+  { heading: "PARTICIPANT SHORTLISTING", date: "JAN 24" },
   { heading: "HACKATHON STARTS", date: "FEB 7" },
 ];
 
