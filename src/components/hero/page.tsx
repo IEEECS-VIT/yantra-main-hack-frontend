@@ -17,8 +17,12 @@ export async function Hero() {
           height={100}
           className="mb-4"
         /> */}
-        <h6 className="font-monument text-base md:text-xl leading-3">Office of Students&apos;  Welfare</h6>
-        <h6 className="font-monument text-sm md:text-lg leading-3 mb-4">presents</h6>
+        <h6 className="font-monument text-base md:text-xl leading-3">
+          Office of Students&apos; Welfare
+        </h6>
+        <h6 className="font-monument text-sm md:text-lg leading-3 mb-4">
+          presents
+        </h6>
         <Text text="Yantra Hack" animation={true} />
       </div>
       <div className="text-center flex gap-6 flex-col items-center m-4">
