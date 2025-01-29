@@ -42,6 +42,7 @@ export default function Stage1() {
   const branches = [
     "B.Arch",
     "B.Sc. Computer Science",
+    "B.Sc. Multimedia and Animation",
     "B.Sc. (Hons.) Agriculture",
     "B.C.A (Bachelor of Computer Applications)",
     "B.Tech - Aerospace Engineering",
